@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { sitePath } from "@/lib/site-path";
+import "@fontsource-variable/inter-tight";
 import "./globals.css";
 
 export const metadata: Metadata = {

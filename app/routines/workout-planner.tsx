@@ -139,10 +139,14 @@ export function WorkoutPlanner() {
               onClick={() => setSelectedId(workout.id)}
             >
               <span className="workout-row-index">{String(index + 1).padStart(2, "0")}</span>
-              <span className="workout-row-main"><strong>{workout.name}</strong><small>{workout.focus}</small></span>
-              <span>{workout.duration}</span>
-              <span>{workout.level}</span>
-              <span className="grt-row-arrow" aria-hidden="true">→</span>
+              <span className="workout-row-main">
+                <strong>{workout.name}</strong>
+                <small className="workout-row-focus">{workout.focus}</small>
+                <small className="workout-row-mobile-meta">{workout.duration} · {workout.level}</small>
+              </span>
+              <span className="workout-row-duration">{workout.duration}</span>
+              <span className="workout-row-level">{workout.level}</span>
+              <span className="grt-row-arrow workout-row-arrow" aria-hidden="true">→</span>
             </button>
           ))}
         </section>
@@ -153,6 +157,13 @@ export function WorkoutPlanner() {
             <h2 id="selected-workout-heading">{selectedWorkout.name}</h2>
             <p>{selectedWorkout.duration} · {selectedWorkout.level}</p>
           </div>
+          {selectedWorkout.exercises.some((exercise) => exercise.name === "Bodyweight squat") ? (
+            <a href={sitePath("/form-check")} className="workout-form-link grt-pressable">
+              Check squat form <span aria-hidden="true">→</span>
+            </a>
+          ) : (
+            <p className="workout-detail-note">Move with control. Rest as needed.</p>
+          )}
           <ol className="workout-exercise-list">
             {selectedWorkout.exercises.map((exercise, index) => (
               <li key={`${selectedWorkout.id}-${exercise.name}`}>
@@ -162,13 +173,6 @@ export function WorkoutPlanner() {
               </li>
             ))}
           </ol>
-          {selectedWorkout.exercises.some((exercise) => exercise.name === "Bodyweight squat") ? (
-            <a href={sitePath("/form-check")} className="workout-form-link grt-pressable">
-              Check squat form <span aria-hidden="true">→</span>
-            </a>
-          ) : (
-            <p className="workout-detail-note">Move with control. Rest as needed.</p>
-          )}
         </aside>
       </div>
     </div>

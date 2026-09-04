@@ -770,6 +770,32 @@ export function FormCheckWorkspace() {
   const workflowStep = analysisStatus === "complete" ? 3 : 2;
   const setFeedback =
     averageScore !== null ? createSetFeedback(repAnalyses, averageScore) : null;
+  const showResults =
+    analysisStatus === "complete" &&
+    !analysisError &&
+    scanQuality?.allowCoaching &&
+    repAnalyses.length > 0 &&
+    averageScore !== null &&
+    setFeedback;
+  const resultsReady = Boolean(showResults);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [flowStage]);
+
+  useEffect(() => {
+    if (!resultsReady) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [resultsReady]);
 
   useEffect(() => {
     if (
@@ -857,14 +883,7 @@ export function FormCheckWorkspace() {
     );
   }
 
-  if (
-    analysisStatus === "complete" &&
-    !analysisError &&
-    scanQuality?.allowCoaching &&
-    repAnalyses.length > 0 &&
-    averageScore !== null &&
-    setFeedback
-  ) {
+  if (showResults) {
     return (
       <div className="workspace-shell form-results-stage grt-page-entry">
         <header className="form-results-heading">
@@ -909,7 +928,7 @@ export function FormCheckWorkspace() {
           </section>
 
           <SquatCoachingReview
-            feedback={setFeedback}
+            feedback={showResults}
             activeReviewTimestamp={activeReviewTimestamp}
             onReviewMoment={reviewVideoMoment}
           />
@@ -961,7 +980,7 @@ export function FormCheckWorkspace() {
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <p className="step-label">Bodyweight squat</p>
-                <h2 id="upload-heading" className="mt-1 text-xl font-semibold tracking-[-0.02em] text-[#ffffff]">
+                <h2 id="upload-heading" className="grt-type-block mt-1 text-[#ffffff]">
                   {videoFile ? "Review your clip" : "Choose your input"}
                 </h2>
               </div>
@@ -1021,10 +1040,10 @@ export function FormCheckWorkspace() {
                     <div className="upload-icon" aria-hidden="true">
                       <Upload className="size-6" />
                     </div>
-                    <h3 className="mt-5 text-lg font-semibold tracking-[-0.01em] text-[#ffffff]">
+                    <h3 className="grt-type-block mt-5 text-[#ffffff]">
                       Upload a side view.
                     </h3>
-                    <p id="video-requirements" className="mt-2 max-w-sm text-sm leading-6 text-[#ffffff]/48">
+                    <p id="video-requirements" className="grt-type-body mt-2 max-w-sm text-[#ffffff]/48">
                       MP4, MOV, or WebM. Maximum 100 MB.
                     </p>
                     <Button
@@ -1189,10 +1208,10 @@ export function FormCheckWorkspace() {
                       <Video className="size-4" />
                     </span>
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-medium text-[#ffffff]">
+                      <p className="grt-type-ui truncate text-[#ffffff]">
                         {videoFile.name}
                       </p>
-                      <p className="mt-1 text-xs text-[#ffffff]/42">
+                      <p className="grt-type-ui mt-1 text-[#ffffff]/42">
                         {formatBytes(videoFile.size)}
                         {duration !== null ? ` · ${duration.toFixed(1)} seconds` : ""}
                       </p>
@@ -1211,7 +1230,7 @@ export function FormCheckWorkspace() {
 
                 {isBusy || analysisStatus === "complete" ? (
                   <div className="scan-progress" aria-live="polite">
-                    <div className="flex items-center justify-between gap-4 text-xs text-[#ffffff]/50">
+                    <div className="grt-type-ui flex items-center justify-between gap-4 text-[#ffffff]/50">
                       <span>
                         {analysisStatus === "loading"
                           ? "Preparing on-device model"
@@ -1219,7 +1238,7 @@ export function FormCheckWorkspace() {
                             ? `Analyzing movement · ${analyzedFrames} frames`
                             : "Movement analysis complete"}
                       </span>
-                      <span className="font-semibold tabular-nums text-[#ffffff]/70">
+                      <span className="grt-type-numeric text-[#ffffff]/70">
                         {Math.round(analysisStatus === "loading" ? 8 : scanProgress)}%
                       </span>
                     </div>
@@ -1237,10 +1256,10 @@ export function FormCheckWorkspace() {
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div>
-                        <p className="text-sm font-semibold text-[#ffffff]">
+                        <p className="grt-type-block text-[#ffffff]">
                           Live squat tracking
                         </p>
-                        <p className="mt-1 text-xs text-[#ffffff]/45">
+                        <p className="grt-type-body mt-1 text-[#ffffff]/45">
                           {liveCue ?? describeSquatPhase(squatPhase)}
                         </p>
                       </div>
@@ -1282,7 +1301,7 @@ export function FormCheckWorkspace() {
                 {durationIsValid && !error ? (
                   <Button
                     type="button"
-                    className="primary-action h-11 w-full bg-[#ffffff] text-[#000000] hover:bg-[#a3a3a3]"
+                    className="primary-action min-h-11 w-full bg-[#ffffff] text-[#000000] hover:bg-[#a3a3a3]"
                     onClick={startLandmarkScan}
                     disabled={isBusy}
                   >
@@ -1311,15 +1330,6 @@ export function FormCheckWorkspace() {
                   />
                 ) : null}
 
-                {analysisStatus === "complete" &&
-                scanQuality?.allowCoaching &&
-                repAnalyses.length > 0 ? (
-                  <SquatCoachingReview
-                    repetitions={repAnalyses}
-                    averageScore={averageScore ?? 0}
-                    onReviewMoment={reviewVideoMoment}
-                  />
-                ) : null}
               </div>
             )}
 
@@ -1410,10 +1420,10 @@ function AnalysisSummary({
           )}
         </span>
         <div>
-          <h3 id="analysis-summary-heading" className="text-sm font-semibold text-[#ffffff]">
+          <h3 id="analysis-summary-heading" className="grt-type-block text-[#ffffff]">
             Analysis complete
           </h3>
-          <p className="mt-1 text-sm leading-6 text-[#ffffff]/52">
+          <p className="grt-type-body mt-1 text-[#ffffff]/52">
             {repetitionMessage}
           </p>
         </div>
@@ -1437,14 +1447,14 @@ function AnalysisSummary({
           )}
         </span>
         <div className="min-w-0">
-          <p className="text-xs font-semibold text-[#ffffff]/82">
+          <p className="grt-type-ui text-[#ffffff]/82">
             {quality.level === "high"
               ? "Capture quality supports coaching"
               : quality.level === "usable"
                 ? "Coaching enabled with some uncertainty"
                 : "Coaching score paused for this clip"}
           </p>
-          <p className="mt-1 text-xs leading-5 text-[#ffffff]/45">
+          <p className="grt-type-body mt-1 text-[#ffffff]/45">
             {quality.allowCoaching
               ? quality.issues[0] ??
                 "The pose remained visible and measurable across the recording."
@@ -1630,25 +1640,6 @@ function SquatCoachingReview({
         <span>{feedback.rating}</span>
       </div>
 
-      <section className="result-feedback-card result-good-card">
-        <p className="block-label">Good</p>
-        <h2 id="coach-review-heading">What held up.</h2>
-        {feedback.good.length ? (
-          <ul>
-            {feedback.good.map((item) => (
-              <li key={item.area}>
-                <strong>{item.area}</strong>
-                <span>{item.detail}</span>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="result-empty-copy">
-            No pattern held consistently across every completed rep.
-          </p>
-        )}
-      </section>
-
       <section className="result-feedback-card result-fix-card">
         <div className="result-card-label-row">
           <p className="block-label">Fix first</p>
@@ -1668,6 +1659,25 @@ function SquatCoachingReview({
         </div>
         <h2>{feedback.fixTitle}</h2>
         <p>{feedback.fixDetail}</p>
+      </section>
+
+      <section className="result-feedback-card result-good-card">
+        <p className="block-label">Good</p>
+        <h2 id="coach-review-heading">What held up.</h2>
+        {feedback.good.length ? (
+          <ul>
+            {feedback.good.map((item) => (
+              <li key={item.area}>
+                <strong>{item.area}</strong>
+                <span>{item.detail}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="result-empty-copy">
+            No pattern held consistently across every completed rep.
+          </p>
+        )}
       </section>
 
       <section className="result-feedback-card result-next-card">
@@ -1744,8 +1754,8 @@ function formatVideoTimestamp(timestampSeconds: number) {
 function RepMetric({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg bg-[#ffffff]/[0.045] px-3 py-2">
-      <p className="text-[#ffffff]/35">{label}</p>
-      <p className="mt-0.5 font-semibold tabular-nums text-[#ffffff]/80">{value}</p>
+      <p className="grt-type-label uppercase text-[#ffffff]/35">{label}</p>
+      <p className="grt-type-numeric grt-metric-value mt-0.5 text-[#ffffff]/80">{value}</p>
     </div>
   );
 }
@@ -1793,13 +1803,13 @@ function AngleMetric({
 }) {
   return (
     <div className="min-w-0 rounded-xl border border-[#a3a3a3]/8 bg-[#ffffff]/[0.035] px-3 py-3">
-      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[#ffffff]/38">
+      <p className="grt-type-label uppercase text-[#ffffff]/38">
         {label}
       </p>
-      <p className="mt-1 text-xl font-semibold tabular-nums text-[#ffffff] sm:text-2xl">
+      <p className="grt-type-numeric grt-angle-value mt-1 text-[#ffffff]">
         {Math.round(value)}{suffix}
       </p>
-      <p className="mt-1 hidden text-[0.65rem] leading-4 text-[#ffffff]/35 sm:block">
+      <p className="grt-type-label grt-angle-detail mt-1 hidden text-[#ffffff]/35 sm:block">
         {detail}
       </p>
     </div>

@@ -57,15 +57,79 @@ test("forwards progress semantics to the primitive", async () => {
   assert.match(html, /data-state="loading"/);
 });
 
-test("uses the Grt white-first palette and precise button motion", async () => {
+test("uses the Grt v0.6-2 type hierarchy, workout alignment, and precise motion", async () => {
   const sourceCss = await readFile(path.join(root, "app", "globals.css"), "utf8");
+  const layoutSource = await readFile(path.join(root, "app", "layout.tsx"), "utf8");
+  const workoutSource = await readFile(path.join(root, "app", "routines", "workout-planner.tsx"), "utf8");
+  const experienceSource = await readFile(path.join(root, "app", "grt-experience.tsx"), "utf8");
+  const pageSources = (
+    await Promise.all(
+      [
+        "app/grt-experience.tsx",
+        "app/form-check-workspace.tsx",
+        "app/routines/workout-planner.tsx",
+      ].map((file) => readFile(path.join(root, file), "utf8")),
+    )
+  ).join("\n");
   const { Button } = await vite.ssrLoadModule("/components/ui/button.tsx");
   const buttonHtml = renderToStaticMarkup(React.createElement(Button, null, "Analyze"));
 
-  for (const color of ["#f7f7f3", "#111111", "#050505", "#ffffff", "#666666", "#d8d8d3", "#efefea"]) {
+  for (const color of ["#f3f1ea", "#fbfaf6", "#0b0b0a", "#10100f", "#f7f5ef", "#686660", "#cbc8bf", "#e8e5dd"]) {
     assert.match(sourceCss, new RegExp(color, "i"));
   }
 
+  assert.match(layoutSource, /@fontsource-variable\/inter-tight/);
+  assert.match(sourceCss, /\/\* Grt v0\.6-2 — normalized typography \+ aligned workout metadata \*\//);
+  assert.match(sourceCss, /--type-display:\s*clamp\(3\.25rem, 9vw, 10rem\)/);
+  assert.match(sourceCss, /--type-page:\s*clamp\(2\.25rem, 5vw, 5rem\)/);
+  assert.match(sourceCss, /--type-section:\s*clamp\(1\.75rem, 3vw, 3rem\)/);
+  assert.match(sourceCss, /--type-block:\s*clamp\(1\.25rem, 1\.6vw, 1\.75rem\)/);
+  assert.match(sourceCss, /--type-body:\s*clamp\(1rem, calc\(0\.95rem \+ 0\.25vw\), 1\.125rem\)/);
+  assert.match(sourceCss, /--type-ui:\s*0\.875rem/);
+  assert.match(sourceCss, /--type-label:\s*0\.75rem/);
+  assert.match(sourceCss, /--weight-body:\s*400/);
+  assert.match(sourceCss, /--weight-ui:\s*500/);
+  assert.match(sourceCss, /--weight-heading:\s*600/);
+  assert.match(sourceCss, /--weight-display:\s*700/);
+  assert.match(sourceCss, /--tracking-display:\s*0\.008em/);
+  assert.match(sourceCss, /--tracking-label:\s*0\.08em/);
+  assert.match(sourceCss, /--experience-option-padding-block:\s*clamp\(1rem, 1\.5vw, 1\.375rem\)/);
+  assert.match(sourceCss, /--experience-copy-gap:\s*clamp\(0\.5rem, 0\.75vw, 0\.625rem\)/);
+  assert.match(sourceCss, /font-synthesis:\s*none/);
+  assert.match(sourceCss, /font-kerning:\s*normal/);
+  assert.match(sourceCss, /font-optical-sizing:\s*auto/);
+  assert.match(sourceCss, /max-width:\s*62ch/);
+  assert.match(sourceCss, /font-variant-numeric:\s*tabular-nums lining-nums/);
+  assert.match(
+    sourceCss,
+    /\.workout-library-heading h1,[\s\S]*?font-size:\s*var\(--type-page\) !important;[\s\S]*?font-weight:\s*var\(--weight-heading\) !important;/,
+  );
+  assert.match(
+    sourceCss,
+    /@media \(min-width: 1024px\)[\s\S]*?\.workout-row\s*{[\s\S]*?grid-template-columns:\s*4\.5rem minmax\(0, 1fr\) 6\.875rem 8\.75rem 2\.5rem;/,
+  );
+  assert.match(sourceCss, /\.workout-row-duration\s*{[\s\S]*?justify-self:\s*end;[\s\S]*?tabular-nums lining-nums/);
+  assert.match(
+    sourceCss,
+    /\.workout-row-level\s*{[\s\S]*?justify-self:\s*start;[\s\S]*?padding-inline-start:\s*var\(--workout-meta-gutter\);/,
+  );
+  assert.match(sourceCss, /\.workout-row-arrow\s*{[\s\S]*?justify-self:\s*center;/);
+  assert.match(
+    sourceCss,
+    /\.experience-list button\s*\{[\s\S]*?padding-block:\s*var\(--experience-option-padding-block\);/,
+  );
+  assert.match(
+    sourceCss,
+    /\.experience-list \.experience-copy\s*\{[\s\S]*?row-gap:\s*var\(--experience-copy-gap\);/,
+  );
+  assert.match(experienceSource, /className="experience-copy"/);
+  assert.match(workoutSource, /className="workout-row-duration"/);
+  assert.match(workoutSource, /className="workout-row-level"/);
+  assert.match(workoutSource, /className="grt-row-arrow workout-row-arrow"/);
+  assert.doesNotMatch(
+    pageSources,
+    /\b(?:text-(?:xs|sm|base|lg|xl|[2-9]xl)|font-(?:thin|extralight|light|normal|medium|semibold|bold|extrabold|black)|tracking-\[-?\d|leading-(?:none|tight|snug|normal|relaxed|loose|\d+))\b/,
+  );
   assert.doesNotMatch(sourceCss, /#bef264|rgb\(190 242 100/i);
   assert.match(buttonHtml, /active:scale-\[0\.97\]/);
   assert.doesNotMatch(buttonHtml, /transition-all/);
@@ -350,7 +414,7 @@ test("places Form Check instructions and transparency before upload", async () =
   assert.doesNotMatch(source, /window\.localStorage/);
 });
 
-test("renders the v0.3 editorial feedback hierarchy after analysis", async () => {
+test("preserves the v0.5 mobile-first feedback hierarchy after analysis", async () => {
   const source = await readFile(
     path.join(root, "app", "form-check-workspace.tsx"),
     "utf8",
@@ -364,10 +428,11 @@ test("renders the v0.3 editorial feedback hierarchy after analysis", async () =>
 
   assert.match(source, /Form Check \/ Review/);
   assert.match(source, /One correction\. One cue for the next rep\./);
-  assert.ok(scoreIndex >= 0 && scoreIndex < goodIndex);
-  assert.ok(goodIndex < fixIndex && fixIndex < nextIndex);
+  assert.ok(scoreIndex >= 0 && scoreIndex < fixIndex);
+  assert.ok(fixIndex < goodIndex && goodIndex < nextIndex);
   assert.match(source, /Capture quality, joint measurements, and rep breakdown/);
   assert.match(sourceCss, /\.form-results-grid\s*\{[^}]*grid-template-columns:/s);
+  assert.match(sourceCss, /grid-template-areas:\s*"score"\s*"fix"\s*"good"\s*"next"/s);
   assert.match(sourceCss, /\.result-set-details-content/);
 });
 

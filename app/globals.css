@@ -2129,6 +2129,7 @@ video {
   }
 }
 
+
 /* Grt v0.3 — white canvas, editorial black grids, restrained motion */
 :root {
   color-scheme: light;
@@ -3821,4 +3822,1772 @@ button {
     from { opacity: 0; }
     to { opacity: 1; }
   }
+}
+
+/* Grt v0.4 — responsive editorial system */
+:root {
+  --grt-container-max: 85rem;
+  --grt-page-gutter: clamp(1rem, 4vw, 3rem);
+  --grt-section-gap: clamp(2.5rem, 7vw, 6rem);
+  --grt-grid-gap: clamp(0.625rem, 1.5vw, 1.25rem);
+  --grt-block-padding: clamp(1.375rem, 3vw, 2.5rem);
+  --grt-block-radius: clamp(0.625rem, 1vw, 1rem);
+  --grt-control-height: clamp(3rem, 4vw, 3.5rem);
+  --grt-display-size: clamp(3.5rem, 8vw, 7rem);
+  --grt-page-title-size: clamp(2rem, 4.5vw, 4rem);
+  --grt-display-tracking: 0.012em;
+  --grt-heading-tracking: 0.01em;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  font-size: clamp(0.9375rem, 0.3vw + 0.875rem, 1.125rem);
+}
+
+.site-header-inner,
+.grt-page-shell,
+.workspace-shell,
+.form-flow-shell {
+  width: min(
+    calc(100% - var(--grt-page-gutter) - var(--grt-page-gutter)),
+    var(--grt-container-max)
+  );
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.grt-page-shell,
+.workspace-shell,
+.form-flow-shell {
+  padding-block: clamp(2.5rem, 6vw, 5rem) 3rem;
+}
+
+.grt-page-heading {
+  max-width: 52rem;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.grt-overline,
+.block-label,
+.question-kicker,
+.step-label,
+.home-metrics-grid span,
+.result-score-block > p {
+  font-size: clamp(0.75rem, 0.25vw + 0.7rem, 0.875rem);
+  letter-spacing: 0.08em;
+}
+
+.grt-page-heading h1,
+.form-results-heading h1,
+.form-workspace-heading h1,
+.form-intro-copy h1,
+.form-instruction-head h1 {
+  font-size: var(--grt-page-title-size);
+  letter-spacing: var(--grt-heading-tracking);
+  line-height: 0.98;
+}
+
+.intro-wordmark {
+  font-size: var(--grt-display-size);
+  letter-spacing: var(--grt-display-tracking);
+  line-height: 0.86;
+}
+
+.onboarding-intro-block h1,
+.question-stage h1,
+.home-action-block h2,
+.grt-about-grid h2,
+.workout-detail h2,
+.result-feedback-card h2,
+.result-rep-breakdown-heading h3,
+.grt-footer strong,
+.large-number-field input,
+.number-input-line input,
+.result-score-block > strong {
+  letter-spacing: var(--grt-heading-tracking);
+}
+
+.grt-page-heading > p:last-of-type,
+.form-intro-copy > p:last-child,
+.form-results-heading h1 + p {
+  max-width: 38rem;
+  font-size: clamp(0.9375rem, 0.3vw + 0.875rem, 1.125rem);
+}
+
+.grt-pressable:active,
+.goal-grid button:active,
+.experience-list button:active {
+  transform: scale(0.982);
+}
+
+/* Header and navigation */
+.site-header-inner {
+  min-height: 4rem;
+}
+
+.site-brand,
+.site-brand strong {
+  font-size: 1.375rem;
+  letter-spacing: var(--grt-display-tracking);
+}
+
+.site-nav {
+  display: none;
+}
+
+.site-nav a,
+.site-menu-toggle {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-menu-toggle {
+  display: inline-flex;
+  color: var(--grt-ink);
+  font-size: 0.8125rem;
+  font-weight: 680;
+}
+
+.site-menu-toggle:focus-visible,
+.site-mobile-menu a:focus-visible {
+  outline: 2px solid var(--grt-ink);
+  outline-offset: 3px;
+}
+
+.site-mobile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: grid;
+  border-top: 1px solid var(--grt-line);
+  border-bottom: 1px solid var(--grt-line);
+  background: #ffffff;
+  animation: grt-menu-enter 180ms var(--grt-ease-drawer) both;
+}
+
+.site-mobile-menu a {
+  display: flex;
+  width: min(
+    calc(100% - var(--grt-page-gutter) - var(--grt-page-gutter)),
+    var(--grt-container-max)
+  );
+  min-height: 4.25rem;
+  margin-inline: auto;
+  align-items: center;
+  border-bottom: 1px solid var(--grt-line);
+  color: var(--grt-ink);
+  font-size: 1.125rem;
+  font-weight: 660;
+}
+
+.site-mobile-menu a:last-child {
+  border-bottom: 0;
+}
+
+.site-mobile-menu a[aria-current="page"]::after {
+  margin-left: auto;
+  content: "Current";
+  color: var(--grt-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@keyframes grt-menu-enter {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Onboarding */
+.onboarding-shell,
+.onboarding-shell[data-welcome="true"] {
+  padding: var(--grt-page-gutter);
+}
+
+.onboarding-intro-block,
+.onboarding-frame,
+.home-action-block,
+.home-metrics-grid,
+.grt-about-grid,
+.workout-row,
+.workout-detail,
+.form-intro-block,
+.form-instruction-block,
+.grt-form-workspace .work-panel,
+.grt-form-workspace .upload-zone,
+.grt-form-workspace .camera-recorder,
+.grt-form-workspace .video-frame,
+.grt-form-workspace .live-tracking-card,
+.grt-form-workspace .analysis-summary,
+.result-video-frame,
+.result-video-meta,
+.result-score-block,
+.result-feedback-card,
+.result-set-details,
+.result-rep-breakdown {
+  border-radius: var(--grt-block-radius);
+}
+
+.onboarding-intro-block,
+.onboarding-frame {
+  width: min(100%, 56rem);
+  min-height: min(44rem, calc(100svh - 2rem));
+}
+
+.onboarding-intro-block {
+  padding: var(--grt-block-padding);
+}
+
+.onboarding-intro-block h1 {
+  max-width: 12ch;
+  font-size: var(--grt-page-title-size);
+  line-height: 1;
+}
+
+.onboarding-stage {
+  padding: var(--grt-block-padding);
+}
+
+.question-stage h1 {
+  max-width: 16ch;
+  font-size: var(--grt-page-title-size);
+  line-height: 1.02;
+}
+
+.onboarding-progress {
+  gap: 0.875rem;
+  padding: 1.125rem var(--grt-block-padding);
+}
+
+.onboarding-actions {
+  gap: 0.75rem;
+  padding: 0.75rem var(--grt-block-padding)
+    calc(0.75rem + env(safe-area-inset-bottom));
+}
+
+.onboarding-back,
+.onboarding-next,
+.grt-primary-inverse,
+.goal-grid button,
+.experience-list button,
+.unit-switch button {
+  min-height: var(--grt-control-height);
+}
+
+.onboarding-next {
+  min-width: 8rem;
+}
+
+.goal-grid,
+.paired-number-fields {
+  grid-template-columns: 1fr;
+}
+
+.goal-grid,
+.experience-list {
+  gap: 0.625rem;
+}
+
+.goal-grid button,
+.experience-list button {
+  min-height: 4.25rem;
+}
+
+.large-number-field {
+  width: min(100%, 24rem);
+  margin-top: 2rem;
+  border-radius: var(--grt-block-radius);
+}
+
+.large-number-field input {
+  font-size: clamp(3.5rem, 14vw, 5rem);
+}
+
+.paired-number-fields > label {
+  border-radius: var(--grt-block-radius);
+}
+
+.number-input-line input {
+  font-size: clamp(2.5rem, 12vw, 4rem);
+}
+
+/* Home */
+.home-action-grid {
+  grid-template-columns: 1fr;
+  gap: var(--grt-grid-gap);
+}
+
+.home-action-block {
+  min-height: 13rem;
+  padding: var(--grt-block-padding);
+}
+
+.home-action-block h2 {
+  max-width: 14rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  line-height: 1.08;
+}
+
+.home-metrics-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: var(--grt-grid-gap);
+}
+
+.home-metrics-grid > div,
+.home-metrics-grid > div:nth-child(2) {
+  min-height: 6.5rem;
+  padding: 1rem;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.home-metrics-grid > div:nth-child(odd) {
+  border-right: 1px solid var(--grt-line);
+}
+
+.home-metrics-grid > div:nth-child(-n + 2) {
+  border-bottom: 1px solid var(--grt-line);
+}
+
+.grt-about-grid {
+  margin-top: var(--grt-section-gap);
+  padding: var(--grt-block-padding);
+  gap: 2rem;
+}
+
+.grt-about-grid h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.02;
+}
+
+.grt-footer {
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Workout library */
+.workout-filters {
+  margin-right: calc(-1 * var(--grt-page-gutter));
+  margin-bottom: 1rem;
+  padding-right: var(--grt-page-gutter);
+  padding-bottom: 0.25rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+}
+
+.workout-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.workout-filters button {
+  min-height: 2.75rem;
+  flex: none;
+}
+
+.workout-library-grid {
+  grid-template-columns: 1fr;
+  gap: var(--grt-grid-gap);
+}
+
+.workout-row {
+  min-height: 4.25rem;
+  padding: 0.875rem 1rem;
+  grid-template-columns: 1.5rem minmax(0, 1fr) 1.5rem;
+  gap: 0.75rem;
+}
+
+.workout-row > span:nth-child(3),
+.workout-row > span:nth-child(4) {
+  display: none;
+}
+
+.workout-row-main {
+  min-width: 0;
+}
+
+.workout-row-focus {
+  display: none;
+}
+
+.workout-row-mobile-meta {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workout-detail {
+  position: static;
+  display: grid;
+}
+
+.workout-detail-head {
+  padding: var(--grt-block-padding);
+}
+
+.workout-detail h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.02;
+}
+
+.workout-form-link {
+  min-height: var(--grt-control-height);
+  margin: 1rem;
+}
+
+.workout-exercise-list li {
+  min-height: 4rem;
+}
+
+/* Form Check */
+.form-flow-shell {
+  min-height: calc(100svh - 4rem);
+}
+
+.form-intro-block,
+.form-instruction-block {
+  min-height: min(42rem, calc(100svh - 8rem));
+  padding: var(--grt-block-padding);
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.form-intro-copy h1,
+.form-instruction-head h1 {
+  max-width: 14ch;
+}
+
+.form-rule-preview,
+.form-instruction-list {
+  width: 100%;
+  grid-row: auto;
+  grid-column: auto;
+}
+
+.form-rule-preview li,
+.form-instruction-list li {
+  min-height: 4.25rem;
+  grid-template-columns: 2.25rem 1fr;
+}
+
+.form-transparency-note {
+  max-width: 34rem;
+}
+
+.form-intro-block > .grt-primary-inverse {
+  width: 100%;
+  justify-self: stretch;
+}
+
+.form-instruction-actions {
+  width: 100%;
+  grid-column: auto;
+  gap: 0.75rem;
+}
+
+.form-instruction-actions .grt-text-button {
+  min-width: 3.5rem;
+  min-height: 3rem;
+}
+
+.form-instruction-actions .grt-primary-inverse {
+  width: 100%;
+}
+
+.form-workspace-heading {
+  padding-right: 0;
+}
+
+.form-workspace-heading button {
+  position: static;
+  min-height: 2.75rem;
+  margin-top: 0.25rem;
+}
+
+.grt-form-workspace .panel-header,
+.grt-form-workspace .panel-body {
+  padding: var(--grt-block-padding);
+}
+
+.grt-form-workspace .panel-header h2 {
+  letter-spacing: var(--grt-heading-tracking) !important;
+}
+
+.grt-form-workspace .workflow-steps {
+  gap: 0.25rem;
+}
+
+.grt-form-workspace .workflow-step {
+  min-height: 2.75rem;
+  padding-inline: 0.25rem;
+}
+
+.grt-form-workspace .workflow-step-marker {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.grt-form-workspace .input-method-switch {
+  width: 100%;
+  grid-template-columns: 1fr;
+}
+
+.grt-form-workspace .input-method-switch button,
+.grt-form-workspace .primary-action,
+.grt-form-workspace .camera-controls button,
+.grt-form-workspace .file-summary button,
+.result-new-upload,
+.result-fix-card .result-card-label-row button,
+.result-set-details > summary,
+.result-rep-breakdown .timestamp-button {
+  min-height: 2.75rem;
+}
+
+.grt-form-workspace .upload-zone {
+  min-height: 20rem;
+  padding: var(--grt-block-padding);
+}
+
+.grt-form-workspace .camera-preview-frame {
+  max-height: 70svh;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--grt-block-radius);
+}
+
+.grt-form-workspace .camera-controls {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.grt-form-workspace .camera-controls button {
+  width: 100%;
+}
+
+.grt-form-workspace .video-frame {
+  aspect-ratio: 4 / 3;
+}
+
+.form-results-heading {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.result-new-upload {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.form-results-grid {
+  grid-template-columns: 1fr;
+  gap: var(--grt-grid-gap);
+}
+
+.result-video-frame {
+  aspect-ratio: 4 / 3;
+}
+
+.coaching-review {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "score"
+    "fix"
+    "good"
+    "next";
+  gap: var(--grt-grid-gap);
+}
+
+.result-score-block { grid-area: score; }
+.result-fix-card { grid-area: fix; }
+.result-good-card { grid-area: good; }
+.result-next-card { grid-area: next; }
+
+.result-score-block {
+  min-height: 9.5rem;
+  padding: var(--grt-block-padding);
+}
+
+.result-score-block > strong {
+  font-size: clamp(3.5rem, 14vw, 5.5rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.005em;
+}
+
+.result-feedback-card {
+  padding: var(--grt-block-padding);
+}
+
+.result-feedback-card h2,
+.result-rep-breakdown-heading h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+}
+
+.result-good-card li {
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+}
+
+.result-card-label-row {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.result-set-details > summary {
+  min-height: 4.25rem;
+}
+
+.result-set-details-content,
+.rep-metric-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 360px) {
+  .paired-number-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-action-block:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .home-action-block:not(:first-child) {
+    min-height: 12rem;
+  }
+}
+
+@media (min-width: 400px) {
+  .rep-metric-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 480px) {
+  :root {
+    --grt-page-gutter: clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  .grt-form-workspace .input-method-switch {
+    width: min(100%, 24rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-results-heading {
+    align-items: end;
+    flex-direction: row;
+  }
+
+  .result-new-upload {
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --grt-page-gutter: clamp(1.5rem, 3.5vw, 2rem);
+    --grt-stagger: 45ms;
+  }
+
+  .site-header-inner {
+    min-height: 4.75rem;
+  }
+
+  .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    display: inline-flex;
+  }
+
+  .site-nav a:last-child {
+    display: none;
+  }
+
+  .site-menu-toggle {
+    margin-left: -1rem;
+  }
+
+  .site-mobile-menu a {
+    min-height: 4.5rem;
+  }
+
+  .onboarding-stage {
+    padding: 2rem;
+  }
+
+  .goal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-action-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(10rem, auto));
+  }
+
+  .home-action-block:first-child {
+    min-height: 22rem;
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 2;
+  }
+
+  .home-action-block:not(:first-child) {
+    min-height: 10rem;
+  }
+
+  .workout-row {
+    min-height: 5rem;
+    grid-template-columns: 2rem minmax(0, 1fr) auto auto 1.5rem;
+    gap: 1rem;
+  }
+
+  .workout-row > span:nth-child(3),
+  .workout-row > span:nth-child(4) {
+    display: block;
+  }
+
+  .workout-row-focus {
+    display: block;
+  }
+
+  .workout-row-mobile-meta {
+    display: none;
+  }
+
+  .form-intro-block {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.72fr);
+    grid-template-rows: 1fr auto;
+    gap: 2rem;
+  }
+
+  .form-intro-block > .grt-primary-inverse {
+    width: auto;
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .form-instruction-block {
+    grid-template-columns: minmax(14rem, 0.8fr) minmax(22rem, 1.2fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 2rem;
+  }
+
+  .form-instruction-list {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+  }
+
+  .form-instruction-actions {
+    grid-column: 1 / -1;
+  }
+
+  .form-instruction-actions .grt-primary-inverse {
+    width: auto;
+  }
+
+  .form-workspace-heading {
+    padding-right: 11rem;
+  }
+
+  .form-workspace-heading button {
+    position: absolute;
+    right: 0;
+    bottom: 0.25rem;
+  }
+
+  .grt-form-workspace .camera-preview-frame {
+    max-height: none;
+    aspect-ratio: 16 / 9;
+  }
+
+  .grt-form-workspace .camera-controls button {
+    width: auto;
+  }
+
+  .form-results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coaching-review {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "score fix"
+      "good next";
+  }
+
+  .result-good-card li {
+    grid-template-columns: minmax(4.5rem, 0.55fr) minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .result-card-label-row {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .result-set-details-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --grt-page-gutter: clamp(2rem, 3.35vw, 3rem);
+  }
+
+  .site-nav a:last-child {
+    display: inline-flex;
+  }
+
+  .site-menu-toggle,
+  .site-mobile-menu {
+    display: none;
+  }
+
+  .workout-library-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(19rem, 0.55fr);
+  }
+
+  .workout-detail {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .grt-form-workspace .upload-zone {
+    min-height: 25rem;
+  }
+
+  .form-results-grid {
+    grid-template-columns: minmax(0, 1.9fr) minmax(19rem, 1fr);
+  }
+
+  .coaching-review {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "score"
+      "good"
+      "fix"
+      "next";
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-action-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: 1fr;
+  }
+
+  .home-action-block:first-child,
+  .home-action-block:not(:first-child) {
+    min-height: 21rem;
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .home-metrics-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .home-metrics-grid > div,
+  .home-metrics-grid > div:nth-child(2),
+  .home-metrics-grid > div:nth-child(odd),
+  .home-metrics-grid > div:nth-child(-n + 2) {
+    border-right: 1px solid var(--grt-line);
+    border-bottom: 0;
+  }
+
+  .home-metrics-grid > div:last-child {
+    border-right: 0;
+  }
+
+  .grt-about-grid {
+    grid-template-columns: 1.2fr 1fr 0.8fr;
+    align-items: end;
+  }
+}
+
+@media (max-width: 479px) {
+  :root {
+    --grt-stagger: 30ms;
+  }
+
+  .grt-footer {
+    grid-template-columns: 1fr auto;
+  }
+
+  .grt-footer span {
+    display: none;
+  }
+
+  .result-video-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .site-mobile-menu a:hover {
+    color: var(--grt-muted);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Grt v0.5 — Studio Merge-inspired type and warm neutral palette */
+:root {
+  color-scheme: light;
+  --background: #f3f1ea;
+  --foreground: #0b0b0a;
+  --card: #fbfaf6;
+  --card-foreground: #0b0b0a;
+  --popover: #fbfaf6;
+  --popover-foreground: #0b0b0a;
+  --primary: #10100f;
+  --primary-foreground: #f7f5ef;
+  --secondary: #e8e5dd;
+  --secondary-foreground: #0b0b0a;
+  --muted: #e8e5dd;
+  --muted-foreground: #686660;
+  --accent: #e8e5dd;
+  --accent-foreground: #0b0b0a;
+  --border: #cbc8bf;
+  --input: #cbc8bf;
+  --ring: #0b0b0a;
+  --font-sans: "Inter Tight Variable", "Inter Tight", Inter, Arial, sans-serif;
+  --grt-canvas: #f3f1ea;
+  --grt-paper: #fbfaf6;
+  --grt-ink: #0b0b0a;
+  --grt-block: #10100f;
+  --grt-black: #10100f;
+  --grt-reverse: #f7f5ef;
+  --grt-muted: #686660;
+  --grt-line: #cbc8bf;
+  --grt-soft: #e8e5dd;
+  --grt-page: var(--grt-canvas);
+  --grt-display-weight: 700;
+  --grt-heading-weight: 650;
+  --grt-block-weight: 600;
+  --grt-ui-weight: 500;
+  --grt-body-weight: 400;
+  --grt-display-size: clamp(3.25rem, 10vw, 11rem);
+  --grt-page-title-size: clamp(2.25rem, 5.25vw, 5.5rem);
+  --grt-display-tracking: 0.009em;
+  --grt-heading-tracking: 0.01em;
+}
+
+body,
+button,
+input,
+video {
+  font-family: var(--font-sans);
+}
+
+body {
+  background: var(--grt-canvas);
+  color: var(--grt-ink);
+  font-weight: var(--grt-body-weight);
+}
+
+::selection {
+  color: var(--grt-reverse);
+  background: var(--grt-ink);
+}
+
+/* Canvas and paper surfaces */
+html,
+.grt-app,
+.grt-boot,
+.onboarding-shell,
+.onboarding-shell[data-welcome="true"],
+.grt-form-workspace .panel-body {
+  background: var(--grt-canvas);
+}
+
+.site-header {
+  border-color: var(--grt-line);
+  background: rgb(243 241 234 / 0.94);
+}
+
+.site-mobile-menu,
+.home-metrics-grid,
+.workout-row[data-selected="true"],
+.grt-form-workspace .work-panel,
+.grt-form-workspace .panel-header,
+.grt-form-workspace .input-method-switch,
+.grt-form-workspace .file-summary,
+.grt-form-workspace .scan-progress,
+.result-feedback-card,
+.result-set-details,
+.result-rep-breakdown,
+.result-rep-breakdown .status-chip,
+.result-rep-breakdown .timestamp-button,
+.rep-metric-grid > div {
+  background: var(--grt-paper);
+}
+
+/* Near-black feature fields */
+.onboarding-intro-block,
+.onboarding-frame,
+.onboarding-stage,
+.onboarding-actions,
+.home-action-block,
+.grt-about-grid,
+.workout-row,
+.workout-detail,
+.form-intro-block,
+.form-instruction-block,
+.grt-form-workspace .upload-zone,
+.grt-form-workspace .camera-recorder,
+.grt-form-workspace .video-frame,
+.grt-form-workspace .live-tracking-card,
+.grt-form-workspace .analysis-summary,
+.result-video-meta,
+.result-score-block,
+.result-fix-card .result-card-label-row button[data-active="true"],
+.result-rep-breakdown .timestamp-button[data-active="true"] {
+  border-color: var(--grt-block);
+  background: var(--grt-block);
+  color: var(--grt-reverse);
+}
+
+.onboarding-intro-block,
+.onboarding-frame {
+  border-color: var(--grt-block);
+}
+
+/* Editorial weight and scale hierarchy */
+.intro-wordmark,
+.workout-library-heading h1 {
+  color: var(--grt-ink);
+  font-size: var(--grt-display-size);
+  font-weight: var(--grt-display-weight);
+  letter-spacing: var(--grt-display-tracking);
+  line-height: 0.86;
+}
+
+.intro-wordmark {
+  color: var(--grt-reverse);
+}
+
+.site-brand,
+.site-brand strong {
+  font-weight: var(--grt-display-weight);
+  letter-spacing: var(--grt-display-tracking);
+}
+
+.grt-page-heading h1,
+.form-results-heading h1,
+.form-workspace-heading h1,
+.form-intro-copy h1,
+.form-instruction-head h1,
+.question-stage h1 {
+  font-size: var(--grt-page-title-size);
+  font-weight: var(--grt-display-weight);
+  letter-spacing: var(--grt-heading-tracking);
+  line-height: 0.94;
+}
+
+.workout-library-heading h1 {
+  font-size: var(--grt-display-size);
+  font-weight: var(--grt-display-weight);
+  letter-spacing: var(--grt-display-tracking);
+  line-height: 0.86;
+}
+
+.onboarding-intro-block h1,
+.grt-about-grid h2 {
+  font-weight: var(--grt-heading-weight);
+  letter-spacing: var(--grt-heading-tracking);
+}
+
+.home-action-block h2,
+.workout-detail h2,
+.result-feedback-card h2,
+.result-rep-breakdown-heading h3,
+.grt-form-workspace .panel-header h2,
+.grt-form-workspace .upload-zone h3,
+.grt-form-workspace .live-tracking-card h3,
+.grt-form-workspace .analysis-summary h3 {
+  font-weight: var(--grt-block-weight) !important;
+  letter-spacing: var(--grt-heading-tracking) !important;
+}
+
+.site-nav a,
+.site-menu-toggle,
+.site-mobile-menu a,
+.grt-primary-inverse,
+.onboarding-back,
+.onboarding-next,
+.unit-switch button,
+.workout-filters button,
+.workout-form-link,
+.result-new-upload,
+.result-fix-card .result-card-label-row button,
+.result-set-details > summary,
+.form-workspace-heading button,
+.grt-footer button {
+  font-weight: var(--grt-ui-weight);
+}
+
+.grt-overline,
+.block-label,
+.question-kicker,
+.step-label,
+.home-metrics-grid span,
+.result-score-block > p,
+.onboarding-progress > span,
+.large-number-field small,
+.paired-number-fields > label > span:first-child {
+  font-weight: 600;
+  letter-spacing: 0.085em;
+}
+
+.large-number-field input,
+.number-input-line input,
+.result-score-block > strong,
+.home-metrics-grid strong {
+  font-weight: 650;
+  letter-spacing: 0.003em;
+}
+
+.goal-grid button,
+.experience-list button,
+.profile-review dd,
+.home-action-block > strong,
+.workout-row-main strong,
+.workout-exercise-list strong {
+  font-weight: var(--grt-ui-weight);
+}
+
+/* Warm reverse text and paper controls */
+.onboarding-intro-block,
+.onboarding-frame,
+.question-stage h1,
+.profile-review dd,
+.onboarding-error,
+.home-action-block,
+.home-action-block h2,
+.home-action-block > strong,
+.grt-about-grid,
+.grt-about-grid h2,
+.workout-row,
+.workout-detail,
+.workout-detail h2,
+.form-intro-block,
+.form-instruction-block,
+.form-intro-copy h1,
+.form-instruction-head h1,
+.result-score-block,
+.result-score-block > strong {
+  color: var(--grt-reverse);
+}
+
+.large-number-field,
+.paired-number-fields > label,
+.goal-grid button,
+.experience-list button,
+.unit-switch button[data-active="true"],
+.grt-primary-inverse,
+.onboarding-next,
+.workout-form-link {
+  border-color: var(--grt-reverse);
+  background: var(--grt-paper);
+  color: var(--grt-ink);
+}
+
+.large-number-field input,
+.number-input-line input {
+  color: var(--grt-ink);
+}
+
+.large-number-field small,
+.paired-number-fields > label > span:first-child,
+.number-input-line small {
+  color: var(--grt-muted);
+}
+
+.goal-grid button[data-selected="true"],
+.experience-list button[data-selected="true"] {
+  border-color: var(--grt-reverse);
+  background: var(--grt-block);
+  color: var(--grt-reverse);
+  box-shadow: inset 0 0 0 1px var(--grt-reverse);
+}
+
+.onboarding-back {
+  border-color: rgb(247 245 239 / 0.28);
+  color: var(--grt-reverse);
+}
+
+.onboarding-progress,
+.onboarding-actions,
+.profile-review > div,
+.form-rule-preview,
+.form-rule-preview li,
+.form-instruction-list,
+.form-instruction-list li,
+.grt-about-grid li,
+.workout-detail-head,
+.workout-exercise-list li {
+  border-color: rgb(247 245 239 / 0.18);
+}
+
+.onboarding-progress > div {
+  background: rgb(247 245 239 / 0.18);
+}
+
+.onboarding-progress i {
+  background: var(--grt-reverse);
+}
+
+.question-kicker,
+.question-stage > p:not(.question-kicker),
+.onboarding-progress > span,
+.profile-review dt,
+.home-action-block .block-label,
+.home-action-block h2 + p,
+.grt-about-grid > p,
+.grt-about-grid li span,
+.workout-detail-head .block-label,
+.workout-detail h2 + p,
+.workout-exercise-list li > span,
+.workout-exercise-list small,
+.workout-detail-note,
+.form-intro-copy > p:last-child,
+.form-rule-preview span,
+.form-instruction-list span,
+.form-transparency-note,
+.grt-text-button,
+.result-video-meta,
+.result-score-block > p,
+.result-score-block > strong small,
+.result-score-block > span {
+  color: rgb(247 245 239 / 0.58);
+}
+
+.form-rule-preview strong,
+.form-instruction-list strong {
+  color: var(--grt-reverse);
+  font-weight: var(--grt-ui-weight);
+}
+
+/* Form-check internals use the same warm contrast system. */
+.grt-form-workspace .upload-zone h3,
+.grt-form-workspace .upload-zone .primary-action,
+.grt-form-workspace .camera-recorder h3,
+.grt-form-workspace .camera-recorder button,
+.grt-form-workspace .video-frame,
+.grt-form-workspace .live-tracking-card,
+.grt-form-workspace .analysis-summary,
+.grt-form-workspace .analysis-summary h3 {
+  color: var(--grt-reverse) !important;
+}
+
+.grt-form-workspace .upload-zone p,
+.grt-form-workspace .camera-recorder p,
+.grt-form-workspace .live-tracking-card p,
+.grt-form-workspace .analysis-summary p {
+  color: rgb(247 245 239 / 0.58) !important;
+}
+
+.grt-form-workspace .upload-zone .primary-action,
+.grt-form-workspace .camera-recorder .primary-action,
+.grt-form-workspace .video-frame .primary-action {
+  background: var(--grt-reverse) !important;
+  color: var(--grt-ink) !important;
+}
+
+.grt-form-workspace .upload-zone-active {
+  border-color: var(--grt-reverse);
+  background: #1a1a18;
+  box-shadow: inset 0 0 0 2px var(--grt-reverse);
+}
+
+.result-video-frame {
+  border-color: var(--grt-block);
+  background: var(--grt-block);
+}
+
+.result-video-label {
+  border-color: rgb(247 245 239 / 0.2);
+  background: rgb(16 16 15 / 0.78);
+  color: rgb(247 245 239 / 0.82);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .grt-primary-inverse:hover,
+  .workout-form-link:hover {
+    background: var(--grt-soft);
+  }
+
+  .result-new-upload:hover,
+  .grt-form-workspace .upload-zone:hover {
+    background: #1a1a18;
+  }
+}
+
+@media (max-width: 767px) {
+  .workout-library-heading h1 {
+    max-width: 100%;
+    font-size: clamp(3.25rem, 18vw, 4.5rem);
+    line-height: 0.88;
+  }
+}
+
+/* Grt v0.6-2 — normalized typography + aligned workout metadata */
+:root {
+  --font-sans: "Inter Tight Variable", "Inter Tight", Inter, system-ui,
+    -apple-system, "Segoe UI", sans-serif;
+  --type-display: clamp(3.25rem, 9vw, 10rem);
+  --type-page: clamp(2.25rem, 5vw, 5rem);
+  --type-section: clamp(1.75rem, 3vw, 3rem);
+  --type-block: clamp(1.25rem, 1.6vw, 1.75rem);
+  --type-body: clamp(1rem, calc(0.95rem + 0.25vw), 1.125rem);
+  --type-ui: 0.875rem;
+  --type-label: 0.75rem;
+  --weight-body: 400;
+  --weight-ui: 500;
+  --weight-heading: 600;
+  --weight-display: 700;
+  --leading-display: 0.88;
+  --leading-page: 0.94;
+  --leading-section: 1;
+  --leading-block: 1.12;
+  --leading-body: 1.45;
+  --leading-ui: 1.2;
+  --leading-label: 1.15;
+  --tracking-display: 0.008em;
+  --tracking-label: 0.08em;
+  --workout-meta-gutter: clamp(0.75rem, 1.5vw, 1.25rem);
+  --experience-option-padding-block: clamp(1rem, 1.5vw, 1.375rem);
+  --experience-copy-gap: clamp(0.5rem, 0.75vw, 0.625rem);
+
+  /* Compatibility aliases keep the existing layout rules on v0.6 tokens. */
+  --grt-display-size: var(--type-display);
+  --grt-page-title-size: var(--type-page);
+  --grt-display-weight: var(--weight-display);
+  --grt-heading-weight: var(--weight-heading);
+  --grt-block-weight: var(--weight-heading);
+  --grt-ui-weight: var(--weight-ui);
+  --grt-body-weight: var(--weight-body);
+  --grt-display-tracking: var(--tracking-display);
+  --grt-heading-tracking: normal;
+}
+
+html {
+  font-synthesis: none;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-sans);
+  font-kerning: normal;
+  font-optical-sizing: auto;
+}
+
+body {
+  font-size: var(--type-body);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  letter-spacing: normal;
+  font-variant-numeric: proportional-nums;
+}
+
+p,
+li,
+dt,
+dd {
+  font-size: var(--type-body);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  letter-spacing: normal;
+}
+
+p {
+  max-width: 62ch;
+}
+
+h1,
+h2,
+h3,
+strong,
+b {
+  font-weight: var(--weight-heading);
+  letter-spacing: normal;
+}
+
+h1 {
+  font-size: var(--type-page);
+  line-height: var(--leading-page);
+}
+
+h2 {
+  font-size: var(--type-section);
+  line-height: var(--leading-section);
+}
+
+h3 {
+  font-size: var(--type-block);
+  line-height: var(--leading-block);
+}
+
+/* Reusable semantic roles for component-level exceptions. */
+.grt-type-display {
+  font-size: var(--type-display) !important;
+  font-weight: var(--weight-display) !important;
+  line-height: var(--leading-display) !important;
+  letter-spacing: var(--tracking-display) !important;
+}
+
+.grt-type-page {
+  font-size: var(--type-page) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-page) !important;
+  letter-spacing: normal !important;
+}
+
+.grt-type-section {
+  font-size: var(--type-section) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-section) !important;
+  letter-spacing: normal !important;
+}
+
+.grt-type-block {
+  font-size: var(--type-block) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-block) !important;
+  letter-spacing: normal !important;
+}
+
+.grt-type-body {
+  max-width: 62ch;
+  font-size: var(--type-body) !important;
+  font-weight: var(--weight-body) !important;
+  line-height: var(--leading-body) !important;
+  letter-spacing: normal !important;
+}
+
+.grt-type-ui {
+  font-size: var(--type-ui) !important;
+  font-weight: var(--weight-ui) !important;
+  line-height: var(--leading-ui) !important;
+  letter-spacing: normal !important;
+}
+
+.grt-type-label {
+  font-size: var(--type-label) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-label) !important;
+  letter-spacing: var(--tracking-label) !important;
+}
+
+.grt-type-numeric {
+  font-weight: var(--weight-heading) !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* Display is reserved for rare brand/editorial moments. */
+.intro-wordmark,
+.grt-boot span {
+  font-size: var(--type-display) !important;
+  font-weight: var(--weight-display) !important;
+  line-height: var(--leading-display) !important;
+  letter-spacing: var(--tracking-display) !important;
+}
+
+/* Primary page titles use one stable role across every breakpoint. */
+.onboarding-intro-block h1,
+.question-stage h1,
+.grt-page-heading h1,
+.workout-library-heading h1,
+.form-results-heading h1,
+.form-workspace-heading h1,
+.form-intro-copy h1,
+.form-instruction-head h1 {
+  font-size: var(--type-page) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-page) !important;
+  letter-spacing: normal !important;
+}
+
+/* Section and block titles create hierarchy through scale, not extra weight. */
+.grt-about-grid h2 {
+  font-size: var(--type-section) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-section) !important;
+  letter-spacing: normal !important;
+}
+
+.site-brand,
+.site-brand strong,
+.grt-footer strong,
+.home-action-block h2,
+.workout-row-main strong,
+.workout-detail h2,
+.result-feedback-card h2,
+.result-rep-breakdown-heading h3,
+.grt-form-workspace .panel-header h2,
+.grt-form-workspace .upload-zone h3,
+.grt-form-workspace .camera-recorder h3,
+.grt-form-workspace .live-tracking-card h3,
+.grt-form-workspace .analysis-summary h3 {
+  font-size: var(--type-block) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-block) !important;
+  letter-spacing: normal !important;
+}
+
+/* Navigation, controls, and action text remain 14px at every viewport. */
+button,
+small,
+.site-nav a,
+.site-menu-toggle,
+.site-mobile-menu a,
+.grt-primary-inverse,
+.onboarding-back,
+.onboarding-next,
+.workout-form-link,
+.home-action-block > strong,
+.grt-footer button,
+.form-workspace-heading button,
+.result-set-details > summary,
+.technical-details > summary,
+.result-video-meta,
+.result-score-block > span,
+.workout-exercise-list strong,
+.result-good-card li strong {
+  font-size: var(--type-ui) !important;
+  font-weight: var(--weight-ui) !important;
+  line-height: var(--leading-ui) !important;
+  letter-spacing: normal !important;
+}
+
+/* Short structural labels are the only non-display text with added tracking. */
+.grt-overline,
+.block-label,
+.question-kicker,
+.step-label,
+.goal-index,
+.workout-row-index,
+.home-metrics-grid span,
+.result-score-block > p,
+.onboarding-progress > span,
+.profile-review dt,
+.large-number-field small,
+.paired-number-fields > label > span:first-child,
+.number-input-line small,
+.form-rule-preview span,
+.form-instruction-list span,
+.grt-about-grid li span,
+.workout-exercise-list li > span,
+.workflow-step-marker,
+.video-label,
+.scan-label,
+.result-video-label,
+.status-chip,
+.summary-metric p,
+.rep-metric-grid > div > p:first-child {
+  font-size: var(--type-label) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-label) !important;
+  letter-spacing: var(--tracking-label) !important;
+}
+
+/* Supporting copy uses one readable rhythm and bounded measure. */
+.grt-page-heading > p:last-of-type,
+.form-intro-copy > p:last-child,
+.question-stage > p:not(.question-kicker),
+.home-action-block h2 + p,
+.grt-about-grid > p,
+.workout-detail h2 + p,
+.workout-detail-note,
+.form-transparency-note,
+.review-disclaimer,
+.result-feedback-card > p:not(.block-label),
+.result-good-card li span,
+.result-empty-copy,
+.grt-form-workspace .upload-zone p,
+.grt-form-workspace .camera-recorder p,
+.quality-issues li,
+.technical-details-content p {
+  max-width: 62ch;
+  font-size: var(--type-body) !important;
+  font-weight: var(--weight-body) !important;
+  line-height: var(--leading-body) !important;
+  letter-spacing: normal !important;
+}
+
+/* Instruction text is body copy; emphasis comes from the containing grid. */
+.form-rule-preview strong,
+.form-instruction-list strong,
+.profile-review dd {
+  font-size: var(--type-body) !important;
+  font-weight: var(--weight-body) !important;
+  line-height: var(--leading-body) !important;
+  letter-spacing: normal !important;
+}
+
+/* Scores, measurements, inputs, and aligned metrics use tabular figures. */
+.large-number-field input,
+.number-input-line input,
+.result-score-block > strong {
+  font-size: var(--type-page) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.home-metrics-grid strong,
+.summary-metric strong {
+  font-size: var(--type-block) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.grt-angle-value {
+  font-size: var(--type-block) !important;
+}
+
+.grt-metric-value,
+.rep-card-header strong {
+  font-size: var(--type-ui) !important;
+}
+
+.timestamp-button,
+.rep-card-header strong,
+.progress-metrics strong {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* Workout rows use one stable metadata rail at tablet and desktop widths. */
+.workout-row {
+  grid-template-columns: 1.5rem minmax(0, 1fr) 1.5rem;
+  column-gap: 0.75rem;
+}
+
+.workout-row-main {
+  min-width: 0;
+}
+
+.workout-row-main strong,
+.workout-row-focus,
+.workout-row-mobile-meta {
+  overflow-wrap: anywhere;
+}
+
+.workout-row-duration,
+.workout-row-level {
+  display: none;
+  white-space: nowrap;
+}
+
+.workout-row-mobile-meta {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.workout-row-arrow {
+  justify-self: center;
+}
+
+@media (min-width: 768px) {
+  .workout-row {
+    grid-template-columns: 3rem minmax(0, 1fr) 5.5rem 7.5rem 2.5rem;
+    column-gap: 0;
+  }
+
+  .workout-row-main {
+    padding-inline-end: 1rem;
+  }
+
+  .workout-row-duration,
+  .workout-row-level {
+    display: block;
+  }
+
+  .workout-row-duration {
+    justify-self: end;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+
+  .workout-row-level {
+    justify-self: start;
+    padding-inline-start: var(--workout-meta-gutter);
+  }
+
+  .workout-row-mobile-meta {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .workout-row {
+    grid-template-columns: 4.5rem minmax(0, 1fr) 6.875rem 8.75rem 2.5rem;
+  }
+}
+
+/* Text-bearing controls grow under zoom and WCAG text-spacing overrides. */
+.primary-action,
+.grt-primary-inverse,
+.onboarding-back,
+.onboarding-next,
+.goal-grid button,
+.experience-list button,
+.unit-switch button,
+.workout-filters button,
+.workout-form-link,
+.result-new-upload,
+.form-workspace-heading button {
+  height: auto !important;
+  min-height: 2.75rem;
+}
+
+/* Experience choices stay comfortable with text zoom and longer translations. */
+.experience-list button {
+  padding-block: var(--experience-option-padding-block);
+}
+
+.experience-list .experience-copy {
+  display: grid;
+  min-width: 0;
+  row-gap: var(--experience-copy-gap);
 }

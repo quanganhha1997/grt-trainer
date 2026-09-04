@@ -366,7 +366,10 @@ function Onboarding({
                   return (
                     <button key={option.id} type="button" role="radio" aria-checked={selected} data-selected={selected} onClick={() => onUpdate({ experience: option.id })}>
                       <span className="goal-index">{String(index + 1).padStart(2, "0")}</span>
-                      <span><strong>{option.label}</strong><small>{option.detail}</small></span>
+                      <span className="experience-copy">
+                        <strong>{option.label}</strong>
+                        <small>{option.detail}</small>
+                      </span>
                       <span className="radio-mark" aria-hidden="true">{selected ? <Check className="size-4" /> : null}</span>
                     </button>
                   );
