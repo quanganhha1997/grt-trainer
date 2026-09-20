@@ -834,7 +834,7 @@ export function FormCheckWorkspace() {
           <ol className="form-rule-preview">
             <li><span>01</span><strong>Side view</strong></li>
             <li><span>02</span><strong>Full body</strong></li>
-            <li><span>03</span><strong>5–30 seconds</strong></li>
+            <li><span>03</span><strong>5 - 30 seconds</strong></li>
           </ol>
           <button type="button" className="grt-primary-inverse grt-pressable" onClick={() => setFlowStage("instructions")}>
             Continue <span aria-hidden="true">→</span>
@@ -848,7 +848,7 @@ export function FormCheckWorkspace() {
     const instructions = [
       "Use a side view",
       "Show your full body",
-      "Keep it 5–30 seconds",
+      "Keep it 5 - 30 seconds",
       "Record at least one full rep",
       "Use good lighting",
       "Keep the camera still",
@@ -970,7 +970,7 @@ export function FormCheckWorkspace() {
       <header className="grt-page-heading form-workspace-heading" aria-labelledby="page-heading">
         <p className="grt-overline">Form Check / Bodyweight squat</p>
         <h1 id="page-heading">Upload a side view.</h1>
-        <p>MP4, MOV, or WebM. 5–30 seconds.</p>
+        <p>MP4, MOV, or WebM. 5 - 30 seconds.</p>
         <button type="button" onClick={() => setFlowStage("instructions")}>Review instructions</button>
       </header>
 
@@ -1172,7 +1172,7 @@ export function FormCheckWorkspace() {
                     </div>
 
                     <p className="camera-privacy-note">
-                      Record 5–30 seconds. Audio is not recorded.
+                      Record 5 - 30 seconds. Audio is not recorded.
                     </p>
                   </div>
                 )}

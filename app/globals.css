@@ -5591,3 +5591,736 @@ small,
   min-width: 0;
   row-gap: var(--experience-copy-gap);
 }
+
+/* Grt program library — complete purchased plans, organized for browsing. */
+.workout-library-count {
+  margin: 0.35rem 0 0;
+  color: var(--grt-muted);
+  font-size: var(--type-label);
+  font-weight: var(--weight-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.workout-detail {
+  position: static;
+}
+
+.workout-detail-summary {
+  max-width: 58ch;
+  margin-top: 1rem !important;
+  color: rgb(255 255 255 / 0.68) !important;
+  font-size: var(--type-body) !important;
+  line-height: 1.5 !important;
+}
+
+.workout-program-meta {
+  display: grid;
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgb(255 255 255 / 0.2);
+  border-left: 1px solid rgb(255 255 255 / 0.2);
+}
+
+.workout-program-meta > div {
+  min-width: 0;
+  padding: 0.85rem;
+  border-right: 1px solid rgb(255 255 255 / 0.2);
+  border-bottom: 1px solid rgb(255 255 255 / 0.2);
+}
+
+.workout-program-meta dt,
+.program-phase-block .block-label,
+.program-session-block .block-label {
+  color: rgb(255 255 255 / 0.45);
+}
+
+.workout-program-meta dt {
+  font-size: var(--type-label);
+  font-weight: var(--weight-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.workout-program-meta dd {
+  margin-top: 0.35rem;
+  overflow-wrap: anywhere;
+  color: #ffffff;
+  font-size: var(--type-ui);
+  line-height: 1.35;
+}
+
+.program-phase-block,
+.program-session-block {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.program-selector {
+  display: flex;
+  margin-top: 0.75rem;
+  padding-bottom: 0.1rem;
+  gap: 0.4rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+}
+
+.program-selector button {
+  min-height: 2.75rem;
+  padding: 0.7rem 0.9rem;
+  flex: none;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  border-radius: 999px;
+  color: rgb(255 255 255 / 0.62);
+  font-size: var(--type-label);
+  font-weight: var(--weight-ui);
+  line-height: 1.2;
+  transition: background-color var(--grt-ui) ease, color var(--grt-ui) ease,
+    border-color var(--grt-ui) ease;
+}
+
+.program-selector button[data-active="true"] {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--grt-black);
+}
+
+.program-session-selector button {
+  border-radius: 0.12rem;
+  white-space: normal;
+}
+
+.program-session-panel {
+  border-bottom: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.program-session-heading {
+  display: flex;
+  padding: 1.35rem 1.25rem;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.program-session-heading p {
+  color: rgb(255 255 255 / 0.45);
+  font-size: var(--type-label);
+  font-weight: var(--weight-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.program-session-heading h3 {
+  margin-top: 0.4rem;
+  color: #ffffff;
+  font-size: var(--type-block);
+  font-weight: var(--weight-heading);
+  line-height: 1.08;
+}
+
+.program-session-heading .workout-form-link {
+  min-width: 10rem;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.program-table {
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.program-table-head,
+.program-exercise-row {
+  display: grid;
+  grid-template-columns: minmax(14rem, 2fr) 3rem minmax(5.5rem, 0.7fr) minmax(7rem, 1fr) 4.5rem;
+  column-gap: 0.75rem;
+}
+
+.program-table-head {
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  align-items: center;
+  color: rgb(255 255 255 / 0.42);
+  font-size: var(--type-label);
+  font-weight: var(--weight-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.program-exercise-row {
+  min-height: 4.5rem;
+  padding: 0.9rem 1.25rem;
+  align-items: center;
+  border-top: 1px solid rgb(255 255 255 / 0.14);
+  color: rgb(255 255 255 / 0.67);
+  font-size: var(--type-label);
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.program-exercise-name {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  gap: 0.55rem;
+}
+
+.program-exercise-name > span {
+  color: rgb(255 255 255 / 0.32);
+}
+
+.program-exercise-name strong {
+  display: block;
+  color: #ffffff;
+  font-size: var(--type-ui);
+  font-weight: var(--weight-ui);
+}
+
+.program-exercise-name small {
+  display: block;
+  max-width: 52ch;
+  margin-top: 0.35rem;
+  color: rgb(255 255 255 / 0.48);
+  font-size: var(--type-label);
+  line-height: 1.4;
+}
+
+.program-methods {
+  color: #ffffff;
+}
+
+.program-methods summary {
+  min-height: 3.75rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  font-size: var(--type-ui);
+  font-weight: var(--weight-ui);
+  list-style-position: inside;
+}
+
+.program-methods dl {
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.program-methods dl > div {
+  display: grid;
+  padding: 1rem 1.25rem;
+  grid-template-columns: minmax(5rem, 0.25fr) minmax(0, 1fr);
+  gap: 1rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.14);
+}
+
+.program-methods dl > div:last-child {
+  border-bottom: 0;
+}
+
+.program-methods dt {
+  font-size: var(--type-ui);
+  font-weight: var(--weight-heading);
+}
+
+.program-methods dd {
+  color: rgb(255 255 255 / 0.58);
+  font-size: var(--type-ui);
+  line-height: 1.45;
+}
+
+@media (max-width: 699px) {
+  .workout-program-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .program-session-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .program-session-heading .workout-form-link {
+    width: 100%;
+  }
+
+  .program-table-head {
+    display: none;
+  }
+
+  .program-exercise-row {
+    display: grid;
+    min-height: 0;
+    padding: 1.1rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.9rem 0.5rem;
+  }
+
+  .program-exercise-name {
+    grid-column: 1 / -1;
+  }
+
+  .program-exercise-row > span::before {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: rgb(255 255 255 / 0.38);
+    content: attr(data-label);
+    font-size: 0.625rem;
+    font-weight: var(--weight-ui);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .program-methods dl > div {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .workout-library-grid {
+    grid-template-columns: minmax(24rem, 0.78fr) minmax(0, 1.22fr);
+    gap: 0.75rem;
+  }
+
+  .workout-list {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .workout-row {
+    grid-template-columns: 2.25rem minmax(0, 1fr) 5.25rem 7.25rem 1.5rem;
+    padding-inline: 1rem;
+  }
+
+  .workout-row-main {
+    padding-inline-end: 0.75rem;
+  }
+
+  .workout-detail-head {
+    padding: clamp(1.5rem, 2.5vw, 2.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .program-selector button {
+    transition: none;
+  }
+}
+
+/* Grt program library v3 — program-level and exercise-level disclosure. */
+.workout-detail-head {
+  padding: 0;
+}
+
+.program-header-disclosure {
+  color: #ffffff;
+}
+
+.program-header-disclosure > summary {
+  display: grid;
+  min-height: 9rem;
+  padding: clamp(1.5rem, 2.5vw, 2.5rem);
+  grid-template-columns: minmax(0, 1fr) 1.25rem;
+  align-items: center;
+  gap: 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 140ms ease;
+}
+
+.program-header-disclosure > summary::-webkit-details-marker,
+.program-methods summary::-webkit-details-marker,
+.exercise-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.program-header-copy {
+  display: block;
+  min-width: 0;
+}
+
+.program-title {
+  display: block;
+  margin-top: 0;
+  color: #ffffff;
+  font-size: var(--type-section);
+  font-weight: var(--weight-heading);
+  line-height: var(--leading-section);
+  overflow-wrap: anywhere;
+}
+
+.program-facts {
+  display: flex;
+  margin-top: 1.35rem;
+  flex-wrap: wrap;
+  gap: 0.4rem 0;
+  color: rgb(255 255 255 / 0.64);
+  font-size: var(--type-ui);
+  line-height: var(--leading-ui);
+}
+
+.program-facts span {
+  display: inline;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.program-facts span + span::before {
+  content: "·";
+  padding: 0 0.55rem;
+  color: rgb(255 255 255 / 0.32);
+}
+
+.program-header-toggle {
+  justify-self: end;
+  color: rgb(255 255 255 / 0.46);
+  font-size: 1.1rem;
+  font-weight: var(--weight-body);
+  line-height: 1;
+  transition: transform 140ms var(--grt-ease-out), color 140ms ease;
+}
+
+.program-header-disclosure[open] .program-header-toggle {
+  color: #ffffff;
+  transform: rotate(45deg);
+}
+
+.program-header-details {
+  margin: 0 clamp(1.5rem, 2.5vw, 2.5rem);
+  padding: 1.25rem 0 clamp(1.5rem, 2.5vw, 2.5rem);
+  border-top: 1px solid rgb(255 255 255 / 0.2);
+}
+
+.program-header-details > p {
+  max-width: 58ch;
+  padding-bottom: 1rem;
+  color: rgb(255 255 255 / 0.66);
+  font-size: var(--type-ui);
+  line-height: 1.55;
+}
+
+.program-header-details dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+  border-left: 1px solid rgb(255 255 255 / 0.16);
+}
+
+.program-header-details dl > div {
+  padding: 0.8rem;
+  border-right: 1px solid rgb(255 255 255 / 0.16);
+  border-bottom: 1px solid rgb(255 255 255 / 0.16);
+}
+
+.program-header-details dt {
+  color: rgb(255 255 255 / 0.4);
+  font-size: var(--type-label);
+  font-weight: var(--weight-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.program-header-details dd {
+  margin-top: 0.35rem;
+  color: rgb(255 255 255 / 0.76);
+  font-size: var(--type-ui);
+  line-height: 1.35;
+}
+
+.program-methods summary {
+  display: flex;
+  min-height: 3.5rem;
+  padding: 0.9rem 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  font-size: var(--type-ui);
+  font-weight: var(--weight-ui);
+  list-style: none;
+}
+
+.program-methods summary::after {
+  content: "+";
+  color: rgb(255 255 255 / 0.48);
+  font-size: 1.1rem;
+  font-weight: var(--weight-body);
+  transition: transform 140ms var(--grt-ease-out);
+}
+
+.program-methods[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.program-choice-block {
+  padding: 1.15rem 1.25rem 1.25rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.program-step-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.program-step-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.program-step-heading > div > span {
+  color: rgb(255 255 255 / 0.34);
+  font-size: var(--type-label);
+  font-weight: var(--weight-ui);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.program-step-heading .block-label {
+  color: rgb(255 255 255 / 0.64);
+}
+
+.program-step-heading > small {
+  color: rgb(255 255 255 / 0.4);
+  font-size: var(--type-label);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.program-session-heading {
+  align-items: center;
+  background: rgb(255 255 255 / 0.035);
+}
+
+.program-session-heading h3 {
+  max-width: 30ch;
+}
+
+.program-session-heading h3 + small {
+  display: block;
+  margin-top: 0.55rem;
+  color: rgb(255 255 255 / 0.52);
+  font-size: var(--type-label);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.program-exercise-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+  list-style: none;
+}
+
+.program-exercise-list > li {
+  border-bottom: 1px solid rgb(255 255 255 / 0.15);
+}
+
+.program-exercise-list > li:last-child {
+  border-bottom: 0;
+}
+
+.exercise-disclosure {
+  color: #ffffff;
+}
+
+.exercise-disclosure > summary {
+  display: grid;
+  min-height: 5rem;
+  padding: 1rem 1.25rem;
+  grid-template-columns: 1.7rem minmax(10rem, 1.35fr) minmax(9rem, 1fr) 4.5rem 1.25rem;
+  align-items: center;
+  column-gap: 0.85rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 140ms ease;
+}
+
+.exercise-index {
+  color: rgb(255 255 255 / 0.32);
+  font-size: var(--type-label);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.exercise-disclosure > summary > strong {
+  overflow-wrap: anywhere;
+  font-size: var(--type-ui);
+  font-weight: var(--weight-ui);
+  line-height: 1.35;
+}
+
+.exercise-prescription {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.85rem;
+  color: rgb(255 255 255 / 0.48);
+  font-size: var(--type-label);
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.exercise-prescription > span {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.exercise-prescription b {
+  color: rgb(255 255 255 / 0.84);
+  font-size: var(--type-ui);
+  font-weight: var(--weight-ui);
+  line-height: 1.35;
+}
+
+.exercise-rest {
+  color: rgb(255 255 255 / 0.74);
+  font-size: var(--type-label);
+  line-height: 1.2;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.exercise-rest small {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: rgb(255 255 255 / 0.34);
+  font-size: 0.625rem;
+  font-weight: var(--weight-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.exercise-toggle {
+  justify-self: end;
+  color: rgb(255 255 255 / 0.46);
+  font-size: 1.1rem;
+  font-weight: var(--weight-body);
+  transition: transform 140ms var(--grt-ease-out), color 140ms ease;
+}
+
+.exercise-disclosure[open] .exercise-toggle {
+  color: #ffffff;
+  transform: rotate(45deg);
+}
+
+.exercise-disclosure[open] > summary {
+  background: rgb(255 255 255 / 0.05);
+}
+
+.exercise-details {
+  display: grid;
+  padding: 0 1.25rem 1.25rem 3.8rem;
+  grid-template-columns: minmax(7rem, 0.35fr) minmax(0, 1fr);
+  gap: 1rem;
+  background: rgb(255 255 255 / 0.05);
+}
+
+.exercise-details > div {
+  padding-top: 1rem;
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+}
+
+.exercise-details span {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: rgb(255 255 255 / 0.4);
+  font-size: 0.625rem;
+  font-weight: var(--weight-ui);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.exercise-details strong,
+.exercise-details p {
+  color: rgb(255 255 255 / 0.7);
+  font-size: var(--type-label);
+  font-weight: var(--weight-body);
+  line-height: 1.5;
+}
+
+.exercise-details strong {
+  font-weight: var(--weight-ui);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.program-methods > summary {
+  padding-inline: 1.25rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .program-header-disclosure > summary:hover {
+    background: rgb(255 255 255 / 0.045);
+  }
+
+  .program-header-disclosure > summary:hover .program-header-toggle {
+    color: #ffffff;
+  }
+
+  .exercise-disclosure > summary:hover {
+    background: rgb(255 255 255 / 0.045);
+  }
+}
+
+@media (max-width: 699px) {
+  .program-header-disclosure > summary {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) 1.25rem;
+    gap: 0.85rem;
+  }
+
+  .program-header-details dl {
+    grid-template-columns: 1fr;
+  }
+
+  .program-step-heading {
+    align-items: flex-start;
+  }
+
+  .program-step-heading > small {
+    padding-top: 0.1rem;
+    text-align: right;
+  }
+
+  .exercise-disclosure > summary {
+    min-height: 0;
+    padding: 1rem;
+    grid-template-columns: 1.5rem minmax(0, 1fr) 1.25rem;
+    grid-template-areas:
+      "index name toggle"
+      ". prescription toggle"
+      ". rest toggle";
+    gap: 0.65rem 0.55rem;
+  }
+
+  .exercise-index { grid-area: index; }
+  .exercise-disclosure > summary > strong { grid-area: name; }
+  .exercise-prescription {
+    grid-area: prescription;
+  }
+  .exercise-rest {
+    display: flex;
+    grid-area: rest;
+    align-items: baseline;
+    gap: 0.45rem;
+  }
+  .exercise-rest small { margin: 0; }
+  .exercise-toggle { grid-area: toggle; }
+
+  .exercise-details {
+    padding: 0 1rem 1rem 3.05rem;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .program-header-disclosure > summary,
+  .program-header-toggle,
+  .program-methods summary::after,
+  .exercise-toggle {
+    transition: none;
+  }
+}

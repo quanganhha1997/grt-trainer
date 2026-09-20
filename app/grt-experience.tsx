@@ -415,7 +415,7 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
 
 function PersonalizedHome({ profile, onReset }: { profile: SessionProfile; onReset: () => void }) {
   const recommendation = getRecommendation(profile);
-  const weeklyDays = profile.experience === "advanced" ? "4–5" : profile.experience === "intermediate" ? "3–4" : "3";
+  const weeklyDays = profile.experience === "advanced" ? "4 - 5" : profile.experience === "intermediate" ? "3 - 4" : "3";
 
   return (
     <main className="grt-app min-h-screen">

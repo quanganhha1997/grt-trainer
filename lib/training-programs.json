@@ -1,0 +1,4950 @@
+[
+  {
+    "id": "strength-density",
+    "name": "Strength",
+    "split": "Upper Body A / B",
+    "schedule": "2 days / week",
+    "weeks": "12 weeks",
+    "level": "Intermediate",
+    "focus": "Strength and upper-body density",
+    "summary": "Complete two focused sessions on non-consecutive training days, progressing the main lifts with reverse-pyramid sets.",
+    "phases": [
+      {
+        "id": "strength-density-main",
+        "label": "Week 1 - 12",
+        "weeks": "Week 1 - 12",
+        "sessions": [
+          {
+            "id": "strength-density-a",
+            "label": "Day 1 · Chest / Shoulders / Triceps",
+            "exercises": [
+              {
+                "name": "Incline Barbell Bench Press",
+                "sets": "3",
+                "reps": "5 / 6 / 8",
+                "effort": "RPT",
+                "rest": "3 min",
+                "note": "Reduce the load by roughly 10% after each set."
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "3",
+                "reps": "5 / 6 / 8",
+                "effort": "RPT",
+                "rest": "3 min",
+                "note": "Reduce the load by roughly 10% after each set."
+              },
+              {
+                "name": "Lateral Raise",
+                "sets": "3",
+                "reps": "8 - 12",
+                "effort": "Controlled",
+                "rest": "2 min"
+              },
+              {
+                "name": "Skull Crusher",
+                "sets": "3",
+                "reps": "6 - 10",
+                "effort": "Controlled",
+                "rest": "2 min"
+              }
+            ]
+          },
+          {
+            "id": "strength-density-b",
+            "label": "Day 2 · Back / Biceps / Traps / Legs",
+            "exercises": [
+              {
+                "name": "Weighted Chin-up",
+                "sets": "3",
+                "reps": "5 / 6 / 8",
+                "effort": "RPT",
+                "rest": "3 min",
+                "note": "Reduce the load by roughly 10% after each set."
+              },
+              {
+                "name": "Hang Clean or Sumo Deadlift",
+                "sets": "3",
+                "reps": "5 / 6 / 8",
+                "effort": "RPT",
+                "rest": "3 min",
+                "note": "Choose one variation and keep it consistent."
+              },
+              {
+                "name": "Bent-over Flye",
+                "sets": "3",
+                "reps": "8 - 12",
+                "effort": "Controlled",
+                "rest": "2 min"
+              },
+              {
+                "name": "Barbell Curl",
+                "sets": "3",
+                "reps": "6 - 10",
+                "effort": "Controlled",
+                "rest": "2 min"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "methodNotes": [
+      {
+        "term": "RPT",
+        "definition": "Reverse-pyramid training: begin with the heaviest set, then reduce load as reps increase."
+      },
+      {
+        "term": "Progression",
+        "definition": "Add load after completing the top of the prescribed rep range with clean form."
+      }
+    ]
+  },
+  {
+    "id": "ten-week-full-body",
+    "name": "Full Body",
+    "split": "Five Full-body Sessions",
+    "schedule": "5 days / week",
+    "weeks": "10 weeks",
+    "level": "Intermediate",
+    "focus": "Full-body hypertrophy",
+    "summary": "A five-day full-body progression organized into six blocks with exact sets, reps, rest periods, and repetitions in reserve.",
+    "phases": [
+      {
+        "id": "ten-week-full-body-phase-1",
+        "label": "Week 1 - 2",
+        "weeks": "Week 1 - 2",
+        "sessions": [
+          {
+            "id": "ten-week-full-body-23-1",
+            "label": "Day 1 · Full Body",
+            "exercises": [
+              {
+                "name": "Bulgarian Split Squat",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Dumbbell Shoulder Press",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Pulldown",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Dumbbell Curl",
+                "sets": "3",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Decline Crunch",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-23-2",
+            "label": "Day 2 · Full Body",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "T-Bar Row",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Seated Calf Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Overhead Extension",
+                "sets": "3",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-23-3",
+            "label": "Day 3 · Full Body",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Deadlift",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Upright Row",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Reverse Crunch",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-23-4",
+            "label": "Day 4 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Standing Cable Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Rear-delt Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Smith Machine Calf Raise",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Dumbbell Shrug",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-23-5",
+            "label": "Day 5 · Full Body",
+            "exercises": [
+              {
+                "name": "Chest-supported Row",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Barbell Hip Thrust",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Preacher Curl",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 3 / 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 3 / 2",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ten-week-full-body-phase-2",
+        "label": "Week 3 - 4",
+        "weeks": "Week 3 - 4",
+        "sessions": [
+          {
+            "id": "ten-week-full-body-24-1",
+            "label": "Day 1 · Full Body",
+            "exercises": [
+              {
+                "name": "Bulgarian Split Squat",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Dumbbell Shoulder Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Pulldown",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Dumbbell Curl",
+                "sets": "3",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Decline Crunch",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-24-2",
+            "label": "Day 2 · Full Body",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "T-Bar Row",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Seated Calf Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Overhead Extension",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-24-3",
+            "label": "Day 3 · Full Body",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Deadlift",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Upright Row",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Reverse Crunch",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-24-4",
+            "label": "Day 4 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Standing Cable Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Rear-delt Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Smith Machine Calf Raise",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Dumbbell Shrug",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-24-5",
+            "label": "Day 5 · Full Body",
+            "exercises": [
+              {
+                "name": "Chest-supported Row",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Barbell Hip Thrust",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "EZ-Bar Preacher Curl",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ten-week-full-body-phase-3",
+        "label": "Week 5 - 6",
+        "weeks": "Week 5 - 6",
+        "sessions": [
+          {
+            "id": "ten-week-full-body-25-1",
+            "label": "Day 1 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 2",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Seated Smith Machine Press",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Close-grip Lat Pulldown",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Alternating Leg Curl",
+                "sets": "3",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Dumbbell Hammer Curl",
+                "sets": "3",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-25-2",
+            "label": "Day 2 · Full Body",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Chest-supported Row",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Alternating Leg Extension",
+                "sets": "4",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Single-leg Dumbbell Calf Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Roman Chair Leg Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR -",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Lateral Raise",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-25-3",
+            "label": "Day 3 · Full Body",
+            "exercises": [
+              {
+                "name": "Deadlift",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "3",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Dumbbell Skull Crusher",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Abductor Machine",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-25-4",
+            "label": "Day 4 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-leg Press",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Incline Cable Flye",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Seated Calf Press",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-25-5",
+            "label": "Day 5 · Full Body",
+            "exercises": [
+              {
+                "name": "Pendlay Row",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Decline Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ten-week-full-body-phase-4",
+        "label": "Week 7 - 8",
+        "weeks": "Week 7 - 8",
+        "sessions": [
+          {
+            "id": "ten-week-full-body-26-1",
+            "label": "Day 1 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Seated Smith Machine Press",
+                "sets": "4",
+                "reps": "10 / 10 / 10 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Close-grip Lat Pulldown",
+                "sets": "4",
+                "reps": "10 / 10 / 10 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Alternating Leg Curl",
+                "sets": "3",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Dumbbell Hammer Curl",
+                "sets": "3",
+                "reps": "10 / 10 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-26-2",
+            "label": "Day 2 · Full Body",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Chest-supported Row",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Alternating Leg Extension",
+                "sets": "4",
+                "reps": "20 / 20 / 20 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "1 min"
+              },
+              {
+                "name": "Single-leg Dumbbell Calf Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Roman Chair Leg Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR -",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Lateral Raise",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-26-3",
+            "label": "Day 3 · Full Body",
+            "exercises": [
+              {
+                "name": "Deadlift",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "3",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Dumbbell Skull Crusher",
+                "sets": "2",
+                "reps": "12 / MR",
+                "effort": "RIR 1 / 0",
+                "rest": "1 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Abductor Machine",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-26-4",
+            "label": "Day 4 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-leg Press",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Incline Cable Flye",
+                "sets": "4",
+                "reps": "12 / 12 / 12 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "1 min"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "4",
+                "reps": "15 / 15 / 15 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "1 min"
+              },
+              {
+                "name": "Seated Calf Press",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-26-5",
+            "label": "Day 5 · Full Body",
+            "exercises": [
+              {
+                "name": "Pendlay Row",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "10 / 10 / 10 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "3",
+                "reps": "10 / 10 / MR",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 min"
+              },
+              {
+                "name": "Decline Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ten-week-full-body-phase-5",
+        "label": "Week 9",
+        "weeks": "Week 9",
+        "sessions": [
+          {
+            "id": "ten-week-full-body-27-1",
+            "label": "Day 1 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-arm Dumbbell Row",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Incline Cable Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Kneeling Cable Crunch",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-27-2",
+            "label": "Day 2 · Full Body",
+            "exercises": [
+              {
+                "name": "Deadlift",
+                "sets": "3",
+                "reps": "3",
+                "effort": "RIR 2 / 1 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Smith Machine Calf Raise",
+                "sets": "4",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-27-3",
+            "label": "Day 3 · Full Body",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Pushdown (Drop Set)",
+                "sets": "3",
+                "reps": "10 / MR / MR",
+                "effort": "RIR 1 / 0 / 0",
+                "rest": "0 min"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-27-4",
+            "label": "Day 4 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "3",
+                "reps": "3",
+                "effort": "RIR 2 / 1 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Chest-supported Row",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Reverse Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Abductor Machine",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-27-5",
+            "label": "Day 5 · Full Body",
+            "exercises": [
+              {
+                "name": "Deadlift",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "2",
+                "reps": "MR-1 / MR",
+                "effort": "RIR 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer (Drop Set)",
+                "sets": "3",
+                "reps": "12 / MR / MR",
+                "effort": "RIR 1 / 0 / 0",
+                "rest": "0 min"
+              },
+              {
+                "name": "Seated Calf Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Upright Row",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ten-week-full-body-phase-6",
+        "label": "Week 10",
+        "weeks": "Week 10",
+        "sessions": [
+          {
+            "id": "ten-week-full-body-28-1",
+            "label": "Day 1 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "3",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-arm Dumbbell Row",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Incline Cable Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Kneeling Cable Crunch",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-28-2",
+            "label": "Day 2 · Full Body",
+            "exercises": [
+              {
+                "name": "Deadlift",
+                "sets": "3",
+                "reps": "3",
+                "effort": "RIR 2 / 1 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Smith Machine Calf Raise",
+                "sets": "4",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-28-3",
+            "label": "Day 3 · Full Body",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Pushdown (Drop Set)",
+                "sets": "3",
+                "reps": "10 / MR / MR",
+                "effort": "RIR 1 / 0 / 0",
+                "rest": "0 min"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-28-4",
+            "label": "Day 4 · Full Body",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "3",
+                "reps": "3",
+                "effort": "RIR 2 / 1 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Chest-supported Row",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Reverse Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Abductor Machine",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          },
+          {
+            "id": "ten-week-full-body-28-5",
+            "label": "Day 5 · Full Body",
+            "exercises": [
+              {
+                "name": "Deadlift",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "3 - 4 min"
+              },
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "3",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "2",
+                "reps": "MR-1 / MR",
+                "effort": "RIR 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer (Drop Set)",
+                "sets": "3",
+                "reps": "12 / MR / MR",
+                "effort": "RIR 1 / 0 / 0",
+                "rest": "0 min"
+              },
+              {
+                "name": "Seated Calf Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Cable Upright Row",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "methodNotes": [
+      {
+        "term": "RIR",
+        "definition": "Repetitions in reserve: the estimated reps left before failure."
+      },
+      {
+        "term": "Progression",
+        "definition": "Follow the block sequence in order; later blocks adjust exercise selection, volume, and effort."
+      }
+    ]
+  },
+  {
+    "id": "three-phase-physique",
+    "name": "Physique",
+    "split": "Three-day Rotating Split",
+    "schedule": "3 days / week",
+    "weeks": "12 weeks",
+    "level": "Intermediate",
+    "focus": "Strength, muscle, and density",
+    "summary": "A three-phase Monday, Wednesday, and Friday plan that moves from reverse-pyramid strength work into higher-density training.",
+    "phases": [
+      {
+        "id": "three-phase-1",
+        "label": "Week 1 - 4",
+        "weeks": "Week 1 - 4",
+        "sessions": [
+          {
+            "id": "three-phase-1-1",
+            "label": "Day 1 · Shoulders / Back / Triceps",
+            "exercises": [
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "3",
+                "reps": "4 - 6 / 4 - 6 / 6 - 8",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Weighted Chin-up",
+                "sets": "3",
+                "reps": "5 / 6 / 8",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Single-arm Overhead Triceps Extension",
+                "sets": "3",
+                "reps": "8 - 10 / 8 - 10 / 10 - 12",
+                "effort": "RPT",
+                "rest": "2 min"
+              },
+              {
+                "name": "Leaning Lateral Raise",
+                "sets": "4",
+                "reps": "12 - 15 / 4 - 5 / 4 - 5 / 4 - 5",
+                "effort": "Rest-pause",
+                "rest": "15 - 20 sec"
+              }
+            ]
+          },
+          {
+            "id": "three-phase-1-2",
+            "label": "Day 2 · Legs / Posterior Chain",
+            "exercises": [
+              {
+                "name": "Bulgarian Split Squat",
+                "sets": "3",
+                "reps": "6 - 8 / 6 - 8 / 8 - 10",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "4",
+                "reps": "10 - 12",
+                "effort": "Rep training",
+                "rest": "2 min"
+              },
+              {
+                "name": "Single-leg Hip Thrust",
+                "sets": "3",
+                "reps": "10 - 12",
+                "effort": "Controlled",
+                "rest": "2 min"
+              },
+              {
+                "name": "Dumbbell Leaning Shrug",
+                "sets": "4",
+                "reps": "10 - 15",
+                "effort": "Controlled",
+                "rest": "2 min"
+              }
+            ]
+          },
+          {
+            "id": "three-phase-1-3",
+            "label": "Day 3 · Chest / Arms / Rear Delts",
+            "exercises": [
+              {
+                "name": "Incline Barbell Bench Press",
+                "sets": "4",
+                "reps": "4 - 5 / 5 - 6 / 6 - 8 / 8 - 10",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Pinned Hammer Curl",
+                "sets": "4",
+                "reps": "4 - 6 / 4 - 6 / 6 - 8 / 6 - 8",
+                "effort": "RPT",
+                "rest": "2 min"
+              },
+              {
+                "name": "Bent-over Flye",
+                "sets": "4",
+                "reps": "12 - 15 + 4 - 5 / 4 - 5 / 4 - 5",
+                "effort": "Rest-pause",
+                "rest": "15 - 20 sec"
+              },
+              {
+                "name": "Hanging Knee Raise",
+                "sets": "4",
+                "reps": "8 - 12",
+                "effort": "Controlled",
+                "rest": "1 - 2 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "three-phase-2",
+        "label": "Week 5 - 8",
+        "weeks": "Week 5 - 8",
+        "sessions": [
+          {
+            "id": "three-phase-2-1",
+            "label": "Day 1 · Shoulders / Back / Triceps",
+            "exercises": [
+              {
+                "name": "Dumbbell Shoulder Press",
+                "sets": "3",
+                "reps": "5 - 8 / 8 - 10 / 8 - 10",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "2",
+                "reps": "6 / 8",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Sternum Pull-up",
+                "sets": "2",
+                "reps": "8 - 12",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "4",
+                "reps": "6 - 8 / 8 - 10 / 10 - 12 / 10 - 12",
+                "effort": "RPT",
+                "rest": "2 min"
+              },
+              {
+                "name": "Upright Row",
+                "sets": "4",
+                "reps": "10 - 15",
+                "effort": "Rep training",
+                "rest": "2 min"
+              }
+            ]
+          },
+          {
+            "id": "three-phase-2-2",
+            "label": "Day 2 · Legs / Traps",
+            "exercises": [
+              {
+                "name": "Machine Calf Raise",
+                "sets": "4",
+                "reps": "12 - 15",
+                "effort": "Controlled",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Sumo or Trap-bar Deadlift",
+                "sets": "5",
+                "reps": "6",
+                "effort": "Rep training",
+                "rest": "3 min"
+              },
+              {
+                "name": "Walking Lunge",
+                "sets": "3",
+                "reps": "8 - 12 / leg",
+                "effort": "Controlled",
+                "rest": "2 min"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "3",
+                "reps": "10 - 12",
+                "effort": "Controlled",
+                "rest": "2 min"
+              },
+              {
+                "name": "Single-arm Cable Shrug",
+                "sets": "4",
+                "reps": "12 - 15",
+                "effort": "Controlled",
+                "rest": "2 min"
+              }
+            ]
+          },
+          {
+            "id": "three-phase-2-3",
+            "label": "Day 3 · Chest / Arms / Core",
+            "exercises": [
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "3",
+                "reps": "5 - 8 / 8 - 10 / 8 - 10",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Weighted Dip",
+                "sets": "2",
+                "reps": "6 / 8",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Incline Curl",
+                "sets": "3",
+                "reps": "5 - 8 / 6 - 8 / 8 - 10",
+                "effort": "RPT",
+                "rest": "2 min"
+              },
+              {
+                "name": "EZ-Bar Reverse Curl",
+                "sets": "3",
+                "reps": "8 - 12",
+                "effort": "Controlled",
+                "rest": "2 min"
+              },
+              {
+                "name": "Cable Face Pull",
+                "sets": "4",
+                "reps": "15 - 20 + 6 - 8 / 6 - 8 / 6 - 8",
+                "effort": "Rest-pause",
+                "rest": "15 - 20 sec"
+              },
+              {
+                "name": "Hanging Straight-leg Raise",
+                "sets": "4",
+                "reps": "6 - 12",
+                "effort": "Controlled",
+                "rest": "1 - 2 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "three-phase-3",
+        "label": "Week 9 - 12",
+        "weeks": "Week 9 - 12",
+        "sessions": [
+          {
+            "id": "three-phase-3-1",
+            "label": "Day 1 · Shoulders / Back / Triceps",
+            "exercises": [
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "2",
+                "reps": "6 - 8",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Bradford or Arnold Press",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              },
+              {
+                "name": "Weighted Chin-up",
+                "sets": "2",
+                "reps": "6 - 8 / 8 - 10",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Pendlay Row",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              },
+              {
+                "name": "Single-arm Rope Pushdown",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              },
+              {
+                "name": "Incline Lateral Raise",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              }
+            ]
+          },
+          {
+            "id": "three-phase-3-2",
+            "label": "Day 2 · Legs / Traps",
+            "exercises": [
+              {
+                "name": "Calf Raise",
+                "sets": "4",
+                "reps": "15 - 20",
+                "effort": "Controlled",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Bulgarian Split Squat",
+                "sets": "4",
+                "reps": "8 - 10",
+                "effort": "Rep training",
+                "rest": "2 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "4",
+                "reps": "8 - 10",
+                "effort": "Rep training",
+                "rest": "2 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              },
+              {
+                "name": "Dumbbell Leaning Shrug",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              }
+            ]
+          },
+          {
+            "id": "three-phase-3-3",
+            "label": "Day 3 · Chest / Arms / Rear Delts",
+            "exercises": [
+              {
+                "name": "Incline Barbell Bench Press",
+                "sets": "2",
+                "reps": "6 - 8",
+                "effort": "RPT",
+                "rest": "3 min"
+              },
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              },
+              {
+                "name": "Concentration Curl",
+                "sets": "3",
+                "reps": "4 - 6 / 6 - 8 / 8 - 10",
+                "effort": "RPT",
+                "rest": "2 min"
+              },
+              {
+                "name": "Pinwheel Curl",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              },
+              {
+                "name": "Incline Flye or Cable Crossover",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              },
+              {
+                "name": "Rear-delt Flye",
+                "sets": "4",
+                "reps": "6 - 10",
+                "effort": "Density",
+                "rest": "30 sec"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "methodNotes": [
+      {
+        "term": "RPT",
+        "definition": "Reverse-pyramid training: start heavy, then reduce load as the target reps rise."
+      },
+      {
+        "term": "Rest-pause",
+        "definition": "Complete an initial set, take a brief pause, then perform short mini-sets."
+      },
+      {
+        "term": "Density",
+        "definition": "Use short rests to complete the prescribed work in less time while keeping form controlled."
+      },
+      {
+        "term": "Rep training",
+        "definition": "Build load gradually while staying inside the assigned repetition range."
+      }
+    ]
+  },
+  {
+    "id": "intermediate-push-pull-legs",
+    "name": "Push / Pull / Legs",
+    "split": "Push / Pull / Legs",
+    "schedule": "6 days / week",
+    "weeks": "10 weeks",
+    "level": "Intermediate",
+    "focus": "High-frequency hypertrophy",
+    "summary": "A six-day push, pull, and legs rotation across six progressive blocks, with an additional core session to place during the week.",
+    "phases": [
+      {
+        "id": "intermediate-push-pull-legs-phase-1",
+        "label": "Week 1 - 2",
+        "weeks": "Week 1 - 2",
+        "sessions": [
+          {
+            "id": "intermediate-push-pull-legs-23-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Smith Machine Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Machine Pectoral Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Upright Row",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Skull Crusher",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-23-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Cable Row",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Machine Rear-delt Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Curl",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-23-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Leg Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Standing Machine Calf Raise",
+                "sets": "4",
+                "reps": "15 / 15 / 15 / 10",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Walking Lunge",
+                "sets": "2",
+                "reps": "30",
+                "effort": "RIR 3 / 2",
+                "rest": "2 - 3 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-23-4",
+            "label": "Day 4 · Push",
+            "exercises": [
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Pectoral Flye",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Machine Lateral Raise",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Skull Crusher",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-23-5",
+            "label": "Day 5 · Pull",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Bent-over Smith Machine Row",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Smith Machine Shrug",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Hammer Curl",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Single-arm Cable Curl",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-23-6",
+            "label": "Day 6 · Legs",
+            "exercises": [
+              {
+                "name": "Hack Squat",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Hip Thrust",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Machine Calf Raise",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Hyperextension",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-23-7",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Kneeling Cable Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2",
+                "rest": "1 min"
+              },
+              {
+                "name": "Roman Chair Leg Raise",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "intermediate-push-pull-legs-phase-2",
+        "label": "Week 3 - 4",
+        "weeks": "Week 3 - 4",
+        "sessions": [
+          {
+            "id": "intermediate-push-pull-legs-24-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Smith Machine Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Machine Pectoral Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Upright Row",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Skull Crusher",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-24-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Cable Row",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Machine Rear-delt Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Curl",
+                "sets": "2",
+                "reps": "30",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-24-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Sumo Deadlift",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 3 / 2 / 2",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Walking Lunge",
+                "sets": "3",
+                "reps": "20",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Standing Machine Calf Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Hyperextension",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 3 / 2",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-24-4",
+            "label": "Day 4 · Push",
+            "exercises": [
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Pectoral Flye",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Skull Crusher",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-24-5",
+            "label": "Day 5 · Pull",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Bent-over Smith Machine Row",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Smith Machine Shrug",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Hammer Curl",
+                "sets": "2",
+                "reps": "24",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Single-arm Cable Curl",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-24-6",
+            "label": "Day 6 · Legs",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 2",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Single-leg Curl",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Machine Calf Raise",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-24-7",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Kneeling Cable Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Roman Chair Leg Raise",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "intermediate-push-pull-legs-phase-3",
+        "label": "Week 5 - 6",
+        "weeks": "Week 5 - 6",
+        "sessions": [
+          {
+            "id": "intermediate-push-pull-legs-25-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Dumbbell Shoulder Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Pectoral Flye",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Monkey Shrug",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Skull Crusher",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 1 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-25-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-arm Dumbbell Row",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Rear-delt Flye",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Hammer Curl",
+                "sets": "3",
+                "reps": "24",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Preacher Curl",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "Alternate min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-25-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Sumo Deadlift",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Bulgarian Split Squat",
+                "sets": "3",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Smith Machine Calf Raise",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Hyperextension",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-25-4",
+            "label": "Day 4 · Push",
+            "exercises": [
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Machine Pectoral Flye",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "French Press",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "10",
+                "effort": "RIR 3 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-25-5",
+            "label": "Day 5 · Pull",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Pendlay Row",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Barbell Shrug",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Curl",
+                "sets": "2",
+                "reps": "24",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-25-6",
+            "label": "Day 6 · Legs",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Single-leg Curl",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Machine Calf Raise",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "2",
+                "reps": "10",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-25-7",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Decline Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Reverse Crunch",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "intermediate-push-pull-legs-phase-4",
+        "label": "Week 7",
+        "weeks": "Week 7",
+        "sessions": [
+          {
+            "id": "intermediate-push-pull-legs-26-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Dumbbell Shoulder Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Pectoral Flye",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Monkey Shrug",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Skull Crusher",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 1 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-26-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-arm Dumbbell Row",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Rear-delt Flye",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Hammer Curl",
+                "sets": "3",
+                "reps": "24",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Preacher Curl",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-26-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Sumo Deadlift",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Bulgarian Split Squat",
+                "sets": "3",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pull-Through",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Smith Machine Calf Raise",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-26-4",
+            "label": "Day 4 · Push",
+            "exercises": [
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Machine Pectoral Flye",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Egyptian Cable Raise",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "Alternate min"
+              },
+              {
+                "name": "French Press",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "10",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-26-5",
+            "label": "Day 5 · Pull",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Pendlay Row",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Barbell Shrug",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Curl",
+                "sets": "2",
+                "reps": "24",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-26-6",
+            "label": "Day 6 · Legs",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 2 / 1",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-leg Extension",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Machine Calf Raise",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-26-7",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Decline Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "1 min"
+              },
+              {
+                "name": "Reverse Crunch",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "intermediate-push-pull-legs-phase-5",
+        "label": "Week 8 - 9",
+        "weeks": "Week 8 - 9",
+        "sessions": [
+          {
+            "id": "intermediate-push-pull-legs-27-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Incline Cable Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Upright Row",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Skull Crusher",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 2 / 0",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-27-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Dumbbell Seal Row",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Rear-delt Flye",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Hammer Curl",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Preacher Curl",
+                "sets": "2",
+                "reps": "15",
+                "effort": "RIR 2 / 0",
+                "rest": "Alternate min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-27-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Sumo Deadlift",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Single-leg Press",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pull-Through",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Standing Machine Calf Raise",
+                "sets": "4",
+                "reps": "15",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-27-4",
+            "label": "Day 4 · Push",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Pectoral Flye",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Egyptian Cable Raise",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "Alternate min"
+              },
+              {
+                "name": "Dumbbell Skull Crusher",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-27-5",
+            "label": "Day 5 · Pull",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Pendlay Row",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Shrug",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Hammer Curl",
+                "sets": "3",
+                "reps": "24",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Barbell Concentration Curl",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-27-6",
+            "label": "Day 6 · Legs",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-leg Extension",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Machine Calf Raise",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "2",
+                "reps": "12",
+                "effort": "RIR 2 / 1",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-27-7",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Standing Oblique Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "Alternate min"
+              },
+              {
+                "name": "Kneeling Cable Crunch",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "intermediate-push-pull-legs-phase-6",
+        "label": "Week 10",
+        "weeks": "Week 10",
+        "sessions": [
+          {
+            "id": "intermediate-push-pull-legs-28-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Incline Cable Flye",
+                "sets": "3",
+                "reps": "15 / 15 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Upright Row",
+                "sets": "3",
+                "reps": "15 / 15 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Skull Crusher",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "15 / MR",
+                "effort": "RIR 1 / 0",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-28-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Dumbbell Seal Row",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "15 / 15 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Rear-delt Flye",
+                "sets": "3",
+                "reps": "15 / 15 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Hammer Curl",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "EZ-Bar Preacher Curl",
+                "sets": "2",
+                "reps": "15 / MR",
+                "effort": "RIR 1 / 0",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-28-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Sumo Deadlift",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Single-leg Press",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "3",
+                "reps": "15 / 15 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "15 / 15 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pull-Through",
+                "sets": "3",
+                "reps": "15",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Standing Machine Calf Raise",
+                "sets": "4",
+                "reps": "15 / 15 / 15 / MR",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "2 - 3 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-28-4",
+            "label": "Day 4 · Push",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Cable Pectoral Flye",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Skull Crusher",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Cable Pushdown",
+                "sets": "2",
+                "reps": "12 / MR",
+                "effort": "RIR 1 / 0",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-28-5",
+            "label": "Day 5 · Pull",
+            "exercises": [
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Pendlay Row",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Shrug",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Dumbbell Hammer Curl",
+                "sets": "3",
+                "reps": "24",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Barbell Concentration Curl",
+                "sets": "2",
+                "reps": "12 / MR",
+                "effort": "RIR 1 / 0",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-28-6",
+            "label": "Day 6 · Legs",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "4",
+                "reps": "4",
+                "effort": "RIR 2 / 1 / 1 / 0",
+                "rest": "2 - 4 min"
+              },
+              {
+                "name": "Romanian Deadlift",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 2 / 2 / 1",
+                "rest": "2 - 3 min"
+              },
+              {
+                "name": "Single-leg Extension",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Leg Curl",
+                "sets": "3",
+                "reps": "12 / 12 / MR",
+                "effort": "RIR 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Seated Calf Raise",
+                "sets": "4",
+                "reps": "12 / 12 / 12 / MR",
+                "effort": "RIR 2 / 2 / 1 / 0",
+                "rest": "1 - 2 min"
+              },
+              {
+                "name": "Adductor Machine",
+                "sets": "2",
+                "reps": "12 / MR",
+                "effort": "RIR 1 / 0",
+                "rest": "1 - 2 min"
+              }
+            ]
+          },
+          {
+            "id": "intermediate-push-pull-legs-28-7",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Standing Oblique Crunch",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 2 / 1 / 1 / 1",
+                "rest": "Alternate min"
+              },
+              {
+                "name": "Kneeling Cable Crunch",
+                "sets": "4",
+                "reps": "10 / 10 / 10 / MR",
+                "effort": "RIR 2 / 1 / 0 / 0",
+                "rest": "1 min"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "methodNotes": [
+      {
+        "term": "RIR",
+        "definition": "Repetitions in reserve: the estimated reps left before failure."
+      },
+      {
+        "term": "Core",
+        "definition": "Place the core session at least once each week where recovery and scheduling allow."
+      }
+    ]
+  },
+  {
+    "id": "sixteen-week-progressive-split",
+    "name": "Progressive Split",
+    "split": "Push / Pull / Legs + Upper / Lower",
+    "schedule": "5 days / week",
+    "weeks": "16 weeks",
+    "level": "Intermediate",
+    "focus": "Progressive hypertrophy",
+    "summary": "Four progressive four-week blocks combining push, pull, legs, upper-body, and lower-body training with prescribed reps in reserve.",
+    "phases": [
+      {
+        "id": "progressive-phase-1",
+        "label": "Week 1 - 4",
+        "weeks": "Week 1 - 4",
+        "sessions": [
+          {
+            "id": "progressive-1-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "120 sec",
+                "note": "standing barbell overhead press"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "4",
+                "reps": "12 / 12 / 12 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "use the same weight for final set as you used for 3rd set, but go to failure"
+              },
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Dumbbell Skull Crusher",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "3",
+                "reps": "MR",
+                "effort": "RIR 0",
+                "rest": "120",
+                "note": "3 sets to failure with bodyweight. If you can do less than 5, use assistance"
+              }
+            ]
+          },
+          {
+            "id": "progressive-1-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "120 sec",
+                "note": "Mid width hammer grip if available. Otherwise, mid width pronated (overhand)"
+              },
+              {
+                "name": "T-Bar Row",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "120 sec",
+                "note": "Chest supported if available, otherwise use free bar"
+              },
+              {
+                "name": "Sumo Deadlift",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "180 sec"
+              },
+              {
+                "name": "Dumbbell Rear-delt Flye",
+                "sets": "3",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "90 sec",
+                "note": "Sit on the end of a bench and lean over so DBs rest on the floor behind feet"
+              },
+              {
+                "name": "Single-arm Dumbbell Curl",
+                "sets": "4",
+                "reps": "24",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Perform alternately - left, right, left, right etc. 24 total reps = 12 each side"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "3",
+                "reps": "MR",
+                "effort": "RIR 0",
+                "rest": "120",
+                "note": "3 sets to failure with bodyweight. If you can do less than 4, use assistance"
+              }
+            ]
+          },
+          {
+            "id": "progressive-1-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "180 sec"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Seated or lying - whichever you prefer"
+              },
+              {
+                "name": "Smith Machine Calf Raise",
+                "sets": "4",
+                "reps": "12",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Weighted Lunge",
+                "sets": "3",
+                "reps": "30",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "180 sec",
+                "note": "Perform walking, for 30 total reps (15 'steps' each side)"
+              }
+            ]
+          },
+          {
+            "id": "progressive-1-4",
+            "label": "Day 4 · Upper Body",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 1 / 1",
+                "rest": "120 sec",
+                "note": "Ideally use a spotter if you're getting that close to failure (RPE 9)"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 1 / 1",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 1 / 1",
+                "rest": "120 sec",
+                "note": "Narrow grip"
+              },
+              {
+                "name": "Cable Lateral Raise",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Perform single arm or both at the same time - whichever you prefer"
+              },
+              {
+                "name": "Optional Biceps Isolation",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Can be any bicep isolation you choose"
+              },
+              {
+                "name": "Optional Triceps Isolation",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Can be any tricep isolation you choose"
+              }
+            ]
+          },
+          {
+            "id": "progressive-1-5",
+            "label": "Day 5 · Lower Body",
+            "exercises": [
+              {
+                "name": "Deadlift",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 1 / 1",
+                "rest": "180 sec",
+                "note": "Conventional or Sumo - as preferred"
+              },
+              {
+                "name": "Single-leg Press",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "60 sec",
+                "note": "Rest 60 seconds between switching sides"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Optional Calf Isolation",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Can be any calf exercise you choose."
+              }
+            ]
+          },
+          {
+            "id": "progressive-1-core",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Decline Crunch",
+                "sets": "4",
+                "reps": "15 / 15 / 15 / MR",
+                "effort": "RIR N/A / N/A / N/A / 0",
+                "rest": "60 sec",
+                "note": "Use decline bench with legs locked in. Increase angle to increase difficulty."
+              },
+              {
+                "name": "Reverse Crunch",
+                "sets": "4",
+                "reps": "10 / 10 / 8 / MR",
+                "effort": "RIR N/A / N/A / N/A / 0",
+                "rest": "60 sec",
+                "note": "Turn around on same bench (but have it less steep)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "progressive-phase-2",
+        "label": "Week 5 - 8",
+        "weeks": "Week 5 - 8",
+        "sessions": [
+          {
+            "id": "progressive-2-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "5",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2 / 0",
+                "rest": "120 sec",
+                "note": "standing barbell overhead press"
+              },
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "5",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Cable Lateral Raise",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "use narrow cables if possible, otherwise perform one arm at a time"
+              },
+              {
+                "name": "Incline Dumbbell Bench Press",
+                "sets": "3",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Cable Triceps Extension",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "perform over head"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "3",
+                "reps": "MR",
+                "effort": "RIR 0",
+                "rest": "120",
+                "note": "3 sets to failure with bodyweight. If you can do less than 5, use assistance"
+              }
+            ]
+          },
+          {
+            "id": "progressive-2-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "5",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2 / 0",
+                "rest": "120 sec",
+                "note": "Mid width hammer grip if available. Otherwise, mid width pronated (overhand)"
+              },
+              {
+                "name": "T-Bar Row",
+                "sets": "5",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "120 sec",
+                "note": "Chest supported if available, otherwise use free bar"
+              },
+              {
+                "name": "Sumo Deadlift",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "180 sec"
+              },
+              {
+                "name": "Cable Rear-delt Flye",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "60 sec",
+                "note": "Sit on the end of a bench and lean over so DBs rest on the floor behind feet"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Perform alternately - left, right, left, right etc. 24 total reps = 12 each side"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "3",
+                "reps": "MR",
+                "effort": "RIR 0",
+                "rest": "120",
+                "note": "3 sets to failure with bodyweight. If you can do less than 4, use assistance"
+              }
+            ]
+          },
+          {
+            "id": "progressive-2-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "5",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "180 sec"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "use same weight for final set to failure as you used for third set"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Seated or lying - whichever you prefer"
+              },
+              {
+                "name": "Smith Machine Calf Raise",
+                "sets": "4",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Weighted Lunge",
+                "sets": "3",
+                "reps": "24",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "180 sec",
+                "note": "Perform walking, for 24 total reps (12 'steps' each side)"
+              }
+            ]
+          },
+          {
+            "id": "progressive-2-4",
+            "label": "Day 4 · Upper Body",
+            "exercises": [
+              {
+                "name": "Flat Barbell Bench Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 1 / 1",
+                "rest": "120 sec",
+                "note": "Ideally use a spotter if you're getting that close to failure (RPE 9)"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 1 / 1",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 1 / 1",
+                "rest": "120 sec",
+                "note": "Narrow grip"
+              },
+              {
+                "name": "Cable Lateral Raise",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Perform single arm or both at the same time - whichever you prefer"
+              },
+              {
+                "name": "Optional Biceps Isolation",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Can be any bicep isolation you choose"
+              },
+              {
+                "name": "Optional Triceps Isolation",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Can be any tricep isolation you choose"
+              }
+            ]
+          },
+          {
+            "id": "progressive-2-5",
+            "label": "Day 5 · Lower Body",
+            "exercises": [
+              {
+                "name": "Deadlift",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 2 / 2 / 2 / 1 / 1",
+                "rest": "180 sec",
+                "note": "Conventional or Sumo - as preferred"
+              },
+              {
+                "name": "Single-leg Press",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 2 / 2 / 2 / 2 / 1",
+                "rest": "60 sec",
+                "note": "Rest between switching sides"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Optional Calf Isolation",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR",
+                "effort": "RIR 2 / 2 / 2 / 0",
+                "rest": "90 sec"
+              }
+            ]
+          },
+          {
+            "id": "progressive-2-core",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Decline Crunch",
+                "sets": "4",
+                "reps": "15 / 15 / 15 / MR",
+                "effort": "RIR N/A / N/A / N/A / 0",
+                "rest": "60 sec",
+                "note": "Use decline bench with legs locked in. Increase angle to increase difficulty."
+              },
+              {
+                "name": "Reverse Crunch",
+                "sets": "4",
+                "reps": "10 / 10 / 8 / MR",
+                "effort": "RIR N/A / N/A / N/A / 0",
+                "rest": "60 sec",
+                "note": "Turn around on same bench (but have it less steep)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "progressive-phase-3",
+        "label": "Week 9 - 12",
+        "weeks": "Week 9 - 12",
+        "sessions": [
+          {
+            "id": "progressive-3-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "5",
+                "reps": "10 / 10 / 10 / 10 / 5",
+                "effort": "RIR 3 / 2 / 2 / 1 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "5",
+                "reps": "10 / 10 / 10 / 10 / 5",
+                "effort": "RIR 3 / 2 / 2 / 1 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "4",
+                "reps": "10 / 10 / 10 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Incline Barbell Bench Press",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "120 sec",
+                "note": "Assisted, body weight, or weighted - as appropriate to hit reps & RPE"
+              },
+              {
+                "name": "Cable Triceps Extension",
+                "sets": "3",
+                "reps": "10 / 10 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90",
+                "note": "perform standing upright (leaning slightly forward) with rope in front of you"
+              }
+            ]
+          },
+          {
+            "id": "progressive-3-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Sumo Deadlift",
+                "sets": "5",
+                "reps": "10 / 10 / 10 / 10 / 5",
+                "effort": "RIR 3 / 2 / 2 / 1 / 1",
+                "rest": "180 sec"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "120 sec",
+                "note": "Use assisted machine if you can't perform 10 reps."
+              },
+              {
+                "name": "Single-arm Dumbbell Row",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "60 sec",
+                "note": "Perform one side, take 60 seconds rest, then perform other side (and repeat)"
+              },
+              {
+                "name": "Lat Prayer",
+                "sets": "3",
+                "reps": "10 / 10 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Use high cable & rope attachment"
+              },
+              {
+                "name": "Dumbbell Rear-delt Flye",
+                "sets": "3",
+                "reps": "10 / 10 / MR",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "60 sec"
+              },
+              {
+                "name": "Dumbbell Preacher Curl",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90"
+              }
+            ]
+          },
+          {
+            "id": "progressive-3-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Dumbbell Bulgarian Split Squat",
+                "sets": "4",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "120 sec",
+                "note": "Perform with one leg, rest for 120 seconds, then perform with other leg"
+              },
+              {
+                "name": "Leg Extension",
+                "sets": "4",
+                "reps": "10 / 10 / 10 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Barbell Hip Thrust",
+                "sets": "3",
+                "reps": "10",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Leg Curl",
+                "sets": "4",
+                "reps": "10 / 10 / 10 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Seated Calf Press",
+                "sets": "4",
+                "reps": "10 / 10 / 10 / MR",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "60 sec"
+              }
+            ]
+          },
+          {
+            "id": "progressive-3-4",
+            "label": "Day 4 · Upper Body",
+            "exercises": [
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "6 / 6 / 6 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "120 sec",
+                "note": "Wide grip"
+              },
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "6 / 6 / 6 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Seated Dumbbell Shoulder Press",
+                "sets": "4",
+                "reps": "6 / 6 / 6 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Optional Biceps Isolation",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Optional Triceps Isolation",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec"
+              }
+            ]
+          },
+          {
+            "id": "progressive-3-5",
+            "label": "Day 5 · Lower Body",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "180 sec",
+                "note": "Use a rack with the safety bars in."
+              },
+              {
+                "name": "Deadlift",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "180 sec"
+              },
+              {
+                "name": "Single-leg Curl",
+                "sets": "3",
+                "reps": "16 / 16 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Perform alternately - 16 total reps = 8 each side"
+              },
+              {
+                "name": "Single-leg Extension",
+                "sets": "3",
+                "reps": "16 / 16 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Perform alternately - 16 total reps = 8 each side"
+              },
+              {
+                "name": "Optional Calf Isolation",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "90 sec"
+              }
+            ]
+          },
+          {
+            "id": "progressive-3-core",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Kneeling Cable Crunch",
+                "sets": "5",
+                "reps": "12 / 12 / 12 / 12 / MR",
+                "effort": "RIR 3 / 2 / 2 / 2 / 0",
+                "rest": "60 sec",
+                "note": "Use rope attachment and hold either side of head, facing towards cables"
+              },
+              {
+                "name": "Roman Chair Leg Raise",
+                "sets": "5",
+                "reps": "12 / 12 / 12 / MR / MR",
+                "effort": "RIR N/A / N/A / N/A / 0 / 0",
+                "rest": "60 sec"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "progressive-phase-4",
+        "label": "Week 13 - 16",
+        "weeks": "Week 13 - 16",
+        "sessions": [
+          {
+            "id": "progressive-4-1",
+            "label": "Day 1 · Push",
+            "exercises": [
+              {
+                "name": "Barbell Overhead Press",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 1 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 1 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Incline Barbell Bench Press",
+                "sets": "4",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 1",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Machine Lateral Raise",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "60 sec",
+                "note": "If no machine available, use cables"
+              },
+              {
+                "name": "Triceps Dip",
+                "sets": "3",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "120 sec",
+                "note": "weighted if possible"
+              },
+              {
+                "name": "Dumbbell Skull Crusher",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "60"
+              }
+            ]
+          },
+          {
+            "id": "progressive-4-2",
+            "label": "Day 2 · Pull",
+            "exercises": [
+              {
+                "name": "Sumo Deadlift",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "180 sec"
+              },
+              {
+                "name": "Pull-up",
+                "sets": "3",
+                "reps": "6 / 6 / MR",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "120 sec",
+                "note": "weighted if possible"
+              },
+              {
+                "name": "Lat Pulldown",
+                "sets": "3",
+                "reps": "6 / 6 / MR-DS",
+                "effort": "RIR 2 / 2 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Machine Row",
+                "sets": "4",
+                "reps": "6 / 6 / 6 / MR-DS",
+                "effort": "RIR 3 / 2 / 2 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Dumbbell Rear-delt Flye",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "60 sec"
+              },
+              {
+                "name": "EZ-Bar Curl",
+                "sets": "5",
+                "reps": "6 / 6 / 6 / 6 / MR",
+                "effort": "RIR 3 / 2 / 2 / 1 / 0",
+                "rest": "90"
+              }
+            ]
+          },
+          {
+            "id": "progressive-4-3",
+            "label": "Day 3 · Legs",
+            "exercises": [
+              {
+                "name": "Dumbbell Bulgarian Split Squat",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "120 sec",
+                "note": "rest between switching sides"
+              },
+              {
+                "name": "Single-leg Extension",
+                "sets": "4",
+                "reps": "12 / 12 / 12 / MR-DS",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "90 sec",
+                "note": "perform alternately; left, right, left, right. 12 reps total = 6 each side"
+              },
+              {
+                "name": "Single-leg Curl",
+                "sets": "4",
+                "reps": "12 / 12 / 12 / MR-DS",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "90 sec",
+                "note": "seated is likely better when using a heavier weight (but still optional)"
+              },
+              {
+                "name": "Seated Calf Press",
+                "sets": "5",
+                "reps": "6",
+                "effort": "RIR 3 / 2 / 2 / 2 / 0",
+                "rest": "60 sec",
+                "note": "knees bent but fixed throughout the rep"
+              },
+              {
+                "name": "Leg Press",
+                "sets": "3",
+                "reps": "8",
+                "effort": "RIR 3 / 2 / 1",
+                "rest": "120 sec"
+              }
+            ]
+          },
+          {
+            "id": "progressive-4-4",
+            "label": "Day 4 · Upper Body",
+            "exercises": [
+              {
+                "name": "Flat Dumbbell Bench Press",
+                "sets": "4",
+                "reps": "6 / 6 / 6 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Lat Pulldown",
+                "sets": "4",
+                "reps": "6 / 6 / 6 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "120 sec",
+                "note": "Neutral Grip"
+              },
+              {
+                "name": "Seated Dumbbell Shoulder Press",
+                "sets": "4",
+                "reps": "6 / 6 / 6 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "120 sec"
+              },
+              {
+                "name": "Dumbbell Lateral Raise",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Optional Biceps Isolation",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec"
+              },
+              {
+                "name": "Optional Triceps Isolation",
+                "sets": "3",
+                "reps": "8 / 8 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec"
+              }
+            ]
+          },
+          {
+            "id": "progressive-4-5",
+            "label": "Day 5 · Lower Body",
+            "exercises": [
+              {
+                "name": "Barbell Back Squat",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "180 sec",
+                "note": "Use a rack with the safety bars in."
+              },
+              {
+                "name": "Deadlift",
+                "sets": "5",
+                "reps": "5",
+                "effort": "RIR 3 / 2 / 2 / 2 / 1",
+                "rest": "180 sec"
+              },
+              {
+                "name": "Single-leg Curl",
+                "sets": "3",
+                "reps": "16 / 16 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Perform alternately - 16 total reps = 8 each side"
+              },
+              {
+                "name": "Single-leg Extension",
+                "sets": "3",
+                "reps": "16 / 16 / MR-DS",
+                "effort": "RIR 3 / 2 / 0",
+                "rest": "90 sec",
+                "note": "Perform alternately - 16 total reps = 8 each side"
+              },
+              {
+                "name": "Optional Calf Isolation",
+                "sets": "4",
+                "reps": "8 / 8 / 8 / MR",
+                "effort": "RIR 3 / 2 / 1 / 0",
+                "rest": "90 sec"
+              }
+            ]
+          },
+          {
+            "id": "progressive-4-core",
+            "label": "Core",
+            "exercises": [
+              {
+                "name": "Kneeling Cable Crunch",
+                "sets": "5",
+                "reps": "12 / 12 / 12 / 12 / MR",
+                "effort": "RIR 3 / 2 / 2 / 2 / 0",
+                "rest": "60 sec",
+                "note": "Use rope attachment and hold either side of head, facing towards cables"
+              },
+              {
+                "name": "Roman Chair Leg Raise",
+                "sets": "5",
+                "reps": "12 / 12 / 12 / MR / MR",
+                "effort": "RIR N/A / N/A / N/A / 0 / 0",
+                "rest": "60 sec"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "methodNotes": [
+      {
+        "term": "RIR",
+        "definition": "Repetitions in reserve: the estimated reps left before failure."
+      },
+      {
+        "term": "MR",
+        "definition": "Max reps: continue the set for as many controlled repetitions as possible."
+      },
+      {
+        "term": "MR-DS",
+        "definition": "Max-rep drop set: reach technical failure, reduce load, and continue."
+      }
+    ]
+  }
+]

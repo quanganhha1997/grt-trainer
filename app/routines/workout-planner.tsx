@@ -2,118 +2,76 @@
 
 import { useMemo, useState } from "react";
 import { sitePath } from "@/lib/site-path";
+import { TRAINING_PROGRAMS, type TrainingProgram } from "@/lib/training-programs";
 
-type WorkoutCategory = "Strength" | "Full body" | "Mobility";
+const FILTERS = ["All", "2 days", "3 days", "5 days", "6 days"] as const;
+type ProgramFilter = (typeof FILTERS)[number];
+type ProgramSession = TrainingProgram["phases"][number]["sessions"][number];
 
-type Workout = {
-  id: string;
-  name: string;
-  category: WorkoutCategory;
-  duration: string;
-  level: string;
-  focus: string;
-  exercises: Array<{ name: string; prescription: string }>;
-};
+function matchesFilter(program: TrainingProgram, filter: ProgramFilter) {
+  return filter === "All" || program.schedule.startsWith(filter);
+}
 
-const WORKOUTS: Workout[] = [
-  {
-    id: "lower-strength",
-    name: "Lower Strength",
-    category: "Strength",
-    duration: "40 min",
-    level: "Beginner",
-    focus: "Leg strength and control",
-    exercises: [
-      { name: "Bodyweight squat", prescription: "3 × 10" },
-      { name: "Reverse lunge", prescription: "3 × 8 / side" },
-      { name: "Glute bridge", prescription: "3 × 12" },
-      { name: "Forearm plank", prescription: "3 × 30 sec" },
-    ],
-  },
-  {
-    id: "upper-push-pull",
-    name: "Upper Push + Pull",
-    category: "Strength",
-    duration: "35 min",
-    level: "Intermediate",
-    focus: "Chest, back, and arms",
-    exercises: [
-      { name: "Push-up", prescription: "4 × 8" },
-      { name: "Dumbbell row", prescription: "4 × 10 / side" },
-      { name: "Forearm plank", prescription: "3 × 40 sec" },
-    ],
-  },
-  {
-    id: "full-body-base",
-    name: "Full Body Base",
-    category: "Full body",
-    duration: "32 min",
-    level: "All levels",
-    focus: "Repeatable full-body work",
-    exercises: [
-      { name: "Bodyweight squat", prescription: "3 × 10" },
-      { name: "Push-up", prescription: "3 × 8" },
-      { name: "Dumbbell row", prescription: "3 × 10 / side" },
-      { name: "Glute bridge", prescription: "3 × 12" },
-    ],
-  },
-  {
-    id: "controlled-conditioning",
-    name: "Controlled Conditioning",
-    category: "Full body",
-    duration: "28 min",
-    level: "Intermediate",
-    focus: "Strength with steady pacing",
-    exercises: [
-      { name: "Reverse lunge", prescription: "3 × 10 / side" },
-      { name: "Push-up", prescription: "3 × 10" },
-      { name: "Bodyweight squat", prescription: "3 × 12" },
-      { name: "Forearm plank", prescription: "3 × 30 sec" },
-    ],
-  },
-  {
-    id: "mobility-reset",
-    name: "Mobility Reset",
-    category: "Mobility",
-    duration: "20 min",
-    level: "All levels",
-    focus: "Hips, trunk, and positions",
-    exercises: [
-      { name: "Glute bridge", prescription: "3 × 12" },
-      { name: "Reverse lunge", prescription: "3 × 6 / side" },
-      { name: "Forearm plank", prescription: "3 × 25 sec" },
-    ],
-  },
-];
+function includesSquat(session: ProgramSession) {
+  return session.exercises.some((exercise) => /\bsquat\b/i.test(exercise.name));
+}
 
-const FILTERS = ["All", "Strength", "Full body", "Mobility"] as const;
-type WorkoutFilter = (typeof FILTERS)[number];
+function getWorkingSetCount(session: ProgramSession) {
+  return session.exercises.reduce((total, exercise) => {
+    const setCount = Number.parseInt(exercise.sets, 10);
+    return total + (Number.isFinite(setCount) ? setCount : 0);
+  }, 0);
+}
 
 export function WorkoutPlanner() {
-  const [filter, setFilter] = useState<WorkoutFilter>("All");
-  const [selectedId, setSelectedId] = useState(WORKOUTS[0].id);
+  const [filter, setFilter] = useState<ProgramFilter>("All");
+  const [selectedId, setSelectedId] = useState(TRAINING_PROGRAMS[0].id);
+  const [phaseId, setPhaseId] = useState(TRAINING_PROGRAMS[0].phases[0].id);
+  const [sessionId, setSessionId] = useState(TRAINING_PROGRAMS[0].phases[0].sessions[0].id);
 
-  const filteredWorkouts = useMemo(
-    () => WORKOUTS.filter((workout) => filter === "All" || workout.category === filter),
+  const filteredPrograms = useMemo(
+    () => TRAINING_PROGRAMS.filter((program) => matchesFilter(program, filter)),
     [filter],
   );
-  const selectedWorkout = WORKOUTS.find((workout) => workout.id === selectedId) ?? filteredWorkouts[0] ?? WORKOUTS[0];
+  const selectedProgram = TRAINING_PROGRAMS.find((program) => program.id === selectedId)
+    ?? filteredPrograms[0]
+    ?? TRAINING_PROGRAMS[0];
+  const selectedPhase = selectedProgram.phases.find((phase) => phase.id === phaseId)
+    ?? selectedProgram.phases[0];
+  const selectedSession = selectedPhase.sessions.find((session) => session.id === sessionId)
+    ?? selectedPhase.sessions[0];
+  const selectedPhaseIndex = selectedProgram.phases.findIndex((phase) => phase.id === selectedPhase.id);
+  const selectedSessionIndex = selectedPhase.sessions.findIndex((session) => session.id === selectedSession.id);
+  const workingSetCount = getWorkingSetCount(selectedSession);
 
-  function chooseFilter(nextFilter: WorkoutFilter) {
+  function chooseProgram(program: TrainingProgram) {
+    setSelectedId(program.id);
+    setPhaseId(program.phases[0].id);
+    setSessionId(program.phases[0].sessions[0].id);
+  }
+
+  function chooseFilter(nextFilter: ProgramFilter) {
     setFilter(nextFilter);
-    const firstMatch = WORKOUTS.find((workout) => nextFilter === "All" || workout.category === nextFilter);
-    if (firstMatch) setSelectedId(firstMatch.id);
+    const firstMatch = TRAINING_PROGRAMS.find((program) => matchesFilter(program, nextFilter));
+    if (firstMatch) chooseProgram(firstMatch);
+  }
+
+  function choosePhase(nextPhaseId: string) {
+    const nextPhase = selectedProgram.phases.find((phase) => phase.id === nextPhaseId);
+    if (!nextPhase) return;
+    setPhaseId(nextPhase.id);
+    setSessionId(nextPhase.sessions[0].id);
   }
 
   return (
     <div className="grt-page-shell workout-library-shell grt-page-entry">
       <header className="grt-page-heading workout-library-heading">
-        <p className="grt-overline">Library</p>
+        <p className="grt-overline">Program library</p>
         <h1>Workouts.</h1>
-        <p>Simple routines. Effective training.</p>
+        <p>Choose a program. Follow one day at a time.</p>
       </header>
 
-      <div className="workout-filters" role="group" aria-label="Filter workouts">
+      <div className="workout-filters" role="group" aria-label="Filter programs by training days">
         {FILTERS.map((item) => (
           <button
             key={item}
@@ -128,52 +86,175 @@ export function WorkoutPlanner() {
       </div>
 
       <div className="workout-library-grid">
-        <section className="workout-list" aria-label="Workout routines">
-          {filteredWorkouts.map((workout, index) => (
+        <section className="workout-list" aria-label="Training programs">
+          {filteredPrograms.map((program, index) => (
             <button
-              key={workout.id}
+              key={program.id}
               type="button"
               className="workout-row grt-row grt-pressable"
-              data-selected={selectedWorkout.id === workout.id}
-              aria-pressed={selectedWorkout.id === workout.id}
-              onClick={() => setSelectedId(workout.id)}
+              data-selected={selectedProgram.id === program.id}
+              aria-pressed={selectedProgram.id === program.id}
+              onClick={() => chooseProgram(program)}
             >
               <span className="workout-row-index">{String(index + 1).padStart(2, "0")}</span>
               <span className="workout-row-main">
-                <strong>{workout.name}</strong>
-                <small className="workout-row-focus">{workout.focus}</small>
-                <small className="workout-row-mobile-meta">{workout.duration} · {workout.level}</small>
+                <strong>{program.name}</strong>
+                <small className="workout-row-focus">{program.focus}</small>
+                <small className="workout-row-mobile-meta">{program.weeks} · {program.schedule}</small>
               </span>
-              <span className="workout-row-duration">{workout.duration}</span>
-              <span className="workout-row-level">{workout.level}</span>
+              <span className="workout-row-duration">{program.weeks}</span>
+              <span className="workout-row-level">{program.schedule}</span>
               <span className="grt-row-arrow workout-row-arrow" aria-hidden="true">→</span>
             </button>
           ))}
+          <p className="workout-library-count">
+            {filteredPrograms.length} {filteredPrograms.length === 1 ? "program" : "programs"}
+          </p>
         </section>
 
-        <aside className="workout-detail" aria-labelledby="selected-workout-heading">
-          <div className="workout-detail-head">
-            <p className="block-label">Selected routine</p>
-            <h2 id="selected-workout-heading">{selectedWorkout.name}</h2>
-            <p>{selectedWorkout.duration} · {selectedWorkout.level}</p>
-          </div>
-          {selectedWorkout.exercises.some((exercise) => exercise.name === "Bodyweight squat") ? (
-            <a href={sitePath("/form-check")} className="workout-form-link grt-pressable">
-              Check squat form <span aria-hidden="true">→</span>
-            </a>
-          ) : (
-            <p className="workout-detail-note">Move with control. Rest as needed.</p>
-          )}
-          <ol className="workout-exercise-list">
-            {selectedWorkout.exercises.map((exercise, index) => (
-              <li key={`${selectedWorkout.id}-${exercise.name}`}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{exercise.name}</strong>
-                <small>{exercise.prescription}</small>
-              </li>
-            ))}
-          </ol>
-        </aside>
+        <article className="workout-detail" aria-labelledby="selected-workout-heading">
+          <header className="workout-detail-head">
+            <details className="program-header-disclosure">
+              <summary>
+                <span className="program-header-copy">
+                  <span
+                    className="program-title"
+                    id="selected-workout-heading"
+                    role="heading"
+                    aria-level={2}
+                  >
+                    {selectedProgram.name}
+                  </span>
+                  <span className="program-facts" aria-label="Program summary">
+                    <span>{selectedProgram.schedule}</span>
+                    <span>{selectedProgram.weeks}</span>
+                    <span>{selectedProgram.level}</span>
+                  </span>
+                </span>
+                <span className="program-header-toggle" aria-hidden="true">+</span>
+              </summary>
+              <div className="program-header-details">
+                <p>{selectedProgram.summary}</p>
+                <dl>
+                  <div><dt>Training split</dt><dd>{selectedProgram.split}</dd></div>
+                  <div><dt>Primary focus</dt><dd>{selectedProgram.focus}</dd></div>
+                </dl>
+              </div>
+            </details>
+          </header>
+
+          <section className="program-choice-block" aria-labelledby="training-block-heading">
+            <div className="program-step-heading">
+              <div>
+                <span aria-hidden="true">01</span>
+                <p className="block-label" id="training-block-heading">Choose a block</p>
+              </div>
+              <small>Block {selectedPhaseIndex + 1} of {selectedProgram.phases.length}</small>
+            </div>
+            <div className="program-selector" role="tablist" aria-label="Training block">
+              {selectedProgram.phases.map((phase) => (
+                <button
+                  key={phase.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={selectedPhase.id === phase.id}
+                  data-active={selectedPhase.id === phase.id}
+                  onClick={() => choosePhase(phase.id)}
+                >
+                  {phase.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="program-choice-block" aria-labelledby="training-day-heading">
+            <div className="program-step-heading">
+              <div>
+                <span aria-hidden="true">02</span>
+                <p className="block-label" id="training-day-heading">Choose a day</p>
+              </div>
+              <small>
+                {selectedSession.label === "Core"
+                  ? "Optional session"
+                  : `Day ${selectedSessionIndex + 1} of ${selectedPhase.sessions.filter((session) => session.label !== "Core").length}`}
+              </small>
+            </div>
+            <div className="program-selector program-session-selector" role="tablist" aria-label="Training day">
+              {selectedPhase.sessions.map((session) => (
+                <button
+                  key={session.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={selectedSession.id === session.id}
+                  data-active={selectedSession.id === session.id}
+                  onClick={() => setSessionId(session.id)}
+                >
+                  {session.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section
+            className="program-session-panel"
+            role="tabpanel"
+            aria-label={`${selectedPhase.label}, ${selectedSession.label}`}
+          >
+            <div className="program-session-heading">
+              <div>
+                <p>03 · Today&apos;s session</p>
+                <h3>{selectedSession.label}</h3>
+                <small>{selectedSession.exercises.length} exercises · {workingSetCount} working sets</small>
+              </div>
+              {includesSquat(selectedSession) ? (
+                <a href={sitePath("/form-check")} className="workout-form-link grt-pressable">
+                  Check squat form <span aria-hidden="true">→</span>
+                </a>
+              ) : null}
+            </div>
+
+            <ol className="program-exercise-list" aria-label={`${selectedSession.label} exercises`}>
+              {selectedSession.exercises.map((exercise, index) => (
+                <li key={`${selectedSession.id}-${index}-${exercise.name}`}>
+                  <details className="exercise-disclosure">
+                    <summary>
+                      <span className="exercise-index">{String(index + 1).padStart(2, "0")}</span>
+                      <strong>{exercise.name}</strong>
+                      <span className="exercise-prescription">
+                        <span><b>{exercise.sets}</b> sets</span>
+                        <span><b>{exercise.reps}</b> reps</span>
+                      </span>
+                      <span className="exercise-rest"><small>Rest</small>{exercise.rest}</span>
+                      <span className="exercise-toggle" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="exercise-details">
+                      <div>
+                        <span>Effort</span>
+                        <strong>{exercise.effort}</strong>
+                      </div>
+                      <div>
+                        <span>How to perform</span>
+                        <p>{exercise.note ?? "Keep the movement controlled and stop the set if your technique changes."}</p>
+                      </div>
+                    </div>
+                  </details>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <details className="program-methods">
+            <summary>Training terms and methods</summary>
+            <dl>
+              {selectedProgram.methodNotes.map((note) => (
+                <div key={`${selectedProgram.id}-${note.term}`}>
+                  <dt>{note.term}</dt>
+                  <dd>{note.definition}</dd>
+                </div>
+              ))}
+            </dl>
+          </details>
+        </article>
       </div>
     </div>
   );

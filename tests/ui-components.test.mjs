@@ -369,7 +369,118 @@ test("creates, validates, and limits private workout plans", async () => {
   assert.throws(() => createWorkoutPlan("Duplicate", [squat, squat]));
 });
 
-test("renders Grt navigation and the workout library foundation", async () => {
+test("loads five complete training programs without author attribution", async () => {
+  const { TRAINING_PROGRAMS, getProgramExerciseCount } = await vite.ssrLoadModule(
+    "/lib/training-programs.ts",
+  );
+
+  assert.equal(TRAINING_PROGRAMS.length, 5);
+  assert.deepEqual(
+    TRAINING_PROGRAMS.map((program) => program.name),
+    [
+      "Strength",
+      "Full Body",
+      "Physique",
+      "Push / Pull / Legs",
+      "Progressive Split",
+    ],
+  );
+  assert.equal(
+    TRAINING_PROGRAMS.reduce((total, program) => total + getProgramExerciseCount(program), 0),
+    568,
+  );
+  assert.ok(TRAINING_PROGRAMS.every((program) => program.phases.length > 0));
+  assert.ok(
+    TRAINING_PROGRAMS.every((program) =>
+      program.phases.every((phase) =>
+        phase.sessions.every((session) => session.exercises.length > 0),
+      ),
+    ),
+  );
+  assert.ok(TRAINING_PROGRAMS.every((program) => !("author" in program)));
+  assert.equal(
+    TRAINING_PROGRAMS.find((program) => program.name === "Strength")?.schedule,
+    "2 days / week",
+  );
+
+  const exerciseNames = [
+    ...new Set(
+      TRAINING_PROGRAMS.flatMap((program) =>
+        program.phases.flatMap((phase) =>
+          phase.sessions.flatMap((session) =>
+            session.exercises.map((exercise) => exercise.name),
+          ),
+        ),
+      ),
+    ),
+  ];
+  const exerciseAliasKey = (name) => name
+    .toLowerCase()
+    .replace(/\b(dumbbell|db)\b/g, "db")
+    .replace(/\b(barbell|bb)\b/g, "bb")
+    .replace(/\btriceps?\b/g, "tricep")
+    .replace(/flye/g, "fly")
+    .replace(/pull[- ]?ups?/g, "pullup")
+    .replace(/push[- ]?downs?/g, "pushdown")
+    .replace(/(crunch|curl|raise|extension)s\b/g, "$1")
+    .replace(/skull\s?crushers?/g, "skullcrusher")
+    .replace(/[-–()/]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  assert.equal(exerciseNames.length, 122);
+  assert.equal(new Set(exerciseNames.map(exerciseAliasKey)).size, exerciseNames.length);
+  assert.ok(exerciseNames.every((name) => !/\b(?:BB|DB|OHP)\b/.test(name)));
+  assert.ok(
+    TRAINING_PROGRAMS.every((program) =>
+      program.phases.every((phase) => /^Week \d+(?: - \d+)?$/.test(phase.label)),
+    ),
+  );
+  assert.ok(
+    TRAINING_PROGRAMS.some((program) =>
+      program.phases.some((phase) =>
+        phase.sessions.some((session) => session.label === "Day 1 · Chest / Shoulders / Triceps"),
+      ),
+    ),
+  );
+  assert.ok(
+    TRAINING_PROGRAMS.every((program) =>
+      program.phases.every((phase) =>
+        phase.sessions.every((session) =>
+          session.label === "Core" || /^Day \d+ · .+$/.test(session.label),
+        ),
+      ),
+    ),
+  );
+  const visibleStrings = [];
+  const collectVisibleStrings = (value) => {
+    if (typeof value === "string") {
+      visibleStrings.push(value);
+      return;
+    }
+    if (Array.isArray(value)) {
+      value.forEach(collectVisibleStrings);
+      return;
+    }
+    if (value && typeof value === "object") {
+      Object.entries(value).forEach(([key, entry]) => {
+        if (key !== "id") collectVisibleStrings(entry);
+      });
+    }
+  };
+  collectVisibleStrings(TRAINING_PROGRAMS);
+
+  assert.doesNotMatch(visibleStrings.join("\n"), /\d\s*–\s*\d|\d-\d/);
+
+  const leaningLateralRaise = TRAINING_PROGRAMS
+    .flatMap((program) => program.phases)
+    .flatMap((phase) => phase.sessions)
+    .flatMap((session) => session.exercises)
+    .find((exercise) => exercise.name === "Leaning Lateral Raise");
+  assert.equal(leaningLateralRaise?.reps, "12 - 15 / 4 - 5 / 4 - 5 / 4 - 5");
+});
+
+test("renders Grt navigation and a progressively disclosed program library", async () => {
   const { SiteHeader } = await vite.ssrLoadModule(
     "/components/site-header.tsx",
   );
@@ -385,9 +496,65 @@ test("renders Grt navigation and the workout library foundation", async () => {
   assert.match(headerHtml, />Grt</);
   assert.match(headerHtml, /Form Check/);
   assert.match(headerHtml, /About/);
-  assert.match(plannerHtml, /Simple routines\. Effective training\./);
-  assert.match(plannerHtml, /Bodyweight squat/);
-  assert.match(plannerHtml, /Selected routine/);
+  assert.match(plannerHtml, /Choose a program\. Follow one day at a time\./);
+  assert.match(plannerHtml, /Strength/);
+  assert.match(plannerHtml, /Push \/ Pull \/ Legs/);
+  assert.doesNotMatch(plannerHtml, /Selected program/);
+  assert.match(plannerHtml, /2 days \/ week/);
+  assert.match(plannerHtml, /class="program-header-disclosure"/);
+  assert.match(plannerHtml, /class="program-header-toggle"[^>]*>\+</);
+  assert.doesNotMatch(plannerHtml, />Details</);
+  assert.doesNotMatch(plannerHtml, /About this program/);
+  assert.match(plannerHtml, /Choose a block/);
+  assert.match(plannerHtml, /Choose a day/);
+  assert.match(plannerHtml, /Today&#x27;s session/);
+  assert.match(plannerHtml, /Training terms and methods/);
+  assert.match(plannerHtml, /class="exercise-disclosure"/);
+  assert.doesNotMatch(plannerHtml, /role="table"/);
+});
+
+test("keeps advanced workout data available without crowding the session view", async () => {
+  const source = await readFile(
+    path.join(root, "app", "routines", "workout-planner.tsx"),
+    "utf8",
+  );
+  const css = await readFile(path.join(root, "app", "globals.css"), "utf8");
+
+  assert.match(source, /<details className="program-header-disclosure">/);
+  assert.match(source, /className="program-header-toggle"/);
+  assert.match(source, /<details className="exercise-disclosure">/);
+  assert.match(source, /<span><b>\{exercise\.sets\}<\/b> sets<\/span>/);
+  assert.match(source, /<span><b>\{exercise\.reps\}<\/b> reps<\/span>/);
+  assert.match(source, /<span>Effort<\/span>/);
+  assert.match(source, /<span>How to perform<\/span>/);
+  assert.match(source, /workout-row-focus/);
+  assert.doesNotMatch(source, /Coaching note|How to use this|Selected program/);
+  assert.match(source, /exercises · \{workingSetCount\} working sets/);
+  assert.doesNotMatch(source, /role="table"/);
+  assert.match(
+    css,
+    /\.program-title\s*\{[\s\S]*?font-size:\s*var\(--type-section\);/,
+  );
+  assert.match(
+    css,
+    /\.program-header-disclosure > summary\s*\{[\s\S]*?grid-template-columns:[\s\S]*?cursor:\s*pointer;/,
+  );
+  assert.match(
+    css,
+    /\.program-header-disclosure\[open\] \.program-header-toggle\s*\{[\s\S]*?transform:\s*rotate\(45deg\);/,
+  );
+  assert.match(
+    css,
+    /\.exercise-disclosure > summary\s*\{[\s\S]*?min-height:\s*5rem;[\s\S]*?grid-template-columns:/,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 699px\)[\s\S]*?\.exercise-disclosure > summary\s*\{[\s\S]*?grid-template-areas:/,
+  );
+  assert.match(
+    css,
+    /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.exercise-toggle\s*\{[\s\S]*?transition:\s*none;/,
+  );
 });
 
 test("keeps onboarding personalization inside the browser session", async () => {
