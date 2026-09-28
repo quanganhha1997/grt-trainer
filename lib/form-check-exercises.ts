@@ -58,6 +58,20 @@ export type FormCheckExercise = {
   instructions: string[];
 };
 
+export type FormCheckBodyAreaId =
+  | "legs"
+  | "chest"
+  | "back"
+  | "shoulders"
+  | "arms"
+  | "core";
+
+export type FormCheckBodyArea = {
+  id: FormCheckBodyAreaId;
+  label: string;
+  exerciseIds: FormCheckExerciseId[];
+};
+
 export const FORM_CHECK_EXERCISES: FormCheckExercise[] = [
   {
     id: "bodyweight_squat",
@@ -540,6 +554,86 @@ export const FORM_CHECK_EXERCISES: FormCheckExercise[] = [
     ],
   },
 ];
+
+export const FORM_CHECK_BODY_AREAS: FormCheckBodyArea[] = [
+  {
+    id: "legs",
+    label: "Legs",
+    exerciseIds: [
+      "bodyweight_squat",
+      "barbell_back_squat",
+      "deadlift",
+      "romanian_deadlift",
+      "bulgarian_split_squat",
+      "lunge",
+      "leg_extension",
+      "leg_curl",
+      "standing_calf_raise",
+      "seated_calf_raise",
+      "adductor_machine",
+      "abductor_machine",
+    ],
+  },
+  {
+    id: "chest",
+    label: "Chest",
+    exerciseIds: [
+      "flat_bench_press",
+      "incline_bench_press",
+      "pectoral_fly",
+      "triceps_dip",
+    ],
+  },
+  {
+    id: "back",
+    label: "Back",
+    exerciseIds: [
+      "chest_supported_row",
+      "bent_over_row",
+      "single_arm_dumbbell_row",
+      "pull_up",
+      "lat_pulldown",
+      "lat_prayer",
+    ],
+  },
+  {
+    id: "shoulders",
+    label: "Shoulders",
+    exerciseIds: [
+      "barbell_overhead_press",
+      "dumbbell_shoulder_press",
+      "lateral_raise",
+      "rear_delt_fly",
+    ],
+  },
+  {
+    id: "arms",
+    label: "Arms",
+    exerciseIds: [
+      "biceps_curl",
+      "triceps_pushdown",
+      "triceps_extension",
+    ],
+  },
+  {
+    id: "core",
+    label: "Core",
+    exerciseIds: ["crunch", "reverse_crunch", "leg_raise"],
+  },
+];
+
+export function getFormCheckExercisesByBodyArea(
+  bodyAreaId: FormCheckBodyAreaId,
+) {
+  const bodyArea = FORM_CHECK_BODY_AREAS.find(
+    (candidate) => candidate.id === bodyAreaId,
+  );
+  if (!bodyArea) return [];
+
+  return bodyArea.exerciseIds.map((exerciseId) =>
+    getFormCheckExercise(exerciseId),
+  );
+}
 
 export function getFormCheckExercise(id: FormCheckExerciseId) {
   return FORM_CHECK_EXERCISES.find((exercise) => exercise.id === id) ?? FORM_CHECK_EXERCISES[0];

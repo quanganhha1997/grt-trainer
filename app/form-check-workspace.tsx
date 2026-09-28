@@ -26,6 +26,7 @@ import {
   useState,
 } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import {
@@ -35,12 +36,15 @@ import {
 } from "@/lib/video-recording";
 import type { FormAngleSummary, FormRepAnalysis } from "@/lib/form-analysis";
 import {
+  FORM_CHECK_BODY_AREAS,
   FORM_CHECK_EXERCISES,
   getFormCheckExercise,
+  getFormCheckExercisesByBodyArea,
   isDipExerciseId,
   isOverheadPressExerciseId,
   parseFormCheckExerciseId,
   type FormCheckExercise,
+  type FormCheckBodyAreaId,
   type FormCheckExerciseId,
 } from "@/lib/form-check-exercises";
 import {
@@ -254,6 +258,7 @@ type AnalysisStatus = "idle" | "loading" | "scanning" | "complete";
 type InputMode = "upload" | "record";
 type CameraStatus = "idle" | "requesting" | "ready";
 type FormFlowStage = "intro" | "instructions" | "workspace";
+type ExerciseSelectionView = "areas" | "area" | "all";
 type PoseConnection = { start: number; end: number };
 type MovementPhase =
   | SquatPhase
@@ -302,6 +307,54 @@ function formatBytes(bytes: number) {
   }
 
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function getCaptureView(exercise: FormCheckExercise) {
+  return exercise.instructions.some((instruction) =>
+    instruction.toLowerCase().includes("front view"),
+  )
+    ? "front view"
+    : "side view";
+}
+
+function getInstructionContent(exercise: FormCheckExercise) {
+  const frameInstructions = exercise.instructions.filter((instruction) => {
+    const normalized = instruction.toLowerCase();
+    return (
+      normalized.includes("view") ||
+      normalized.startsWith("show ") ||
+      normalized.includes(" visible") ||
+      normalized.includes("inside the frame")
+    );
+  });
+  const note = exercise.instructions.find((instruction) => {
+    const normalized = instruction.toLowerCase();
+    return !(
+      frameInstructions.includes(instruction) ||
+      normalized.includes("5 - 30 seconds") ||
+      normalized === "record at least one full rep" ||
+      normalized === "use good lighting" ||
+      normalized === "keep the camera still"
+    );
+  });
+
+  return {
+    groups: [
+      {
+        title: "Frame",
+        detail: frameInstructions.join(". ").replace(/\.\s*\./g, "."),
+      },
+      {
+        title: "Clip",
+        detail: "Record 5 - 30 seconds with at least one complete repetition.",
+      },
+      {
+        title: "Camera",
+        detail: "Use good lighting and keep the camera still.",
+      },
+    ],
+    note,
+  };
 }
 
 export function FormCheckWorkspace() {
@@ -415,6 +468,11 @@ export function FormCheckWorkspace() {
   const [selectedExerciseId, setSelectedExerciseId] =
     useState<FormCheckExerciseId>("bodyweight_squat");
   const [flowStage, setFlowStage] = useState<FormFlowStage>("intro");
+  const [selectionView, setSelectionView] =
+    useState<ExerciseSelectionView>("areas");
+  const [selectedBodyAreaId, setSelectedBodyAreaId] =
+    useState<FormCheckBodyAreaId | null>(null);
+  const [exerciseQuery, setExerciseQuery] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [inputMode, setInputMode] = useState<InputMode>("upload");
   const [cameraStatus, setCameraStatus] = useState<CameraStatus>("idle");
@@ -427,6 +485,16 @@ export function FormCheckWorkspace() {
     number | null
   >(null);
   const selectedExercise = getFormCheckExercise(selectedExerciseId);
+  const captureView = getCaptureView(selectedExercise);
+  const selectedBodyArea = selectedBodyAreaId
+    ? FORM_CHECK_BODY_AREAS.find((area) => area.id === selectedBodyAreaId) ?? null
+    : null;
+  const normalizedExerciseQuery = exerciseQuery.trim().toLowerCase();
+  const visibleExercises = selectionView === "area" && selectedBodyAreaId
+    ? getFormCheckExercisesByBodyArea(selectedBodyAreaId)
+    : FORM_CHECK_EXERCISES.filter((exercise) =>
+        exercise.name.toLowerCase().includes(normalizedExerciseQuery),
+      );
 
   useEffect(() => {
     const exerciseId = parseFormCheckExerciseId(
@@ -435,6 +503,7 @@ export function FormCheckWorkspace() {
     if (!exerciseId) return;
     const frame = window.requestAnimationFrame(() => {
       setSelectedExerciseId(exerciseId);
+      setFlowStage("instructions");
     });
     return () => window.cancelAnimationFrame(frame);
   }, []);
@@ -628,13 +697,19 @@ export function FormCheckWorkspace() {
   }
 
   function selectExercise(exerciseId: FormCheckExerciseId) {
-    if (exerciseId === selectedExerciseId) return;
-    turnOffCamera();
-    clearVideo();
-    setSelectedExerciseId(exerciseId);
+    if (exerciseId !== selectedExerciseId) {
+      turnOffCamera();
+      clearVideo();
+      setSelectedExerciseId(exerciseId);
+    }
     const url = new URL(window.location.href);
     url.searchParams.set("exercise", exerciseId);
     window.history.replaceState(null, "", url);
+  }
+
+  function chooseExercise(exerciseId: FormCheckExerciseId) {
+    selectExercise(exerciseId);
+    setFlowStage("instructions");
   }
 
   function clearRecordingInterval() {
@@ -2071,42 +2146,98 @@ export function FormCheckWorkspace() {
   if (flowStage === "intro") {
     return (
       <div className="form-flow-shell grt-page-entry">
-        <section className="form-intro-block" aria-labelledby="form-intro-heading">
-          <div className="form-intro-copy">
+        <section className="form-intro-block form-selection-block" aria-labelledby="form-intro-heading">
+          <div className="form-intro-copy form-selection-heading">
             <p className="block-label">Form Check</p>
             <h1 id="form-intro-heading">Check your form.</h1>
-            <p>Choose a movement. Get one clear correction.</p>
+            <p>Choose a movement.</p>
           </div>
-          <div className="form-exercise-choice">
-            <p className="block-label">Movement</p>
-            <div className="form-exercise-selector" role="radiogroup" aria-label="Choose a movement to analyze">
-              {FORM_CHECK_EXERCISES.map((exercise, index) => (
-                <button
-                  key={exercise.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={exercise.id === selectedExerciseId}
-                  data-selected={exercise.id === selectedExerciseId}
-                  onClick={() => selectExercise(exercise.id)}
-                >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{exercise.name}</strong>
-                  <small>{exercise.familyLabel}</small>
-                  <span aria-hidden="true">{exercise.id === selectedExerciseId ? "●" : "○"}</span>
-                </button>
-              ))}
+          {selectionView === "areas" ? (
+            <div className="form-area-selection">
+              <div className="form-body-area-grid" aria-label="Choose a body area">
+                {FORM_CHECK_BODY_AREAS.map((area) => (
+                  <button
+                    key={area.id}
+                    type="button"
+                    className="grt-pressable"
+                    onClick={() => {
+                      setSelectedBodyAreaId(area.id);
+                      setSelectionView("area");
+                    }}
+                  >
+                    <strong>{area.label}</strong>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                className="form-all-exercises"
+                onClick={() => {
+                  setExerciseQuery("");
+                  setSelectionView("all");
+                }}
+              >
+                All exercises <span aria-hidden="true">→</span>
+              </button>
             </div>
-          </div>
-          <button type="button" className="grt-primary-inverse grt-pressable" onClick={() => setFlowStage("instructions")}>
-            Continue with {selectedExercise.name.toLowerCase()} <span aria-hidden="true">→</span>
-          </button>
+          ) : (
+            <div className="form-exercise-choice">
+              <div className="form-selection-toolbar">
+                <button
+                  type="button"
+                  className="grt-text-button"
+                  onClick={() => {
+                    setSelectionView("areas");
+                    setSelectedBodyAreaId(null);
+                    setExerciseQuery("");
+                  }}
+                >
+                  ← Body areas
+                </button>
+                <p className="block-label">
+                  {selectionView === "all" ? "All exercises" : selectedBodyArea?.label}
+                </p>
+              </div>
+
+              {selectionView === "all" ? (
+                <label className="form-exercise-search">
+                  <span className="sr-only">Search all exercises</span>
+                  <Input
+                    type="search"
+                    value={exerciseQuery}
+                    onChange={(event) => setExerciseQuery(event.target.value)}
+                    placeholder="Search exercises"
+                    autoFocus
+                  />
+                </label>
+              ) : null}
+
+              <div className="form-exercise-selector" aria-label="Choose an exercise">
+                {visibleExercises.map((exercise) => (
+                  <button
+                    key={exercise.id}
+                    type="button"
+                    onClick={() => chooseExercise(exercise.id)}
+                  >
+                    <strong>{exercise.name}</strong>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                ))}
+              </div>
+
+              {visibleExercises.length === 0 ? (
+                <p className="form-exercise-empty">No matching exercises.</p>
+              ) : null}
+            </div>
+          )}
         </section>
       </div>
     );
   }
 
   if (flowStage === "instructions") {
-    const instructions = selectedExercise.instructions;
+    const instructionContent = getInstructionContent(selectedExercise);
 
     return (
       <div className="form-flow-shell grt-page-entry">
@@ -2117,13 +2248,21 @@ export function FormCheckWorkspace() {
             <p className="form-instruction-movement">{selectedExercise.name}</p>
           </div>
           <ol className="form-instruction-list">
-            {instructions.map((instruction, index) => (
-              <li key={instruction} style={{ "--row-index": index } as CSSProperties}>
+            {instructionContent.groups.map((instruction, index) => (
+              <li key={instruction.title} style={{ "--row-index": index } as CSSProperties}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{instruction}</strong>
+                <div>
+                  <strong>{instruction.title}</strong>
+                  <p>{instruction.detail}</p>
+                </div>
               </li>
             ))}
           </ol>
+          {instructionContent.note ? (
+            <p className="form-exercise-note">
+              <strong>{selectedExercise.name}:</strong> {instructionContent.note}
+            </p>
+          ) : null}
           <p className="form-transparency-note">
             For transparency: videos are analyzed for this session. Saved history is not available yet.
           </p>
@@ -2226,7 +2365,7 @@ export function FormCheckWorkspace() {
     <div className="workspace-shell grt-form-workspace grt-page-entry">
       <header className="grt-page-heading form-workspace-heading" aria-labelledby="page-heading">
         <p className="grt-overline">Form Check / {selectedExercise.name}</p>
-        <h1 id="page-heading">Upload a side view.</h1>
+        <h1 id="page-heading">Upload a {captureView}.</h1>
         <p>MP4, MOV, or WebM. 5 - 30 seconds.</p>
         <button type="button" onClick={() => setFlowStage("intro")}>Change movement</button>
       </header>
@@ -2298,7 +2437,7 @@ export function FormCheckWorkspace() {
                       <Upload className="size-6" />
                     </div>
                     <h3 className="grt-type-block mt-5 text-[#ffffff]">
-                      Upload a side view.
+                      Upload a {captureView}.
                     </h3>
                     <p id="video-requirements" className="grt-type-body mt-2 max-w-sm text-[#ffffff]/48">
                       MP4, MOV, or WebM. Maximum 100 MB.
@@ -2346,7 +2485,7 @@ export function FormCheckWorkspace() {
                           <h3>
                             {cameraStatus === "requesting"
                               ? "Starting your camera"
-                              : `Frame your side-view ${selectedExercise.name.toLowerCase()}`}
+                              : `Frame your ${captureView} ${selectedExercise.name.toLowerCase()}`}
                           </h3>
                           <p>
                             Camera access begins only after you choose the button
@@ -2451,7 +2590,7 @@ export function FormCheckWorkspace() {
                     Your browser does not support video playback.
                   </video>
                   <canvas ref={canvasRef} className="pose-overlay" aria-hidden="true" />
-                  <span className="video-label">Side view · {selectedExercise.name.toLowerCase()}</span>
+                  <span className="video-label">{captureView} · {selectedExercise.name.toLowerCase()}</span>
                   {analysisStatus === "scanning" ? (
                     <span className="scan-label">
                       <span className="scan-pulse" /> {formatMovementPhase(movementPhase, selectedExercise.family)}

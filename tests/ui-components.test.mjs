@@ -57,7 +57,7 @@ test("forwards progress semantics to the primitive", async () => {
   assert.match(html, /data-state="loading"/);
 });
 
-test("uses the Grt v0.6-2 type hierarchy, workout alignment, and precise motion", async () => {
+test("uses the Grt v0.7 type hierarchy, desktop rhythm, and precise motion", async () => {
   const sourceCss = await readFile(path.join(root, "app", "globals.css"), "utf8");
   const layoutSource = await readFile(path.join(root, "app", "layout.tsx"), "utf8");
   const workoutSource = await readFile(path.join(root, "app", "routines", "workout-planner.tsx"), "utf8");
@@ -79,18 +79,22 @@ test("uses the Grt v0.6-2 type hierarchy, workout alignment, and precise motion"
   }
 
   assert.match(layoutSource, /@fontsource-variable\/inter-tight/);
-  assert.match(sourceCss, /\/\* Grt v0\.6-2 — normalized typography \+ aligned workout metadata \*\//);
-  assert.match(sourceCss, /--type-display:\s*clamp\(3\.25rem, 9vw, 10rem\)/);
-  assert.match(sourceCss, /--type-page:\s*clamp\(2\.25rem, 5vw, 5rem\)/);
-  assert.match(sourceCss, /--type-section:\s*clamp\(1\.75rem, 3vw, 3rem\)/);
-  assert.match(sourceCss, /--type-block:\s*clamp\(1\.25rem, 1\.6vw, 1\.75rem\)/);
-  assert.match(sourceCss, /--type-body:\s*clamp\(1rem, calc\(0\.95rem \+ 0\.25vw\), 1\.125rem\)/);
+  assert.match(sourceCss, /\/\* Grt v0\.7 — desktop rhythm \+ progressive Form Check selection \*\//);
+  assert.match(sourceCss, /--type-display:\s*clamp\(3\.25rem, 8vw, 8\.5rem\)/);
+  assert.match(sourceCss, /--type-page:\s*clamp\(3rem, 4\.2vw, 4rem\)/);
+  assert.match(sourceCss, /--type-section:\s*clamp\(1\.75rem, 2\.2vw, 2\.25rem\)/);
+  assert.match(sourceCss, /--type-block:\s*clamp\(1\.25rem, 1\.4vw, 1\.5rem\)/);
+  assert.match(sourceCss, /--type-body:\s*1rem/);
   assert.match(sourceCss, /--type-ui:\s*0\.875rem/);
   assert.match(sourceCss, /--type-label:\s*0\.75rem/);
   assert.match(sourceCss, /--weight-body:\s*400/);
   assert.match(sourceCss, /--weight-ui:\s*500/);
   assert.match(sourceCss, /--weight-heading:\s*600/);
   assert.match(sourceCss, /--weight-display:\s*700/);
+  assert.doesNotMatch(
+    sourceCss,
+    /font-weight:\s*(?:620|650|660|680|690|720|750|800|900)\b/,
+  );
   assert.match(sourceCss, /--tracking-display:\s*0\.008em/);
   assert.match(sourceCss, /--tracking-label:\s*0\.08em/);
   assert.match(sourceCss, /--experience-option-padding-block:\s*clamp\(1rem, 1\.5vw, 1\.375rem\)/);
@@ -584,8 +588,42 @@ test("places Form Check instructions and transparency before upload", async () =
 
   assert.match(source, /Before you start\./);
   assert.match(source, /Saved history is not available yet\./);
-  assert.match(source, /Upload a side view\./);
+  assert.match(source, /Upload a \{captureView\}\./);
   assert.doesNotMatch(source, /window\.localStorage/);
+});
+
+test("uses progressive text-only Form Check exercise selection", async () => {
+  const source = await readFile(
+    path.join(root, "app", "form-check-workspace.tsx"),
+    "utf8",
+  );
+  const sourceCss = await readFile(path.join(root, "app", "globals.css"), "utf8");
+  const { FORM_CHECK_BODY_AREAS, getFormCheckExercisesByBodyArea } =
+    await vite.ssrLoadModule("/lib/form-check-exercises.ts");
+  const { FormCheckWorkspace } = await vite.ssrLoadModule(
+    "/app/form-check-workspace.tsx",
+  );
+  const html = renderToStaticMarkup(React.createElement(FormCheckWorkspace));
+
+  assert.deepEqual(
+    FORM_CHECK_BODY_AREAS.map((area) => area.label),
+    ["Legs", "Chest", "Back", "Shoulders", "Arms", "Core"],
+  );
+  assert.equal(getFormCheckExercisesByBodyArea("legs").length, 12);
+  assert.match(source, /selectionView === "areas"/);
+  assert.match(source, /All exercises/);
+  assert.match(source, /placeholder="Search exercises"/);
+  assert.match(source, /setFlowStage\("instructions"\)/);
+  assert.doesNotMatch(source, /role="radio"[\s\S]{0,250}exercise\.name/);
+  assert.match(sourceCss, /\.form-body-area-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(3,/);
+  assert.match(sourceCss, /\.form-exercise-choice\s*\{[\s\S]*?45rem/);
+  assert.match(sourceCss, /\.form-exercise-selector button strong\s*\{[\s\S]*?1\.0625rem/);
+  assert.match(html, /Choose a movement\./);
+  assert.match(html, />Legs</);
+  assert.match(html, />Core</);
+  assert.match(html, /All exercises/);
+  assert.doesNotMatch(html, /Bodyweight squat/);
+  assert.doesNotMatch(html, /role="radio"/);
 });
 
 test("preserves the v0.5 mobile-first feedback hierarchy after analysis", async () => {

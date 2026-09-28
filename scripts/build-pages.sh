@@ -30,6 +30,9 @@ done
 # Prevent GitHub Pages from treating generated files as Jekyll source.
 touch dist/client/.nojekyll
 
+# Replace any prior export immediately before moving the verified client build.
+# Some build environments can restore the previous output while vinext runs.
+rm -rf dist-pages
 mv dist/client dist-pages
 rm -rf dist
 

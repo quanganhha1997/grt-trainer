@@ -190,7 +190,7 @@ video {
 
 .site-brand strong {
   font-size: 0.875rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
@@ -219,7 +219,7 @@ video {
   padding: 0 0.68rem;
   color: rgb(255 255 255 / 0.38);
   font-size: 0.7rem;
-  font-weight: 650;
+  font-weight: 600;
   transition: color 150ms ease, background-color 150ms ease;
 }
 
@@ -465,7 +465,7 @@ video {
   border-radius: 0.58rem;
   color: rgb(255 255 255 / 0.38);
   font-size: 0.72rem;
-  font-weight: 650;
+  font-weight: 600;
   transition: color 150ms ease, background-color 150ms ease;
 }
 
@@ -562,7 +562,7 @@ video {
   margin-top: 0.9rem;
   color: rgb(255 255 255 / 0.82);
   font-size: 0.95rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .camera-placeholder p {
@@ -582,7 +582,7 @@ video {
 
 .countdown-overlay span {
   font-size: clamp(3rem, 12vw, 6rem);
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -0.07em;
   line-height: 1;
 }
@@ -591,7 +591,7 @@ video {
   margin-top: 0.5rem;
   color: rgb(255 255 255 / 0.56);
   font-size: 0.72rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .recording-status {
@@ -609,7 +609,7 @@ video {
   background: rgb(0 0 0 / 0.72);
   backdrop-filter: blur(8px);
   font-size: 0.66rem;
-  font-weight: 650;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1118,7 +1118,7 @@ video {
 .progress-overview-heading h3 {
   color: rgb(255 255 255 / 0.72);
   font-size: 0.69rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .progress-overview-heading > span {
@@ -1228,7 +1228,7 @@ video {
 .progress-focus strong {
   overflow: hidden;
   color: rgb(255 255 255 / 0.66);
-  font-weight: 650;
+  font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1428,7 +1428,7 @@ video {
   margin-top: 0.5rem;
   color: #ffffff;
   font-size: clamp(2rem, 4vw, 2.5rem);
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.1;
 }
@@ -1510,7 +1510,7 @@ video {
   margin-top: 0.25rem;
   color: rgb(255 255 255 / 0.88);
   font-size: 1.05rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
@@ -1566,7 +1566,7 @@ video {
   gap: 0.5rem;
   color: rgb(255 255 255 / 0.3);
   font-size: 0.61rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .form-check-link {
@@ -1610,7 +1610,7 @@ video {
 .exercise-card h3 {
   color: rgb(255 255 255 / 0.86);
   font-size: 0.86rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .exercise-card-heading p {
@@ -1641,7 +1641,7 @@ video {
 .prescription-fields label > span {
   color: rgb(255 255 255 / 0.35);
   font-size: 0.62rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .routine-name-field input,
@@ -1687,7 +1687,7 @@ video {
   margin-top: 0.7rem;
   color: rgb(255 255 255 / 0.62);
   font-size: 0.75rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .routine-empty small {
@@ -1871,7 +1871,7 @@ video {
   overflow: hidden;
   color: rgb(255 255 255 / 0.82);
   font-size: 0.88rem;
-  font-weight: 650;
+  font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1925,7 +1925,7 @@ video {
   padding: 0.35rem 0.45rem;
   color: rgb(255 255 255 / 0.42);
   font-size: 0.63rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -2254,7 +2254,7 @@ button {
 .site-brand strong {
   color: var(--grt-ink);
   font-size: 1.45rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.07em;
 }
 
@@ -2278,7 +2278,7 @@ button {
   background: transparent;
   color: var(--grt-muted);
   font-size: 0.82rem;
-  font-weight: 650;
+  font-weight: 600;
   transition: color var(--grt-ui) ease;
 }
 
@@ -2337,7 +2337,7 @@ button {
 .step-label {
   color: inherit;
   font-size: 0.72rem;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -2345,7 +2345,7 @@ button {
 .grt-page-heading h1 {
   color: var(--grt-ink);
   font-size: clamp(3.25rem, 8vw, 6.7rem);
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: -0.075em;
   line-height: 0.9;
 }
@@ -2390,7 +2390,7 @@ button {
   margin: 0;
   color: #ffffff;
   font-size: clamp(6rem, 18vw, 11rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.105em;
   line-height: 0.78;
   animation: grt-intro-copy 360ms 70ms var(--grt-ease-out) both;
@@ -2748,14 +2748,14 @@ button {
 .profile-review dd {
   color: #ffffff;
   font-size: 0.92rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .onboarding-error {
   margin-top: 1rem;
   color: #ffffff;
   font-size: 0.82rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .onboarding-actions {
@@ -2828,7 +2828,7 @@ button {
   max-width: 14rem;
   color: #ffffff;
   font-size: clamp(1.65rem, 3vw, 2.35rem);
-  font-weight: 680;
+  font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 1.05;
 }
@@ -2845,7 +2845,7 @@ button {
   justify-content: space-between;
   color: #ffffff;
   font-size: 0.8rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .home-metrics-grid {
@@ -2879,7 +2879,7 @@ button {
 .home-metrics-grid strong {
   color: var(--grt-ink);
   font-size: 1.1rem;
-  font-weight: 680;
+  font-weight: 600;
 }
 
 .grt-about-grid {
@@ -2920,7 +2920,7 @@ button {
   gap: 1rem;
   border-bottom: 1px solid rgb(255 255 255 / 0.18);
   font-size: 0.85rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .grt-about-grid li span {
@@ -2972,7 +2972,7 @@ button {
   background: transparent;
   color: var(--grt-muted);
   font-size: 0.75rem;
-  font-weight: 650;
+  font-weight: 600;
   transition: background-color var(--grt-ui) ease, color var(--grt-ui) ease,
     border-color var(--grt-ui) ease;
 }
@@ -3027,7 +3027,7 @@ button {
 
 .workout-row-main strong {
   font-size: 1rem;
-  font-weight: 680;
+  font-weight: 600;
 }
 
 .workout-row-main small,
@@ -3088,7 +3088,7 @@ button {
   font-size: 0.65rem;
 }
 
-.workout-exercise-list strong { font-size: 0.84rem; font-weight: 620; }
+.workout-exercise-list strong { font-size: 0.84rem; font-weight: 600; }
 .workout-exercise-list small { color: rgb(255 255 255 / 0.52); font-size: 0.72rem; }
 
 .workout-form-link {
@@ -3137,7 +3137,7 @@ button {
   margin-top: 1rem;
   color: #ffffff;
   font-size: clamp(3.4rem, 8vw, 7rem);
-  font-weight: 720;
+  font-weight: 700;
   letter-spacing: -0.075em;
   line-height: 0.9;
 }
@@ -3191,7 +3191,7 @@ button {
 
 .form-exercise-selector button strong {
   font-size: 0.9rem;
-  font-weight: 620;
+  font-weight: 600;
 }
 
 .form-exercise-selector button small {
@@ -3234,7 +3234,7 @@ button {
 .form-rule-preview strong,
 .form-instruction-list strong {
   font-size: 0.9rem;
-  font-weight: 620;
+  font-weight: 600;
 }
 
 .form-intro-block > .grt-primary-inverse {
@@ -3287,7 +3287,7 @@ button {
 .grt-text-button {
   color: rgb(255 255 255 / 0.7);
   font-size: 0.8rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 /* Form Check workspace and results */
@@ -3306,7 +3306,7 @@ button {
   bottom: 0.35rem;
   color: var(--grt-muted);
   font-size: 0.76rem;
-  font-weight: 650;
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 0.25rem;
 }
@@ -3421,7 +3421,7 @@ button {
   margin-top: 0.7rem;
   color: var(--grt-ink);
   font-size: clamp(3.2rem, 7vw, 5.8rem);
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: -0.07em;
   line-height: 0.9;
 }
@@ -3523,7 +3523,7 @@ button {
   background: var(--grt-black);
   color: rgb(255 255 255 / 0.58);
   font-size: 0.7rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .coaching-review {
@@ -3557,7 +3557,7 @@ button {
 .result-score-block > strong {
   color: #ffffff;
   font-size: clamp(3.2rem, 6vw, 4.8rem);
-  font-weight: 690;
+  font-weight: 600;
   letter-spacing: -0.07em;
   line-height: 0.8;
 }
@@ -3573,7 +3573,7 @@ button {
   align-self: end;
   color: rgb(255 255 255 / 0.65);
   font-size: 0.85rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .result-feedback-card {
@@ -3600,7 +3600,7 @@ button {
   margin-top: 0.65rem;
   color: var(--grt-ink);
   font-size: 1.18rem;
-  font-weight: 680;
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.15;
 }
@@ -3646,7 +3646,7 @@ button {
   border-radius: 0.15rem;
   color: var(--grt-ink);
   font-size: 0.72rem;
-  font-weight: 650;
+  font-weight: 600;
   transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
@@ -3724,7 +3724,7 @@ button {
 .result-rep-breakdown-heading h3 {
   margin-top: 0.45rem;
   font-size: 1.2rem;
-  font-weight: 680;
+  font-weight: 600;
   letter-spacing: -0.035em;
 }
 
@@ -4025,7 +4025,7 @@ body {
   display: inline-flex;
   color: var(--grt-ink);
   font-size: 0.8125rem;
-  font-weight: 680;
+  font-weight: 600;
 }
 
 .site-menu-toggle:focus-visible,
@@ -4058,7 +4058,7 @@ body {
   border-bottom: 1px solid var(--grt-line);
   color: var(--grt-ink);
   font-size: 1.125rem;
-  font-weight: 660;
+  font-weight: 600;
 }
 
 .site-mobile-menu a:last-child {
@@ -4872,7 +4872,7 @@ body {
   --grt-soft: #e8e5dd;
   --grt-page: var(--grt-canvas);
   --grt-display-weight: 700;
-  --grt-heading-weight: 650;
+  --grt-heading-weight: 600;
   --grt-block-weight: 600;
   --grt-ui-weight: 500;
   --grt-body-weight: 400;
@@ -5053,7 +5053,7 @@ html,
 .number-input-line input,
 .result-score-block > strong,
 .home-metrics-grid strong {
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.003em;
 }
 
@@ -6407,6 +6407,368 @@ small,
   .program-header-toggle,
   .program-methods summary::after,
   .exercise-toggle {
+    transition: none;
+  }
+}
+
+/* Grt v0.7 — desktop rhythm + progressive Form Check selection */
+:root {
+  --page-gutter: clamp(1rem, 4vw, 3rem);
+  --type-display: clamp(3.25rem, 8vw, 8.5rem);
+  --type-page: clamp(3rem, 4.2vw, 4rem);
+  --type-section: clamp(1.75rem, 2.2vw, 2.25rem);
+  --type-block: clamp(1.25rem, 1.4vw, 1.5rem);
+  --type-body: 1rem;
+  --leading-page: 0.96;
+  --leading-section: 1.02;
+  --grt-container-max: 85rem;
+  --grt-page-gutter: var(--page-gutter);
+  --grt-section-gap: clamp(2.5rem, 5vw, 5rem);
+  --grt-grid-gap: clamp(0.75rem, 1.2vw, 1rem);
+  --grt-block-padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.site-header-inner {
+  min-height: clamp(4.25rem, 5vw, 4.5rem);
+}
+
+.grt-page-shell,
+.workspace-shell,
+.form-flow-shell {
+  padding-block: clamp(2rem, 4vw, 4rem) 3rem;
+}
+
+.grt-page-heading,
+.workout-library-heading,
+.form-results-heading {
+  margin-bottom: clamp(2.25rem, 3vw, 2.75rem);
+}
+
+.home-action-grid,
+.form-results-grid {
+  gap: 1rem;
+}
+
+.home-action-block {
+  padding: clamp(1.75rem, 2.25vw, 2rem);
+}
+
+.form-flow-shell {
+  min-height: calc(100svh - 4.5rem);
+}
+
+.form-intro-block,
+.form-instruction-block {
+  padding: clamp(1.75rem, 2.5vw, 2rem);
+}
+
+.form-selection-block {
+  display: block;
+  min-height: auto;
+}
+
+.form-selection-heading {
+  max-width: 50rem;
+}
+
+.form-selection-heading h1 {
+  max-width: 14ch;
+  margin-top: 0.75rem;
+}
+
+.form-selection-heading > p:last-child {
+  margin-top: 0.75rem;
+}
+
+.form-area-selection {
+  margin-top: clamp(2.25rem, 3vw, 2.75rem);
+}
+
+.form-body-area-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-body-area-grid button {
+  display: flex;
+  min-height: 9rem;
+  padding: 1.75rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgb(247 245 239 / 0.3);
+  border-radius: var(--grt-block-radius);
+  background: transparent;
+  color: var(--grt-reverse);
+  text-align: left;
+}
+
+.form-body-area-grid button strong {
+  font-size: var(--type-block);
+  font-weight: var(--weight-heading);
+  line-height: var(--leading-block);
+}
+
+.form-body-area-grid button span,
+.form-all-exercises span,
+.form-exercise-selector button span {
+  transition: transform var(--grt-ui) var(--grt-ease-out);
+}
+
+.form-all-exercises {
+  display: inline-flex;
+  min-height: 3rem;
+  margin-top: 1.5rem;
+  padding-inline: 0.25rem;
+  align-items: center;
+  gap: 1rem;
+  color: rgb(247 245 239 / 0.7);
+  font-size: var(--type-ui);
+  font-weight: var(--weight-ui);
+  line-height: var(--leading-ui);
+}
+
+.form-exercise-choice {
+  width: min(100%, 45rem);
+  margin-top: clamp(2.25rem, 3vw, 2.75rem);
+}
+
+.form-selection-toolbar {
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.form-selection-toolbar .grt-text-button {
+  min-height: 2.75rem;
+}
+
+.form-selection-toolbar .block-label {
+  color: rgb(247 245 239 / 0.5);
+}
+
+.form-exercise-search {
+  display: block;
+  margin: 0.75rem 0 1rem;
+}
+
+.form-exercise-search input {
+  min-height: 3.25rem;
+  border-color: rgb(247 245 239 / 0.3);
+  background: transparent;
+  color: var(--grt-reverse);
+  font-size: var(--type-body);
+  font-weight: var(--weight-body);
+}
+
+.form-exercise-search input::placeholder {
+  color: rgb(247 245 239 / 0.42);
+}
+
+.form-exercise-search input:focus-visible {
+  border-color: var(--grt-reverse);
+  box-shadow: 0 0 0 1px var(--grt-reverse);
+}
+
+.form-exercise-selector {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-height: min(34rem, 58svh);
+  overflow-y: auto;
+  border-top: 1px solid rgb(247 245 239 / 0.24);
+  scrollbar-gutter: stable;
+}
+
+.form-exercise-selector button {
+  display: grid;
+  width: 100%;
+  min-height: 4rem;
+  padding: 0.875rem 1.125rem;
+  grid-template-columns: minmax(0, 1fr) 1rem;
+  align-items: center;
+  gap: 1rem;
+  border-right: 0;
+  border-bottom: 1px solid rgb(247 245 239 / 0.2);
+  color: var(--grt-reverse);
+  text-align: left;
+  transition:
+    background-color var(--grt-ui) var(--grt-ease-out),
+    color var(--grt-ui) var(--grt-ease-out);
+}
+
+.form-exercise-selector button:nth-child(odd) {
+  border-right: 0;
+}
+
+.form-exercise-selector button strong {
+  font-size: 1.0625rem;
+  font-weight: var(--weight-heading);
+  line-height: 1.2;
+}
+
+.form-exercise-selector button > span:last-child {
+  color: rgb(247 245 239 / 0.45);
+  font-size: var(--type-ui);
+  font-weight: var(--weight-ui);
+}
+
+.form-exercise-empty {
+  padding: 1.5rem 0;
+  color: rgb(247 245 239 / 0.55);
+}
+
+.form-body-area-grid button:focus-visible,
+.form-all-exercises:focus-visible,
+.form-selection-toolbar .grt-text-button:focus-visible,
+.form-exercise-selector button:focus-visible {
+  outline: 2px solid var(--grt-reverse);
+  outline-offset: 3px;
+}
+
+.form-instruction-block {
+  grid-template-columns: minmax(15rem, 0.75fr) minmax(22rem, 1.25fr);
+  grid-template-rows: auto 1fr auto auto;
+  gap: 1.5rem 3rem;
+}
+
+.form-instruction-list {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+}
+
+.form-instruction-list li {
+  min-height: 5rem;
+  padding-block: 1rem;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+}
+
+.form-instruction-list li > div {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form-instruction-list li strong {
+  font-size: var(--type-ui) !important;
+  font-weight: var(--weight-heading) !important;
+  line-height: var(--leading-ui) !important;
+}
+
+.form-instruction-list li p {
+  max-width: 52ch;
+  color: rgb(247 245 239 / 0.62);
+  font-size: var(--type-body);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+}
+
+.form-exercise-note {
+  grid-row: 3;
+  grid-column: 2;
+  max-width: 52ch;
+  color: rgb(247 245 239 / 0.62);
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+}
+
+.form-exercise-note strong {
+  color: var(--grt-reverse);
+  font-weight: var(--weight-heading);
+}
+
+.form-transparency-note {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.form-instruction-actions {
+  grid-row: 4;
+  grid-column: 1 / -1;
+}
+
+.grt-form-workspace,
+.form-results-stage {
+  padding-top: clamp(2rem, 4vw, 4rem);
+}
+
+.form-results-grid {
+  grid-template-columns: minmax(0, 2fr) minmax(19rem, 1fr);
+}
+
+.coaching-review {
+  gap: 0.75rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .form-body-area-grid button:hover,
+  .form-exercise-selector button:hover {
+    background: rgb(247 245 239 / 0.08);
+  }
+
+  .form-body-area-grid button:hover span,
+  .form-all-exercises:hover span,
+  .form-exercise-selector button:hover span {
+    transform: translateX(4px);
+  }
+}
+
+@media (max-width: 900px) {
+  .form-instruction-block {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .form-instruction-list,
+  .form-exercise-note,
+  .form-transparency-note,
+  .form-instruction-actions {
+    grid-row: auto;
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-body-area-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .form-body-area-grid button {
+    min-height: 7.5rem;
+    padding: 1.25rem;
+  }
+
+  .form-exercise-choice {
+    margin-top: 2rem;
+  }
+
+  .form-exercise-selector {
+    max-height: none;
+  }
+
+  .form-results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 479px) {
+  .form-selection-toolbar {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    gap: 0.25rem;
+  }
+
+  .form-body-area-grid button {
+    min-height: 7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-body-area-grid button span,
+  .form-all-exercises span,
+  .form-exercise-selector button span {
     transition: none;
   }
 }
