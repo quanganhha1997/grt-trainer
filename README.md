@@ -34,7 +34,7 @@ npm run dev
 
 Open the URL printed by Vite, normally `http://localhost:5173`.
 
-For form-check testing, use a 5 - 30 second side-view bodyweight squat video with the full body visible. Chrome is recommended for the most predictable MediaPipe behavior.
+For form-check testing, use a 5–15 second side-view bodyweight squat video with the full body visible. Chrome is recommended for the most predictable MediaPipe behavior.
 
 ## Validation commands
 

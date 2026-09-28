@@ -1,6 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import {
+  findSupportedFormCheckExercise,
+  getFormCheckPath,
+} from "@/lib/form-check-exercises";
 import { sitePath } from "@/lib/site-path";
 import { TRAINING_PROGRAMS, type TrainingProgram } from "@/lib/training-programs";
 
@@ -12,8 +16,13 @@ function matchesFilter(program: TrainingProgram, filter: ProgramFilter) {
   return filter === "All" || program.schedule.startsWith(filter);
 }
 
-function includesSquat(session: ProgramSession) {
-  return session.exercises.some((exercise) => /\bsquat\b/i.test(exercise.name));
+function getSupportedFormCheck(session: ProgramSession) {
+  for (const exercise of session.exercises) {
+    const supportedExercise = findSupportedFormCheckExercise(exercise.name);
+    if (supportedExercise) return supportedExercise;
+  }
+
+  return null;
 }
 
 function getWorkingSetCount(session: ProgramSession) {
@@ -43,6 +52,7 @@ export function WorkoutPlanner() {
   const selectedPhaseIndex = selectedProgram.phases.findIndex((phase) => phase.id === selectedPhase.id);
   const selectedSessionIndex = selectedPhase.sessions.findIndex((session) => session.id === selectedSession.id);
   const workingSetCount = getWorkingSetCount(selectedSession);
+  const supportedFormCheck = getSupportedFormCheck(selectedSession);
 
   function chooseProgram(program: TrainingProgram) {
     setSelectedId(program.id);
@@ -206,9 +216,9 @@ export function WorkoutPlanner() {
                 <h3>{selectedSession.label}</h3>
                 <small>{selectedSession.exercises.length} exercises · {workingSetCount} working sets</small>
               </div>
-              {includesSquat(selectedSession) ? (
-                <a href={sitePath("/form-check")} className="workout-form-link grt-pressable">
-                  Check squat form <span aria-hidden="true">→</span>
+              {supportedFormCheck ? (
+                <a href={sitePath(getFormCheckPath(supportedFormCheck.id))} className="workout-form-link grt-pressable">
+                  Check {supportedFormCheck.name.toLowerCase()} form <span aria-hidden="true">→</span>
                 </a>
               ) : null}
             </div>

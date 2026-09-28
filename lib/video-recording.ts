@@ -14,6 +14,7 @@ export function selectPreferredRecordingMimeType(
 export function getRecordedVideoFileDetails(
   recorderMimeType: string,
   recordedAt = new Date(),
+  movementSlug = "squat",
 ) {
   const baseMimeType = recorderMimeType.toLowerCase().split(";")[0];
   const mimeType = baseMimeType === "video/mp4" ? "video/mp4" : "video/webm";
@@ -22,7 +23,7 @@ export function getRecordedVideoFileDetails(
 
   return {
     mimeType,
-    fileName: `squat-recording-${timestamp}.${extension}`,
+    fileName: `${movementSlug}-recording-${timestamp}.${extension}`,
   };
 }
 

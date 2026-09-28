@@ -1,27 +1,9 @@
 import type { SquatAngles } from "./pose-geometry";
 import type { SquatPhase } from "./squat-repetition";
+import type { FormCoachingSignal, FormRepAnalysis } from "./form-analysis";
 
-export type CoachingSignal = {
-  area: "Depth" | "Torso" | "Tempo";
-  status: "good" | "adjust";
-  message: string;
-  timestampSeconds: number;
-};
-
-export type SquatRepAnalysis = {
-  repetition: number;
-  score: number;
-  rating: "Strong" | "Good" | "Needs attention";
-  minimumKneeAngle: number;
-  minimumHipAngle: number;
-  maximumTorsoLean: number;
-  durationSeconds: number;
-  sampleCount: number;
-  startedAtSeconds: number;
-  completedAtSeconds: number;
-  reviewAtSeconds: number;
-  signals: CoachingSignal[];
-};
+export type CoachingSignal = FormCoachingSignal;
+export type SquatRepAnalysis = FormRepAnalysis;
 
 type ActiveSquatRep = {
   startedAt: number;

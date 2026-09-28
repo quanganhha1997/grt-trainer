@@ -39,7 +39,7 @@ export const EXERCISE_CATALOG: ExerciseDefinition[] = [
     defaultSets: 3,
     defaultAmount: 8,
     unit: "reps",
-    formCheckAvailable: false,
+    formCheckAvailable: true,
   },
   {
     id: "push_up",
