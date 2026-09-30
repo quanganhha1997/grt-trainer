@@ -6,7 +6,6 @@ import {
   Camera,
   CameraOff,
   CheckCircle2,
-  Check,
   ChevronDown,
   Film,
   LoaderCircle,
@@ -18,7 +17,6 @@ import {
 } from "lucide-react";
 import {
   ChangeEvent,
-  type CSSProperties,
   DragEvent,
   SyntheticEvent,
   useEffect,
@@ -26,9 +24,19 @@ import {
   useState,
 } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
+import {
+  FormCheckInstructions,
+  FormCheckSelection,
+  FormCheckWorkflowSteps,
+} from "@/components/form-check/form-check-flow";
+import {
+  FormCoachingReview,
+  RepBreakdown,
+  formatVideoTimestamp,
+  type SetFeedback,
+} from "@/components/form-check/form-check-feedback";
 import {
   formatRecordingDuration,
   getRecordedVideoFileDetails,
@@ -36,17 +44,17 @@ import {
 } from "@/lib/video-recording";
 import type { FormAngleSummary, FormRepAnalysis } from "@/lib/form-analysis";
 import {
-  FORM_CHECK_BODY_AREAS,
-  FORM_CHECK_EXERCISES,
   getFormCheckExercise,
-  getFormCheckExercisesByBodyArea,
   isDipExerciseId,
   isOverheadPressExerciseId,
   parseFormCheckExerciseId,
   type FormCheckExercise,
-  type FormCheckBodyAreaId,
   type FormCheckExerciseId,
 } from "@/lib/form-check-exercises";
+import {
+  getCaptureView,
+  getLiveTrackingLabel,
+} from "@/lib/form-check-presentation";
 import {
   calculateCalfRaiseAngles,
   calculateFlyAngles,
@@ -258,7 +266,6 @@ type AnalysisStatus = "idle" | "loading" | "scanning" | "complete";
 type InputMode = "upload" | "record";
 type CameraStatus = "idle" | "requesting" | "ready";
 type FormFlowStage = "intro" | "instructions" | "workspace";
-type ExerciseSelectionView = "areas" | "area" | "all";
 type PoseConnection = { start: number; end: number };
 type MovementPhase =
   | SquatPhase
@@ -307,54 +314,6 @@ function formatBytes(bytes: number) {
   }
 
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-}
-
-function getCaptureView(exercise: FormCheckExercise) {
-  return exercise.instructions.some((instruction) =>
-    instruction.toLowerCase().includes("front view"),
-  )
-    ? "front view"
-    : "side view";
-}
-
-function getInstructionContent(exercise: FormCheckExercise) {
-  const frameInstructions = exercise.instructions.filter((instruction) => {
-    const normalized = instruction.toLowerCase();
-    return (
-      normalized.includes("view") ||
-      normalized.startsWith("show ") ||
-      normalized.includes(" visible") ||
-      normalized.includes("inside the frame")
-    );
-  });
-  const note = exercise.instructions.find((instruction) => {
-    const normalized = instruction.toLowerCase();
-    return !(
-      frameInstructions.includes(instruction) ||
-      normalized.includes("5 - 30 seconds") ||
-      normalized === "record at least one full rep" ||
-      normalized === "use good lighting" ||
-      normalized === "keep the camera still"
-    );
-  });
-
-  return {
-    groups: [
-      {
-        title: "Frame",
-        detail: frameInstructions.join(". ").replace(/\.\s*\./g, "."),
-      },
-      {
-        title: "Clip",
-        detail: "Record 5 - 30 seconds with at least one complete repetition.",
-      },
-      {
-        title: "Camera",
-        detail: "Use good lighting and keep the camera still.",
-      },
-    ],
-    note,
-  };
 }
 
 export function FormCheckWorkspace() {
@@ -468,11 +427,6 @@ export function FormCheckWorkspace() {
   const [selectedExerciseId, setSelectedExerciseId] =
     useState<FormCheckExerciseId>("bodyweight_squat");
   const [flowStage, setFlowStage] = useState<FormFlowStage>("intro");
-  const [selectionView, setSelectionView] =
-    useState<ExerciseSelectionView>("areas");
-  const [selectedBodyAreaId, setSelectedBodyAreaId] =
-    useState<FormCheckBodyAreaId | null>(null);
-  const [exerciseQuery, setExerciseQuery] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [inputMode, setInputMode] = useState<InputMode>("upload");
   const [cameraStatus, setCameraStatus] = useState<CameraStatus>("idle");
@@ -486,15 +440,6 @@ export function FormCheckWorkspace() {
   >(null);
   const selectedExercise = getFormCheckExercise(selectedExerciseId);
   const captureView = getCaptureView(selectedExercise);
-  const selectedBodyArea = selectedBodyAreaId
-    ? FORM_CHECK_BODY_AREAS.find((area) => area.id === selectedBodyAreaId) ?? null
-    : null;
-  const normalizedExerciseQuery = exerciseQuery.trim().toLowerCase();
-  const visibleExercises = selectionView === "area" && selectedBodyAreaId
-    ? getFormCheckExercisesByBodyArea(selectedBodyAreaId)
-    : FORM_CHECK_EXERCISES.filter((exercise) =>
-        exercise.name.toLowerCase().includes(normalizedExerciseQuery),
-      );
 
   useEffect(() => {
     const exerciseId = parseFormCheckExerciseId(
@@ -2144,136 +2089,16 @@ export function FormCheckWorkspace() {
   }, [analysisStatus, duration, scanQuality?.allowCoaching, setFeedback?.reviewAtSeconds]);
 
   if (flowStage === "intro") {
-    return (
-      <div className="form-flow-shell grt-page-entry">
-        <section className="form-intro-block form-selection-block" aria-labelledby="form-intro-heading">
-          <div className="form-intro-copy form-selection-heading">
-            <p className="block-label">Form Check</p>
-            <h1 id="form-intro-heading">Check your form.</h1>
-            <p>Choose a movement.</p>
-          </div>
-          {selectionView === "areas" ? (
-            <div className="form-area-selection">
-              <div className="form-body-area-grid" aria-label="Choose a body area">
-                {FORM_CHECK_BODY_AREAS.map((area) => (
-                  <button
-                    key={area.id}
-                    type="button"
-                    className="grt-pressable"
-                    onClick={() => {
-                      setSelectedBodyAreaId(area.id);
-                      setSelectionView("area");
-                    }}
-                  >
-                    <strong>{area.label}</strong>
-                    <span aria-hidden="true">→</span>
-                  </button>
-                ))}
-              </div>
-              <button
-                type="button"
-                className="form-all-exercises"
-                onClick={() => {
-                  setExerciseQuery("");
-                  setSelectionView("all");
-                }}
-              >
-                All exercises <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          ) : (
-            <div className="form-exercise-choice">
-              <div className="form-selection-toolbar">
-                <button
-                  type="button"
-                  className="grt-text-button"
-                  onClick={() => {
-                    setSelectionView("areas");
-                    setSelectedBodyAreaId(null);
-                    setExerciseQuery("");
-                  }}
-                >
-                  ← Body areas
-                </button>
-                <p className="block-label">
-                  {selectionView === "all" ? "All exercises" : selectedBodyArea?.label}
-                </p>
-              </div>
-
-              {selectionView === "all" ? (
-                <label className="form-exercise-search">
-                  <span className="sr-only">Search all exercises</span>
-                  <Input
-                    type="search"
-                    value={exerciseQuery}
-                    onChange={(event) => setExerciseQuery(event.target.value)}
-                    placeholder="Search exercises"
-                    autoFocus
-                  />
-                </label>
-              ) : null}
-
-              <div className="form-exercise-selector" aria-label="Choose an exercise">
-                {visibleExercises.map((exercise) => (
-                  <button
-                    key={exercise.id}
-                    type="button"
-                    onClick={() => chooseExercise(exercise.id)}
-                  >
-                    <strong>{exercise.name}</strong>
-                    <span aria-hidden="true">→</span>
-                  </button>
-                ))}
-              </div>
-
-              {visibleExercises.length === 0 ? (
-                <p className="form-exercise-empty">No matching exercises.</p>
-              ) : null}
-            </div>
-          )}
-        </section>
-      </div>
-    );
+    return <FormCheckSelection onSelectExercise={chooseExercise} />;
   }
 
   if (flowStage === "instructions") {
-    const instructionContent = getInstructionContent(selectedExercise);
-
     return (
-      <div className="form-flow-shell grt-page-entry">
-        <section className="form-instruction-block" aria-labelledby="form-instructions-heading">
-          <div className="form-instruction-head">
-            <p className="block-label">Before upload</p>
-            <h1 id="form-instructions-heading">Before you start.</h1>
-            <p className="form-instruction-movement">{selectedExercise.name}</p>
-          </div>
-          <ol className="form-instruction-list">
-            {instructionContent.groups.map((instruction, index) => (
-              <li key={instruction.title} style={{ "--row-index": index } as CSSProperties}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <strong>{instruction.title}</strong>
-                  <p>{instruction.detail}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          {instructionContent.note ? (
-            <p className="form-exercise-note">
-              <strong>{selectedExercise.name}:</strong> {instructionContent.note}
-            </p>
-          ) : null}
-          <p className="form-transparency-note">
-            For transparency: videos are analyzed for this session. Saved history is not available yet.
-          </p>
-          <div className="form-instruction-actions">
-            <button type="button" className="grt-text-button" onClick={() => setFlowStage("intro")}>Back</button>
-            <button type="button" className="grt-primary-inverse grt-pressable" onClick={() => setFlowStage("workspace")}>
-              I understand <span aria-hidden="true">→</span>
-            </button>
-          </div>
-        </section>
-      </div>
+      <FormCheckInstructions
+        exercise={selectedExercise}
+        onBack={() => setFlowStage("intro")}
+        onContinue={() => setFlowStage("workspace")}
+      />
     );
   }
 
@@ -2381,7 +2206,7 @@ export function FormCheckWorkspace() {
                 </h2>
               </div>
             </div>
-            <WorkflowSteps currentStep={workflowStep} />
+            <FormCheckWorkflowSteps currentStep={workflowStep} />
           </div>
 
           <div className="panel-body">
@@ -2653,37 +2478,7 @@ export function FormCheckWorkspace() {
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div>
                         <p className="grt-type-block text-[#ffffff]">
-                          Live {selectedExercise.family === "squat"
-                            ? "squat"
-                            : selectedExercise.family === "hinge"
-                              ? "hinge"
-                              : selectedExercise.family === "unilateral"
-                                ? "single-leg"
-                                : selectedExercise.family === "row"
-                                  ? "row"
-                                  : selectedExercise.family === "vertical-pull"
-                                    ? "vertical pull"
-                                    : selectedExercise.family === "knee-isolation"
-                                      ? "leg isolation"
-                                    : selectedExercise.family === "arm-isolation"
-                                      ? "arm isolation"
-                                      : selectedExercise.family === "core-flexion"
-                                        ? "core"
-                                      : selectedExercise.family === "calf-isolation"
-                                        ? "calf"
-                                      : selectedExercise.family === "shoulder-isolation"
-                                        ? "shoulder isolation"
-                                      : selectedExercise.family === "chest-isolation"
-                                        ? "chest isolation"
-                                      : selectedExercise.family === "rear-shoulder-isolation"
-                                        ? "rear shoulder"
-                                      : selectedExercise.family === "straight-arm-pull"
-                                        ? "straight-arm pull"
-                                      : selectedExercise.family === "hip-machine"
-                                        ? "hip machine"
-                                    : isOverheadPressExerciseId(selectedExercise.id)
-                                      ? "overhead"
-                                      : "press"} tracking
+                          Live {getLiveTrackingLabel(selectedExercise)} tracking
                         </p>
                         <p className="grt-type-body mt-1 text-[#ffffff]/45">
                           {liveCue ?? describeMovementPhase(movementPhase, selectedExercise.family)}
@@ -2879,36 +2674,6 @@ export function FormCheckWorkspace() {
 
       </div>
     </div>
-  );
-}
-
-function WorkflowSteps({ currentStep }: { currentStep: number }) {
-  const steps = [
-    { number: 1, label: "Instructions" },
-    { number: 2, label: "Upload" },
-    { number: 3, label: "Review" },
-  ];
-
-  return (
-    <ol className="workflow-steps" aria-label="Analysis progress">
-      {steps.map((step) => {
-        const isComplete = currentStep > step.number;
-        const isCurrent = currentStep === step.number;
-
-        return (
-          <li
-            key={step.number}
-            className={`workflow-step ${isCurrent ? "workflow-step-current" : ""} ${isComplete ? "workflow-step-complete" : ""}`}
-            aria-current={isCurrent ? "step" : undefined}
-          >
-            <span className="workflow-step-marker" aria-hidden="true">
-              {isComplete ? <Check className="size-3" /> : step.number}
-            </span>
-            <span>{step.label}</span>
-          </li>
-        );
-      })}
-    </ol>
   );
 }
 
@@ -3221,15 +2986,11 @@ function formatPercentage(value: number) {
   return `${Math.round(value * 100)}%`;
 }
 
-type SetFeedback = {
-  score: number;
-  rating: "Strong" | "Good" | "Needs work";
-  good: Array<{ area: string; detail: string }>;
-  fixTitle: string;
-  fixDetail: string;
-  nextCue: string;
-  reviewAtSeconds: number | null;
-};
+function getSetRating(score: number): SetFeedback["rating"] {
+  if (score >= 85) return "Strong";
+  if (score >= 70) return "Good";
+  return "Needs work";
+}
 
 function createSetFeedback(
   repetitions: FormRepAnalysis[],
@@ -3365,7 +3126,7 @@ function createSetFeedback(
   if (primarySignal?.area === "Depth") {
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: "Depth stops short.",
       fixDetail: "Sit slightly deeper without losing control.",
@@ -3378,7 +3139,7 @@ function createSetFeedback(
     if (isOverheadPress) {
       return {
         score: averageScore,
-        rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+        rating: getSetRating(averageScore),
         good,
         fixTitle: "The torso leans back.",
         fixDetail: "Stay tall and reduce the backward lean as the weight moves overhead.",
@@ -3389,7 +3150,7 @@ function createSetFeedback(
 
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: "Chest drifts forward.",
       fixDetail: "Brace before you descend and keep the chest steady.",
@@ -3403,7 +3164,7 @@ function createSetFeedback(
     const isPress = exercise.family === "press";
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: isPullingFamily
         ? "The pull stops short."
@@ -3503,7 +3264,7 @@ function createSetFeedback(
   if (primarySignal?.area === "Knee symmetry") {
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: "The knees move unevenly.",
       fixDetail: "Move both knees more evenly through the working range and return.",
@@ -3515,7 +3276,7 @@ function createSetFeedback(
   if (primarySignal?.area === "Torso stability") {
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: isDip
         ? "The torso angle changes during the dip."
@@ -3539,7 +3300,7 @@ function createSetFeedback(
   if (primarySignal?.area === "Thigh stability") {
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: "The thigh shifts during the rep.",
       fixDetail: "Keep the thigh steady while the lower leg moves through the working range and return.",
@@ -3551,7 +3312,7 @@ function createSetFeedback(
   if (primarySignal?.area === "Upper-arm stability") {
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: "The upper arm shifts during the rep.",
       fixDetail: "Keep the upper arm steady while the forearm moves through the working range and return.",
@@ -3564,7 +3325,7 @@ function createSetFeedback(
     const isCrunch = exercise.id === "crunch";
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: isCrunch
         ? "The lower body shifts during the rep."
@@ -3582,7 +3343,7 @@ function createSetFeedback(
   if (primarySignal?.area === "Knee stability") {
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: "The knee shifts during the rep.",
       fixDetail: "Keep the knee position steadier while the heel rises and returns.",
@@ -3594,7 +3355,7 @@ function createSetFeedback(
   if (primarySignal?.area === "Elbow stability") {
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: "The elbow bend changes during the rep.",
       fixDetail: isChestIsolation
@@ -3612,7 +3373,7 @@ function createSetFeedback(
   if (primarySignal?.area === "Wrist position") {
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: "The wrist drifts from the elbow.",
       fixDetail: "At the bottom, bring the wrist closer over the elbow in the side view.",
@@ -3625,7 +3386,7 @@ function createSetFeedback(
     const isRdl = exercise.id === "romanian_deadlift";
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: isRdl ? "The knees bend too much." : "Knee bend needs balance.",
       fixDetail: isRdl
@@ -3642,7 +3403,7 @@ function createSetFeedback(
     const movesTooFast = primarySignal.message.startsWith("Slow");
     return {
       score: averageScore,
-      rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+      rating: getSetRating(averageScore),
       good,
       fixTitle: movesTooFast ? "The rep moves too fast." : "Tempo loses continuity.",
       fixDetail: movesTooFast
@@ -3669,7 +3430,7 @@ function createSetFeedback(
 
   return {
     score: averageScore,
-    rating: averageScore >= 85 ? "Strong" : averageScore >= 70 ? "Good" : "Needs work",
+    rating: getSetRating(averageScore),
     good,
     fixTitle: "No recurring fault detected.",
     fixDetail: exercise.family === "hinge"
@@ -3704,273 +3465,6 @@ function createSetFeedback(
     nextCue: "Next rep: repeat the same control.",
     reviewAtSeconds: repetitions[0]?.reviewAtSeconds ?? null,
   };
-}
-
-function FormCoachingReview({
-  feedback,
-  activeReviewTimestamp,
-  onReviewMoment,
-}: {
-  feedback: SetFeedback;
-  activeReviewTimestamp: number | null;
-  onReviewMoment: (timestampSeconds: number) => void;
-}) {
-  return (
-    <aside className="coaching-review" aria-labelledby="coach-review-heading">
-      <div className="result-score-block">
-        <p>Score</p>
-        <strong>{feedback.score}<small>/100</small></strong>
-        <span>{feedback.rating}</span>
-      </div>
-
-      <section className="result-feedback-card result-fix-card">
-        <div className="result-card-label-row">
-          <p className="block-label">Fix first</p>
-          {feedback.reviewAtSeconds !== null ? (
-            <button
-              type="button"
-              data-active={timestampMatches(
-                activeReviewTimestamp,
-                feedback.reviewAtSeconds,
-              )}
-              onClick={() => onReviewMoment(feedback.reviewAtSeconds ?? 0)}
-              aria-label={`Review correction at ${formatVideoTimestamp(feedback.reviewAtSeconds)}`}
-            >
-              {formatVideoTimestamp(feedback.reviewAtSeconds)} · Review
-            </button>
-          ) : null}
-        </div>
-        <h2>{feedback.fixTitle}</h2>
-        <p>{feedback.fixDetail}</p>
-      </section>
-
-      <section className="result-feedback-card result-good-card">
-        <p className="block-label">Good</p>
-        <h2 id="coach-review-heading">What held up.</h2>
-        {feedback.good.length ? (
-          <ul>
-            {feedback.good.map((item) => (
-              <li key={item.area}>
-                <strong>{item.area}</strong>
-                <span>{item.detail}</span>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="result-empty-copy">
-            No pattern held consistently across every completed rep.
-          </p>
-        )}
-      </section>
-
-      <section className="result-feedback-card result-next-card">
-        <p className="block-label">Next rep</p>
-        <h2>{feedback.nextCue}</h2>
-      </section>
-    </aside>
-  );
-}
-
-function RepBreakdown({
-  repetitions,
-  exercise,
-  activeReviewTimestamp,
-  onReviewMoment,
-}: {
-  repetitions: FormRepAnalysis[];
-  exercise: FormCheckExercise;
-  activeReviewTimestamp: number | null;
-  onReviewMoment: (timestampSeconds: number) => void;
-}) {
-  return (
-    <section className="result-rep-breakdown" aria-labelledby="rep-breakdown-heading">
-      <div className="result-rep-breakdown-heading">
-        <p className="block-label">Rep breakdown</p>
-        <h3 id="rep-breakdown-heading">Review each rep.</h3>
-      </div>
-      <div className="rep-list">
-        {repetitions.map((repetition) => (
-          <article key={repetition.repetition} className="rep-card">
-            <div className="rep-card-header">
-              <div>
-                <p>Rep {repetition.repetition}</p>
-                <span className="status-chip" data-rating={repetition.rating}>
-                  {repetition.rating}
-                </span>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  className="timestamp-button"
-                  data-active={timestampMatches(
-                    activeReviewTimestamp,
-                    repetition.reviewAtSeconds,
-                  )}
-                  onClick={() => onReviewMoment(repetition.reviewAtSeconds)}
-                  aria-label={`Review repetition ${repetition.repetition} at ${formatVideoTimestamp(repetition.reviewAtSeconds)}`}
-                >
-                  {formatVideoTimestamp(repetition.reviewAtSeconds)}
-                </button>
-                <strong>{repetition.score}/100</strong>
-              </div>
-            </div>
-            <div className="rep-metric-grid">
-              {exercise.family === "row" ||
-              exercise.family === "vertical-pull" ? (
-                <>
-                  <RepMetric
-                    label="Elbow range"
-                    value={`${Math.round(repetition.minimumElbowAngle ?? 0)}°`}
-                  />
-                  <RepMetric
-                    label="Torso drift"
-                    value={`${Math.round(repetition.torsoLeanRange ?? 0)}°`}
-                  />
-                </>
-              ) : exercise.family === "arm-isolation" ? (
-                <>
-                  <RepMetric
-                    label="Elbow range"
-                    value={`${Math.round(repetition.minimumElbowAngle ?? 0)}° - ${Math.round(repetition.maximumElbowAngle ?? 0)}°`}
-                  />
-                  <RepMetric
-                    label="Upper-arm drift"
-                    value={`${Math.round(repetition.shoulderAngleRange ?? 0)}°`}
-                  />
-                </>
-              ) : exercise.family === "knee-isolation" ? (
-                <>
-                  <RepMetric
-                    label="Knee range"
-                    value={`${Math.round(repetition.minimumKneeAngle)}° - ${Math.round(repetition.maximumKneeAngle ?? 0)}°`}
-                  />
-                  <RepMetric
-                    label="Thigh drift"
-                    value={`${Math.round(repetition.hipAngleRange ?? 0)}°`}
-                  />
-                </>
-              ) : exercise.family === "core-flexion" ? (
-                <>
-                  <RepMetric
-                    label="Hip range"
-                    value={`${Math.round(repetition.minimumHipAngle)}° - ${Math.round(repetition.maximumHipAngle ?? 0)}°`}
-                  />
-                  <RepMetric
-                    label="Body drift"
-                    value={`${Math.round(repetition.bodyPositionRange ?? 0)}°`}
-                  />
-                </>
-              ) : exercise.family === "calf-isolation" ? (
-                <>
-                  <RepMetric
-                    label="Ankle range"
-                    value={`${Math.round(repetition.minimumAnkleAngle ?? 0)}° - ${Math.round(repetition.maximumAnkleAngle ?? 0)}°`}
-                  />
-                  <RepMetric
-                    label="Knee drift"
-                    value={`${Math.round(repetition.bodyPositionRange ?? 0)}°`}
-                  />
-                </>
-              ) : exercise.family === "shoulder-isolation" ||
-                exercise.family === "straight-arm-pull" ? (
-                <>
-                  <RepMetric
-                    label="Shoulder range"
-                    value={`${Math.round(repetition.minimumShoulderAngle ?? 0)}° - ${Math.round((repetition.minimumShoulderAngle ?? 0) + (repetition.shoulderAngleRange ?? 0))}°`}
-                  />
-                  <RepMetric
-                    label="Elbow drift"
-                    value={`${Math.round(repetition.bodyPositionRange ?? 0)}°`}
-                  />
-                </>
-              ) : exercise.family === "chest-isolation" ||
-                exercise.family === "rear-shoulder-isolation" ? (
-                <>
-                  <RepMetric
-                    label="Hand spacing"
-                    value={`${Math.round(repetition.minimumWristSeparation ?? 0)}% - ${Math.round(repetition.maximumWristSeparation ?? 0)}%`}
-                  />
-                  <RepMetric
-                    label="Elbow drift"
-                    value={`${Math.round(repetition.bodyPositionRange ?? 0)}°`}
-                  />
-                </>
-              ) : exercise.family === "hip-machine" ? (
-                <>
-                  <RepMetric
-                    label="Knee spacing"
-                    value={`${Math.round(repetition.minimumKneeSeparation ?? 0)}% - ${Math.round(repetition.maximumKneeSeparation ?? 0)}%`}
-                  />
-                  <RepMetric
-                    label="Left / right"
-                    value={`${Math.round(repetition.maximumKneeAsymmetry ?? 0)}% difference`}
-                  />
-                </>
-              ) : exercise.family === "press" ? (
-                <>
-                  <RepMetric
-                    label="Elbow range"
-                    value={`${Math.round(repetition.minimumElbowAngle ?? 0)}°`}
-                  />
-                  <RepMetric
-                    label={isDipExerciseId(exercise.id)
-                      ? "Torso drift"
-                      : isOverheadPressExerciseId(exercise.id)
-                        ? "Torso"
-                        : "Wrist offset"}
-                    value={isDipExerciseId(exercise.id)
-                      ? `${Math.round(repetition.torsoLeanRange ?? 0)}°`
-                      : isOverheadPressExerciseId(exercise.id)
-                        ? `${Math.round(repetition.maximumTorsoLean)}°`
-                        : `${Math.round(repetition.wristOffsetAtBottom ?? 0)}%`}
-                  />
-                </>
-              ) : (
-                <>
-                  <RepMetric
-                    label={exercise.family === "hinge" ? "Hip range" : "Depth"}
-                    value={`${Math.round(
-                      exercise.family === "hinge"
-                        ? repetition.minimumHipAngle
-                        : repetition.minimumKneeAngle,
-                    )}°`}
-                  />
-                  <RepMetric
-                    label={exercise.family === "hinge" ? "Knee" : "Torso"}
-                    value={`${Math.round(
-                      exercise.family === "hinge"
-                        ? repetition.minimumKneeAngle
-                        : repetition.maximumTorsoLean,
-                    )}°`}
-                  />
-                </>
-              )}
-              <RepMetric label="Tempo" value={`${repetition.durationSeconds.toFixed(1)}s`} />
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function timestampMatches(first: number | null, second: number) {
-  return first !== null && Math.abs(first - second) < 0.05;
-}
-
-function formatVideoTimestamp(timestampSeconds: number) {
-  const minutes = Math.floor(timestampSeconds / 60);
-  const seconds = Math.max(0, timestampSeconds - minutes * 60);
-  return `${minutes}:${seconds.toFixed(1).padStart(4, "0")}`;
-}
-
-function RepMetric({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-lg bg-[#ffffff]/[0.045] px-3 py-2">
-      <p className="grt-type-label uppercase text-[#ffffff]/35">{label}</p>
-      <p className="grt-type-numeric grt-metric-value mt-0.5 text-[#ffffff]/80">{value}</p>
-    </div>
-  );
 }
 
 function formatMovementPhase(

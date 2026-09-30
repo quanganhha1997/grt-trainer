@@ -6411,7 +6411,7 @@ small,
   }
 }
 
-/* Grt v0.7 — desktop rhythm + progressive Form Check selection */
+/* Grt v0.8 — desktop rhythm + progressive Form Check selection */
 :root {
   --page-gutter: clamp(1rem, 4vw, 3rem);
   --type-display: clamp(3.25rem, 8vw, 8.5rem);
@@ -6465,6 +6465,10 @@ small,
 .form-selection-block {
   display: block;
   min-height: auto;
+  padding-inline: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--grt-ink);
 }
 
 .form-selection-heading {
@@ -6473,11 +6477,16 @@ small,
 
 .form-selection-heading h1 {
   max-width: 14ch;
-  margin-top: 0.75rem;
+  margin-top: 0;
+  color: var(--grt-ink);
 }
 
 .form-selection-heading > p:last-child {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
+  color: var(--grt-muted);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: var(--weight-body);
+  line-height: 1.1;
 }
 
 .form-area-selection {
@@ -6491,47 +6500,89 @@ small,
 }
 
 .form-body-area-grid button {
+  position: relative;
   display: flex;
-  min-height: 9rem;
+  min-height: clamp(10rem, 15vw, 13rem);
   padding: 1.75rem;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-  border: 1px solid rgb(247 245 239 / 0.3);
+  overflow: hidden;
+  border: 0;
   border-radius: var(--grt-block-radius);
-  background: transparent;
+  background: var(--grt-block);
   color: var(--grt-reverse);
+  isolation: isolate;
   text-align: left;
+  animation: form-category-card-in var(--grt-panel) var(--grt-ease-out) both;
+  animation-delay: calc(var(--card-index) * 32ms);
+}
+
+.form-body-area-grid button::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(11 11 10 / 0.86) 0%, rgb(11 11 10 / 0.2) 64%, transparent 100%);
+  content: "";
+}
+
+.form-body-area-art {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+}
+
+.form-body-area-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(1) contrast(1.02) brightness(0.88);
+  transition:
+    filter var(--grt-ui) var(--grt-ease-out),
+    transform var(--grt-ui) var(--grt-ease-out);
 }
 
 .form-body-area-grid button strong {
+  position: relative;
+  z-index: 1;
   font-size: var(--type-block);
   font-weight: var(--weight-heading);
   line-height: var(--leading-block);
+  text-shadow: 0 1px 16px rgb(0 0 0 / 0.45);
 }
 
-.form-body-area-grid button span,
 .form-all-exercises span,
 .form-exercise-selector button span {
   transition: transform var(--grt-ui) var(--grt-ease-out);
 }
 
 .form-all-exercises {
-  display: inline-flex;
-  min-height: 3rem;
-  margin-top: 1.5rem;
-  padding-inline: 0.25rem;
+  display: flex;
+  width: 100%;
+  min-height: 4.5rem;
+  margin-top: 1rem;
+  padding-inline: 1.5rem;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  color: rgb(247 245 239 / 0.7);
-  font-size: var(--type-ui);
-  font-weight: var(--weight-ui);
+  border-radius: var(--grt-block-radius);
+  background: var(--grt-rule);
+  color: var(--grt-ink);
+  font-size: var(--type-body);
+  font-weight: var(--weight-heading);
   line-height: var(--leading-ui);
+  transition: background-color var(--grt-ui) var(--grt-ease-out);
 }
 
 .form-exercise-choice {
   width: min(100%, 45rem);
   margin-top: clamp(2.25rem, 3vw, 2.75rem);
+}
+
+.form-exercise-choice-panel {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-radius: var(--grt-block-radius);
+  background: var(--grt-block);
+  color: var(--grt-reverse);
 }
 
 .form-selection-toolbar {
@@ -6621,11 +6672,27 @@ small,
 }
 
 .form-body-area-grid button:focus-visible,
-.form-all-exercises:focus-visible,
 .form-selection-toolbar .grt-text-button:focus-visible,
 .form-exercise-selector button:focus-visible {
   outline: 2px solid var(--grt-reverse);
   outline-offset: 3px;
+}
+
+.form-all-exercises:focus-visible {
+  outline: 2px solid var(--grt-ink);
+  outline-offset: 3px;
+}
+
+@keyframes form-category-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .form-instruction-block {
@@ -6702,15 +6769,22 @@ small,
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .form-body-area-grid button:hover,
   .form-exercise-selector button:hover {
     background: rgb(247 245 239 / 0.08);
   }
 
-  .form-body-area-grid button:hover span,
   .form-all-exercises:hover span,
   .form-exercise-selector button:hover span {
     transform: translateX(4px);
+  }
+
+  .form-body-area-grid button:hover .form-body-area-art img {
+    filter: grayscale(1) contrast(1.02) brightness(0.98);
+    transform: scale(1.018);
+  }
+
+  .form-all-exercises:hover {
+    background: var(--grt-border);
   }
 }
 
@@ -6736,7 +6810,7 @@ small,
   }
 
   .form-body-area-grid button {
-    min-height: 7.5rem;
+    min-height: 8.5rem;
     padding: 1.25rem;
   }
 
@@ -6761,14 +6835,17 @@ small,
   }
 
   .form-body-area-grid button {
-    min-height: 7rem;
+    min-height: 7.75rem;
+    padding: 1rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .form-body-area-grid button span,
+  .form-body-area-grid button,
+  .form-body-area-art img,
   .form-all-exercises span,
   .form-exercise-selector button span {
+    animation: none;
     transition: none;
   }
 }

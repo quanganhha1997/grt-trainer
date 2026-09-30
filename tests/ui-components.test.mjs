@@ -57,7 +57,7 @@ test("forwards progress semantics to the primitive", async () => {
   assert.match(html, /data-state="loading"/);
 });
 
-test("uses the Grt v0.7 type hierarchy, desktop rhythm, and precise motion", async () => {
+test("uses the Grt v0.8 type hierarchy, desktop rhythm, and precise motion", async () => {
   const sourceCss = await readFile(path.join(root, "app", "globals.css"), "utf8");
   const layoutSource = await readFile(path.join(root, "app", "layout.tsx"), "utf8");
   const workoutSource = await readFile(path.join(root, "app", "routines", "workout-planner.tsx"), "utf8");
@@ -79,7 +79,7 @@ test("uses the Grt v0.7 type hierarchy, desktop rhythm, and precise motion", asy
   }
 
   assert.match(layoutSource, /@fontsource-variable\/inter-tight/);
-  assert.match(sourceCss, /\/\* Grt v0\.7 — desktop rhythm \+ progressive Form Check selection \*\//);
+  assert.match(sourceCss, /\/\* Grt v0\.8 — desktop rhythm \+ progressive Form Check selection \*\//);
   assert.match(sourceCss, /--type-display:\s*clamp\(3\.25rem, 8vw, 8\.5rem\)/);
   assert.match(sourceCss, /--type-page:\s*clamp\(3rem, 4\.2vw, 4rem\)/);
   assert.match(sourceCss, /--type-section:\s*clamp\(1\.75rem, 2\.2vw, 2\.25rem\)/);
@@ -581,25 +581,74 @@ test("keeps onboarding personalization inside the browser session", async () => 
 });
 
 test("places Form Check instructions and transparency before upload", async () => {
-  const source = await readFile(
-    path.join(root, "app", "form-check-workspace.tsx"),
-    "utf8",
-  );
+  const source = (
+    await Promise.all(
+      [
+        "app/form-check-workspace.tsx",
+        "components/form-check/form-check-flow.tsx",
+      ].map((file) => readFile(path.join(root, file), "utf8")),
+    )
+  ).join("\n");
 
   assert.match(source, /Before you start\./);
-  assert.match(source, /Saved history is not available yet\./);
+  assert.match(source, /Saved history\s+is not available yet\./);
   assert.match(source, /Upload a \{captureView\}\./);
   assert.doesNotMatch(source, /window\.localStorage/);
 });
 
-test("uses progressive text-only Form Check exercise selection", async () => {
-  const source = await readFile(
+test("centralizes Form Check presentation rules", async () => {
+  const {
+    FORM_CHECK_CATEGORY_IMAGES,
+    getCaptureView,
+    getFormCheckInstructionContent,
+    getLiveTrackingLabel,
+  } = await vite.ssrLoadModule("/lib/form-check-presentation.ts");
+  const { FORM_CHECK_BODY_AREAS, getFormCheckExercise } = await vite.ssrLoadModule(
+    "/lib/form-check-exercises.ts",
+  );
+
+  assert.deepEqual(Object.keys(FORM_CHECK_CATEGORY_IMAGES), [
+    "legs",
+    "chest",
+    "back",
+    "shoulders",
+    "arms",
+    "core",
+  ]);
+  assert.equal(Object.keys(FORM_CHECK_CATEGORY_IMAGES).length, FORM_CHECK_BODY_AREAS.length);
+
+  const squat = getFormCheckExercise("bodyweight_squat");
+  const adductor = getFormCheckExercise("adductor_machine");
+  const overheadPress = getFormCheckExercise("barbell_overhead_press");
+
+  assert.equal(getCaptureView(squat), "side view");
+  assert.equal(getCaptureView(adductor), "front view");
+  assert.equal(getLiveTrackingLabel(squat), "squat");
+  assert.equal(getLiveTrackingLabel(overheadPress), "overhead");
+  assert.deepEqual(
+    getFormCheckInstructionContent(squat).groups.map((group) => group.title),
+    ["Frame", "Clip", "Camera"],
+  );
+  assert.ok(
+    getFormCheckInstructionContent(squat).groups.every((group) => group.detail.length > 0),
+  );
+});
+
+test("uses progressive image-backed Form Check category selection", async () => {
+  const workspaceSource = await readFile(
     path.join(root, "app", "form-check-workspace.tsx"),
+    "utf8",
+  );
+  const flowSource = await readFile(
+    path.join(root, "components", "form-check", "form-check-flow.tsx"),
     "utf8",
   );
   const sourceCss = await readFile(path.join(root, "app", "globals.css"), "utf8");
   const { FORM_CHECK_BODY_AREAS, getFormCheckExercisesByBodyArea } =
     await vite.ssrLoadModule("/lib/form-check-exercises.ts");
+  const { FORM_CHECK_CATEGORY_IMAGES } = await vite.ssrLoadModule(
+    "/lib/form-check-presentation.ts",
+  );
   const { FormCheckWorkspace } = await vite.ssrLoadModule(
     "/app/form-check-workspace.tsx",
   );
@@ -610,12 +659,21 @@ test("uses progressive text-only Form Check exercise selection", async () => {
     ["Legs", "Chest", "Back", "Shoulders", "Arms", "Core"],
   );
   assert.equal(getFormCheckExercisesByBodyArea("legs").length, 12);
-  assert.match(source, /selectionView === "areas"/);
-  assert.match(source, /All exercises/);
-  assert.match(source, /placeholder="Search exercises"/);
-  assert.match(source, /setFlowStage\("instructions"\)/);
-  assert.doesNotMatch(source, /role="radio"[\s\S]{0,250}exercise\.name/);
+  for (const imagePath of Object.values(FORM_CHECK_CATEGORY_IMAGES)) {
+    const image = await readFile(path.join(root, "public", imagePath));
+    assert.ok(image.length > 40_000);
+  }
+  assert.match(flowSource, /selection\.view === "areas"/);
+  assert.match(flowSource, /FORM_CHECK_CATEGORY_IMAGES\[area\.id\]/);
+  assert.match(flowSource, /All exercises/);
+  assert.match(flowSource, /placeholder="Search exercises"/);
+  assert.match(workspaceSource, /setFlowStage\("instructions"\)/);
+  assert.doesNotMatch(flowSource, /role="radio"[\s\S]{0,250}exercise\.name/);
+  assert.equal(flowSource.match(/<img/g)?.length, 1);
   assert.match(sourceCss, /\.form-body-area-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(3,/);
+  assert.match(sourceCss, /\.form-body-area-art img\s*\{[\s\S]*?object-fit:\s*cover/);
+  assert.match(sourceCss, /\.form-selection-block\s*\{[\s\S]*?background:\s*transparent/);
+  assert.match(sourceCss, /\.form-all-exercises\s*\{[\s\S]*?width:\s*100%/);
   assert.match(sourceCss, /\.form-exercise-choice\s*\{[\s\S]*?45rem/);
   assert.match(sourceCss, /\.form-exercise-selector button strong\s*\{[\s\S]*?1\.0625rem/);
   assert.match(html, /Choose a movement\./);
@@ -627,22 +685,26 @@ test("uses progressive text-only Form Check exercise selection", async () => {
 });
 
 test("preserves the v0.5 mobile-first feedback hierarchy after analysis", async () => {
-  const source = await readFile(
+  const workspaceSource = await readFile(
     path.join(root, "app", "form-check-workspace.tsx"),
+    "utf8",
+  );
+  const feedbackSource = await readFile(
+    path.join(root, "components", "form-check", "form-check-feedback.tsx"),
     "utf8",
   );
   const sourceCss = await readFile(path.join(root, "app", "globals.css"), "utf8");
 
-  const scoreIndex = source.indexOf("Score</p>");
-  const goodIndex = source.indexOf(">Good</p>");
-  const fixIndex = source.indexOf(">Fix first</p>");
-  const nextIndex = source.indexOf(">Next rep</p>");
+  const scoreIndex = feedbackSource.indexOf("Score</p>");
+  const goodIndex = feedbackSource.indexOf(">Good</p>");
+  const fixIndex = feedbackSource.indexOf(">Fix first</p>");
+  const nextIndex = feedbackSource.indexOf(">Next rep</p>");
 
-  assert.match(source, /Form Check \/ Review/);
-  assert.match(source, /One correction\. One cue for the next rep\./);
+  assert.match(workspaceSource, /Form Check \/ Review/);
+  assert.match(workspaceSource, /One correction\. One cue for the next rep\./);
   assert.ok(scoreIndex >= 0 && scoreIndex < fixIndex);
   assert.ok(fixIndex < goodIndex && goodIndex < nextIndex);
-  assert.match(source, /Capture quality, joint measurements, and rep breakdown/);
+  assert.match(workspaceSource, /Capture quality, joint measurements, and rep breakdown/);
   assert.match(sourceCss, /\.form-results-grid\s*\{[^}]*grid-template-columns:/s);
   assert.match(sourceCss, /grid-template-areas:\s*"score"\s*"fix"\s*"good"\s*"next"/s);
   assert.match(sourceCss, /\.result-set-details-content/);
